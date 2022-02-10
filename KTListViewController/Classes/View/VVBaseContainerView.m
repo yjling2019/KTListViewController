@@ -66,9 +66,13 @@
     
 }
 
+- (void)container_viewDidDisappear:(BOOL)animated {
+	
+}
+
 - (void)dealloc
 {
-    [self view_removeObservers];
+	[self view_removeObservers];
 }
 
 @end
