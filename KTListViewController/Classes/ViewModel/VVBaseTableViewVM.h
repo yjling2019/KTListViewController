@@ -2,8 +2,8 @@
 //  VVBaseTableViewVM.h
 //  MVVMDemo
 //
-//  Created by JackLee on 2019/8/19.
-//  Copyright © 2019 JackLee. All rights reserved.
+//  Created by KOTU on 2019/8/19.
+//  Copyright © 2019 KOTU. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

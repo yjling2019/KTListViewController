@@ -2,7 +2,7 @@
 //  VVBaseViewModel.h
 //  vv_bodylib_ios
 //
-//  Created by JackLee on 2020/7/13.
+//  Created by KOTU on 2020/7/13.
 //
 
 #import <Foundation/Foundation.h>

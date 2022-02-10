@@ -2,7 +2,7 @@
 //  VVBaseDecorationViewLayoutAttributes.h
 //  Pods
 //
-//  Created by admin on 2021/3/3.
+//  Created by KOTU on 2021/3/3.
 //
 
 #import <UIKit/UIKit.h>

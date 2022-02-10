@@ -2,7 +2,7 @@
 //  VVBaseCollectionDecorationView.m
 //  vv_bodylib_ios
 //
-//  Created by JackLee on 2020/11/10.
+//  Created by KOTU on 2020/11/10.
 //
 
 #import "VVBaseCollectionDecorationView.h"

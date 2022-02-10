@@ -2,7 +2,7 @@
 //  VVSimpleCollectionContainerView.h
 //  vv_bodylib_ios
 //
-//  Created by JackLee on 2021/5/18.
+//  Created by KOTU on 2021/5/18.
 //
 
 #import "VVBaseCollectionContainerView.h"

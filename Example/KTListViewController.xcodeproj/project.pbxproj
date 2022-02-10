@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D84AFD427B4FD16000383DD /* KTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D84AFD327B4FD16000383DD /* KTCollectionViewCell.m */; };
+		5D84AFD727B4FD4B000383DD /* KTCollectionVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D84AFD627B4FD4B000383DD /* KTCollectionVM.m */; };
+		5D84AFDA27B4FD81000383DD /* KTCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D84AFD927B4FD81000383DD /* KTCollectionVC.m */; };
+		5D84AFDD27B50475000383DD /* KTCollectionViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D84AFDC27B50475000383DD /* KTCollectionViewCell2.m */; };
 		5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8402763679400C705AE /* KTTableViewController.m */; };
 		5DCEE8462763680E00C705AE /* KTTableVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8452763680E00C705AE /* KTTableVM.m */; };
 		5DCEE849276368AF00C705AE /* KTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE848276368AF00C705AE /* KTTableCell.m */; };
@@ -43,6 +47,14 @@
 		0A139F0DE1B955CE97BDEB31 /* Pods_KTListViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27153DC49EF390BF7D8061E6 /* Pods_KTListViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC5AD87750BBD17AB3CB0F3 /* Pods-KTListViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KTListViewController_Example.debug.xcconfig"; path = "Target Support Files/Pods-KTListViewController_Example/Pods-KTListViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5D84AFD227B4FD16000383DD /* KTCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTCollectionViewCell.h; sourceTree = "<group>"; };
+		5D84AFD327B4FD16000383DD /* KTCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionViewCell.m; sourceTree = "<group>"; };
+		5D84AFD527B4FD4B000383DD /* KTCollectionVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTCollectionVM.h; sourceTree = "<group>"; };
+		5D84AFD627B4FD4B000383DD /* KTCollectionVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionVM.m; sourceTree = "<group>"; };
+		5D84AFD827B4FD81000383DD /* KTCollectionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTCollectionVC.h; sourceTree = "<group>"; };
+		5D84AFD927B4FD81000383DD /* KTCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionVC.m; sourceTree = "<group>"; };
+		5D84AFDB27B50475000383DD /* KTCollectionViewCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTCollectionViewCell2.h; sourceTree = "<group>"; };
+		5D84AFDC27B50475000383DD /* KTCollectionViewCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionViewCell2.m; sourceTree = "<group>"; };
 		5DCEE8402763679400C705AE /* KTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTableViewController.m; sourceTree = "<group>"; };
 		5DCEE8412763679400C705AE /* KTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTableViewController.h; sourceTree = "<group>"; };
 		5DCEE8442763680E00C705AE /* KTTableVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableVM.h; sourceTree = "<group>"; };
@@ -104,9 +116,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D84AFD127B4FCE0000383DD /* CollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				5D84AFD827B4FD81000383DD /* KTCollectionVC.h */,
+				5D84AFD927B4FD81000383DD /* KTCollectionVC.m */,
+				5D84AFD527B4FD4B000383DD /* KTCollectionVM.h */,
+				5D84AFD627B4FD4B000383DD /* KTCollectionVM.m */,
+				5D84AFD227B4FD16000383DD /* KTCollectionViewCell.h */,
+				5D84AFD327B4FD16000383DD /* KTCollectionViewCell.m */,
+				5D84AFDB27B50475000383DD /* KTCollectionViewCell2.h */,
+				5D84AFDC27B50475000383DD /* KTCollectionViewCell2.m */,
+			);
+			path = CollectionVC;
+			sourceTree = "<group>";
+		};
 		5DCEE83F2763679400C705AE /* DemoVC */ = {
 			isa = PBXGroup;
 			children = (
+				5D84AFD127B4FCE0000383DD /* CollectionVC */,
 				5DCEE843276367CB00C705AE /* TableVC */,
 			);
 			path = DemoVC;
@@ -398,8 +426,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */,
+				5D84AFD727B4FD4B000383DD /* KTCollectionVM.m in Sources */,
+				5D84AFDA27B4FD81000383DD /* KTCollectionVC.m in Sources */,
 				6003F59E195388D20070C39A /* KTAppDelegate.m in Sources */,
+				5D84AFD427B4FD16000383DD /* KTCollectionViewCell.m in Sources */,
 				6003F5A7195388D20070C39A /* KTViewController.m in Sources */,
+				5D84AFDD27B50475000383DD /* KTCollectionViewCell2.m in Sources */,
 				5DCEE849276368AF00C705AE /* KTTableCell.m in Sources */,
 				5DCEE8462763680E00C705AE /* KTTableVM.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

@@ -2,7 +2,7 @@
 //  KTTableVM.m
 //  KTListViewController_Example
 //
-//  Created by 凌永剑 on 2021/12/10.
+//  Created by KOTU on 2021/12/10.
 //  Copyright © 2021 KOTU. All rights reserved.
 //
 
@@ -14,7 +14,6 @@
 
 @implementation KTTableVM
 
-@synthesize datas = _datas;
 @synthesize config = _config;
 
 - (__kindof NSObject<VVTableVMConfigProtocol> *)config
