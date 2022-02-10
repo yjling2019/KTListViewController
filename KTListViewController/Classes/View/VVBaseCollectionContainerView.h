@@ -29,6 +29,8 @@ VVCollectionViewContainerProtocol>
 - (void)registerReuseViews;
 - (void)bindUIActions;
 
+- (nullable UICollectionViewCell *)cellOfViewModel:(id)vm;
+
 @end
 
 NS_ASSUME_NONNULL_END

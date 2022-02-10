@@ -61,6 +61,7 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
     return self;
 }
 
+#pragma mark - public
 - (BOOL)vv_autoInit
 {
     return YES;
@@ -91,6 +92,46 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
     
 }
 
+- (nullable UICollectionViewCell *)cellOfViewModel:(id)vm
+{
+	if (!vm) {
+		return nil;
+	}
+	
+	NSIndexPath *indexPath;
+	
+	if (self.collectionViewModel.config.isMultiSection) {
+		for (VVBaseCollectionViewVM *sectionVM in self.collectionViewModel.datas) {
+			NSInteger item = [sectionVM.datas indexOfObject:vm];
+			if (item == NSNotFound) {
+				continue;
+			}
+			
+			NSInteger section = [self.collectionViewModel.datas indexOfObject:sectionVM];
+			if (section == NSNotFound) {
+				NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
+				continue;
+			}
+				
+			indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+			break;
+		}
+	} else {
+		NSInteger item = [self.collectionViewModel.datas indexOfObject:vm];
+		if (item != NSNotFound) {
+			indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+		}
+	}
+	
+	if (!indexPath) {
+		return nil;
+	}
+	
+	UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+	return cell;
+}
+
+#pragma mark -
 - (void)updateWithModel:(id)model
 {
     

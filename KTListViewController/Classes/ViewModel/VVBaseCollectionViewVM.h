@@ -15,9 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VVBaseCollectionVMConfig : NSObject<VVCollectionVMConfigProtocol>
  
+- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm;
+
 @end
 
 @interface VVBaseCollectionViewVM : NSObject<VVCollectionVMProtocol>
+
+- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm;
 
 @end
 

@@ -21,15 +21,6 @@ VVViewProtocol,
 VVListViewProtocol,
 VVTableViewContainerProtocol>
 
- /// 是否自动初始化 默认是
-/// 如果是会默认自动调用如下方法
-/*
- - (void)setUpUI;
- - (void)setUpConstraints;
- - (void)registerCells;
- - (void)registerReuseViews;
- - (void)bindUIActions;
- */
 - (BOOL)vv_autoInit;
 
 - (void)setUpUI;
@@ -37,6 +28,8 @@ VVTableViewContainerProtocol>
 - (void)registerCells;
 - (void)registerReuseViews;
 - (void)bindUIActions;
+
+- (nullable UITableViewCell *)cellOfViewModel:(id)vm;
 
 @end
 

@@ -39,7 +39,6 @@
     return UITableViewStylePlain;
 }
 
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -58,6 +57,7 @@
     return self;
 }
 
+#pragma mark - public
 - (BOOL)vv_autoInit
 {
     return YES;
@@ -93,6 +93,39 @@
     
 }
 
+- (nullable UITableViewCell *)cellOfViewModel:(id)vm
+{
+	if (!vm) {
+		return nil;
+	}
+	
+	NSIndexPath *indexPath;
+	
+	for (VVBaseTableViewVM *sectionVM in self.tableViewModel.datas) {
+		NSInteger item = [sectionVM.datas indexOfObject:vm];
+		if (item == NSNotFound) {
+			continue;
+		}
+		
+		NSInteger section = [self.tableViewModel.datas indexOfObject:sectionVM];
+		if (section == NSNotFound) {
+			NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
+			continue;
+		}
+			
+		indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+		break;
+	}
+
+	if (!indexPath) {
+		return nil;
+	}
+	
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	return cell;
+}
+
+#pragma mark -
 - (void)registerCells
 {
     for (Class cellClass in [self cellClasses]) {

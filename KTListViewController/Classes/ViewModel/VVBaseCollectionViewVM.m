@@ -44,6 +44,42 @@
 KTSynthesizeCollectionVMProtocol
 KTSynthesizeListVMProtocol
 
+#pragma mark - public
+- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm
+{
+	if (!vm) {
+		return nil;
+	}
+	
+	NSIndexPath *indexPath;
+	
+	if (self.config.isMultiSection) {
+		for (VVBaseCollectionViewVM *sectionVM in self.datas) {
+			NSInteger item = [sectionVM.datas indexOfObject:vm];
+			if (item == NSNotFound) {
+				continue;
+			}
+			
+			NSInteger section = [self.datas indexOfObject:sectionVM];
+			if (section == NSNotFound) {
+				NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
+				continue;
+			}
+				
+			indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+			break;
+		}
+	} else {
+		NSInteger item = [self.datas indexOfObject:vm];
+		if (item != NSNotFound) {
+			indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+		}
+	}
+	
+	return indexPath;
+}
+
+#pragma mark -
 - (NSInteger)sectionCount
 {
     if (self.config.isMultiSection) {
@@ -335,4 +371,5 @@ KTSynthesizeListVMProtocol
     }
     return _config;
 }
+
 @end

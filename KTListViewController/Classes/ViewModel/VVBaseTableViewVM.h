@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VVBaseTableViewVM : NSObject<VVTableVMProtocol>
 
+- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -29,6 +29,35 @@ KTSynthesizeTableVMConfigProtocol
 KTSynthesizeTableVMProtocol
 KTSynthesizeListVMProtocol
 
+#pragma mark - public
+- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm
+{
+	if (!vm) {
+		return nil;
+	}
+	
+	NSIndexPath *indexPath;
+	
+	for (VVBaseTableViewVM *sectionVM in self.datas) {
+		NSInteger item = [sectionVM.datas indexOfObject:vm];
+		if (item == NSNotFound) {
+			continue;
+		}
+		
+		NSInteger section = [self.datas indexOfObject:sectionVM];
+		if (section == NSNotFound) {
+			NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
+			continue;
+		}
+			
+		indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+		break;
+	}
+	
+	return indexPath;
+}
+
+#pragma mark -
 - (NSInteger)sectionCount
 {
 	return self.datas.count;
