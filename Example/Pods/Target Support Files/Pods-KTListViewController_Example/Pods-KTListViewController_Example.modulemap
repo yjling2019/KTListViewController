@@ -1,0 +1,6 @@
+framework module Pods_KTListViewController_Example {
+  umbrella header "Pods-KTListViewController_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

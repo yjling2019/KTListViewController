@@ -1,0 +1,23 @@
+PODS:
+  - KTListViewController (0.1.0):
+    - Masonry
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - KTListViewController (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Masonry
+
+EXTERNAL SOURCES:
+  KTListViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KTListViewController: c6264a07f024de0c10ad431ca56d5e6f47b38bca
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 1b2ea513adcd89173103a85c012a1302d56a245b
+
+COCOAPODS: 1.10.1

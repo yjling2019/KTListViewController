@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8402763679400C705AE /* KTTableViewController.m */; };
+		5DCEE8462763680E00C705AE /* KTTableVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8452763680E00C705AE /* KTTableVM.m */; };
+		5DCEE849276368AF00C705AE /* KTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE848276368AF00C705AE /* KTTableCell.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -40,6 +43,12 @@
 		0A139F0DE1B955CE97BDEB31 /* Pods_KTListViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27153DC49EF390BF7D8061E6 /* Pods_KTListViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC5AD87750BBD17AB3CB0F3 /* Pods-KTListViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KTListViewController_Example.debug.xcconfig"; path = "Target Support Files/Pods-KTListViewController_Example/Pods-KTListViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCEE8402763679400C705AE /* KTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTableViewController.m; sourceTree = "<group>"; };
+		5DCEE8412763679400C705AE /* KTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTableViewController.h; sourceTree = "<group>"; };
+		5DCEE8442763680E00C705AE /* KTTableVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableVM.h; sourceTree = "<group>"; };
+		5DCEE8452763680E00C705AE /* KTTableVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTTableVM.m; sourceTree = "<group>"; };
+		5DCEE847276368AF00C705AE /* KTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableCell.h; sourceTree = "<group>"; };
+		5DCEE848276368AF00C705AE /* KTTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTTableCell.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* KTListViewController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTListViewController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,13 +68,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		70A2B2A7E234A0BBFC52A531 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		70A2B2A7E234A0BBFC52A531 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76857A48332196534D45DB14 /* Pods-KTListViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KTListViewController_Example.release.xcconfig"; path = "Target Support Files/Pods-KTListViewController_Example/Pods-KTListViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		98AC6CA624A05EF0BC91AC62 /* KTListViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = KTListViewController.podspec; path = ../KTListViewController.podspec; sourceTree = "<group>"; };
+		98AC6CA624A05EF0BC91AC62 /* KTListViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KTListViewController.podspec; path = ../KTListViewController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9A9E7AF7BDF88D6C43F83424 /* Pods-KTListViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KTListViewController_Tests.release.xcconfig"; path = "Target Support Files/Pods-KTListViewController_Tests/Pods-KTListViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		9E042F7829C83F1D2F637305 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		9E042F7829C83F1D2F637305 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F1F6E36EF60FE63A01151E52 /* Pods-KTListViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KTListViewController_Tests.debug.xcconfig"; path = "Target Support Files/Pods-KTListViewController_Tests/Pods-KTListViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +104,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DCEE83F2763679400C705AE /* DemoVC */ = {
+			isa = PBXGroup;
+			children = (
+				5DCEE843276367CB00C705AE /* TableVC */,
+			);
+			path = DemoVC;
+			sourceTree = "<group>";
+		};
+		5DCEE843276367CB00C705AE /* TableVC */ = {
+			isa = PBXGroup;
+			children = (
+				5DCEE8412763679400C705AE /* KTTableViewController.h */,
+				5DCEE8402763679400C705AE /* KTTableViewController.m */,
+				5DCEE8442763680E00C705AE /* KTTableVM.h */,
+				5DCEE8452763680E00C705AE /* KTTableVM.m */,
+				5DCEE847276368AF00C705AE /* KTTableCell.h */,
+				5DCEE848276368AF00C705AE /* KTTableCell.m */,
+			);
+			path = TableVC;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +167,7 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* KTViewController.h */,
 				6003F5A6195388D20070C39A /* KTViewController.m */,
+				5DCEE83F2763679400C705AE /* DemoVC */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -193,7 +224,6 @@
 				F1F6E36EF60FE63A01151E52 /* Pods-KTListViewController_Tests.debug.xcconfig */,
 				9A9E7AF7BDF88D6C43F83424 /* Pods-KTListViewController_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +288,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -347,10 +378,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-KTListViewController_Example/Pods-KTListViewController_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KTListViewController/KTListViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KTListViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,8 +397,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */,
 				6003F59E195388D20070C39A /* KTAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* KTViewController.m in Sources */,
+				5DCEE849276368AF00C705AE /* KTTableCell.m in Sources */,
+				5DCEE8462763680E00C705AE /* KTTableVM.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

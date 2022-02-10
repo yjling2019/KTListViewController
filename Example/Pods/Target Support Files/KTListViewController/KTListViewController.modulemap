@@ -1,0 +1,6 @@
+framework module KTListViewController {
+  umbrella header "KTListViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
