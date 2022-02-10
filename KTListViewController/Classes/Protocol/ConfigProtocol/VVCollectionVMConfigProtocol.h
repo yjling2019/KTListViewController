@@ -9,6 +9,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define KTSynthesizeCollectionVMConfigProtocol \
+@synthesize cellClassName = _cellClassName;\
+@synthesize headerClassName = _headerClassName;\
+@synthesize footerClassName = _footerClassName;\
+@synthesize lineSpace = _lineSpace;\
+@synthesize interSpace = _interSpace;\
+@synthesize sectionInsets = _sectionInsets;\
+@synthesize columnNumber = _columnNumber;\
+@synthesize isMultiSection = _isMultiSection;\
+@synthesize isMultiCell = _isMultiCell;\
+@synthesize headerModel = _headerModel;\
+@synthesize footerModel = _footerModel;
+
 @protocol VVCollectionVMConfigProtocol <NSObject>
 
 @optional

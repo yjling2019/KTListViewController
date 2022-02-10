@@ -19,17 +19,7 @@
 
 @implementation VVBaseCollectionVMConfig
 
-@synthesize cellClassName;
-@synthesize headerClassName;
-@synthesize footerClassName;
-@synthesize lineSpace;
-@synthesize interSpace;
-@synthesize sectionInsets;
-@synthesize columnNumber;
-@synthesize isMultiSection;
-@synthesize isMultiCell;
-@synthesize headerModel;
-@synthesize footerModel;
+KTSynthesizeCollectionVMConfigProtocol
 
 #pragma mark - - getter - -
 - (BOOL)isMultiCell

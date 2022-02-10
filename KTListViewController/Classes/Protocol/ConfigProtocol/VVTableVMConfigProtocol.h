@@ -9,11 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define KTSynthesizeTableVMConfigProtocol 	@synthesize cellClassName = _cellClassName;\
-											@synthesize headerClassName = _headerClassName;\
-											@synthesize footerClassName = _footerClassName;\
-											@synthesize headerModel = _headerModel;\
-											@synthesize footerModel = _footerModel;\
+#define KTSynthesizeTableVMConfigProtocol \
+@synthesize cellClassName = _cellClassName;\
+@synthesize headerClassName = _headerClassName;\
+@synthesize footerClassName = _footerClassName;\
+@synthesize headerModel = _headerModel;\
+@synthesize footerModel = _footerModel;\
 
 @protocol VVTableVMConfigProtocol <NSObject>
 
