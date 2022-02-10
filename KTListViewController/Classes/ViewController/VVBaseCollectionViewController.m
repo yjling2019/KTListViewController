@@ -101,7 +101,6 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
                    withReuseIdentifier:defaultViewReuseIdentifier];
 }
 
-
 - (void)vc_bindUIActions
 {
     
@@ -120,20 +119,16 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (kind == UICollectionElementKindSectionHeader) {
         NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
         NSString *identifierString = [NSClassFromString(className) identifier];
         if (vv_isEmptyStr(identifierString)) {
-    #if DEBUG
             NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-    #endif
             identifierString = defaultViewReuseIdentifier;
         }
-#if DEBUG
-    NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
-#endif
-        VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+        
+		VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
         id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
         [reuseHeaderView updateWithModel:model];
         return reuseHeaderView;
@@ -141,15 +136,12 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
     NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
-#if DEBUG
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-#endif
         identifierString = defaultViewReuseIdentifier;
     }
-#if DEBUG
-    NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
-#endif
-    VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
+	NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+    
+	VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
     id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
     [reuseFooterView updateWithModel:model];
     return reuseFooterView;
@@ -163,9 +155,7 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
     NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
-#if DEBUG
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-#endif
         identifierString = defaultReuseIdentifier;
     }
     VVBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];

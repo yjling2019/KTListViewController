@@ -62,7 +62,7 @@ KTSynthesizeListVMProtocol
 	return indexPath;
 }
 
-#pragma mark -
+#pragma mark - VVListVMProtocol
 - (NSInteger)sectionCount
 {
     if (self.config.isMultiSection) {
@@ -79,12 +79,12 @@ KTSynthesizeListVMProtocol
 	}
 
 	if (![sectionObject conformsToProtocol:@protocol(VVSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
 		return 0;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(datas)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must respond selector datas");
 		return 0;
 	}
 	

@@ -20,20 +20,14 @@
 @implementation VVSimpleTableContainerView
 @synthesize tableViewModel;
 
-- (BOOL)vv_autoInit
-{
-    return NO;
-}
-
 + (instancetype)initWithCellClasses:(NSArray <Class>*)cellClasses
                    reuseViewClasses:(nullable NSArray <Class>*)reuseViewClasses
                      tableViewStyle:(UITableViewStyle)tableViewStyle
                      tableViewModel:(__kindof NSObject<VVTableVMProtocol>*)tableViewModel
 {
-#if DEBUG
     NSAssert(cellClasses.count > 0, @"make sure cellClasses.count > 0");
-#endif
-    VVSimpleTableContainerView *containerView = [[super alloc] init];
+
+	VVSimpleTableContainerView *containerView = [[super alloc] init];
     containerView.simple_cellClasses = cellClasses;
     containerView.simple_reuseViewClasses = reuseViewClasses;
     containerView.simple_tableViewStyle = tableViewStyle;
@@ -42,6 +36,7 @@
     [containerView registerReuseViews];
     [containerView setUpUI];
     [containerView setUpConstraints];
+	[containerView bindUIActions];
     return containerView;
 }
 
@@ -74,10 +69,9 @@
 
 - (void)updateWithModel:(__kindof NSObject<VVTableVMProtocol>*)tableViewModel
 {
-#if DEBUG
     NSAssert([tableViewModel conformsToProtocol:@protocol(VVTableVMProtocol)], @"tableViewModel should conform VVTableVMProtocol");
-#endif
-    self.tableViewModel = tableViewModel;
+
+	self.tableViewModel = tableViewModel;
     [self.tableView reloadData];
 }
 

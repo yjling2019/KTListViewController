@@ -21,8 +21,6 @@ VVViewProtocol,
 VVListViewProtocol,
 VVTableViewContainerProtocol>
 
-- (BOOL)vv_autoInit;
-
 - (void)setUpUI;
 - (void)setUpConstraints;
 - (void)registerCells;

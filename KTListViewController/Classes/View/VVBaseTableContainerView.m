@@ -43,26 +43,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        if ([self vv_autoInit]) {
-            
-            [self registerCells];
-            [self registerReuseViews];
-            
-            [self setUpUI];
-            [self setUpConstraints];
-            [self bindUIActions];
-            [self view_addObservers];
-        }
+		[self registerCells];
+		[self registerReuseViews];
+		
+		[self setUpUI];
+		[self setUpConstraints];
+		[self bindUIActions];
+		[self view_addObservers];
     }
     return self;
 }
 
 #pragma mark - public
-- (BOOL)vv_autoInit
-{
-    return YES;
-}
-
 - (void)setUpUI
 {
     

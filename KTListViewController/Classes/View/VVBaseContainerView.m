@@ -13,19 +13,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        if ([self vv_autoInit]) {
-            [self setUpUI];
-            [self setUpConstraints];
-            [self bindUIActions];
-            [self view_addObservers];
-        }
+		[self setUpUI];
+		[self setUpConstraints];
+		[self bindUIActions];
+		[self view_addObservers];
     }
     return self;
-}
-
-- (BOOL)vv_autoInit
-{
-    return YES;
 }
 
 - (void)setUpUI

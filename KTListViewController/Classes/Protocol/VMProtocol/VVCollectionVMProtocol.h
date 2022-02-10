@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol VVCollectionVMProtocol <VVListVMProtocol>
 
 @property (nonatomic, strong, nullable) __kindof NSArray *datas;
-@property (nonatomic, strong, nonnull) __kindof NSObject<VVCollectionVMConfigProtocol> *config;
+@property (nonatomic, strong, nonnull) __kindof NSObject <VVCollectionVMConfigProtocol> *config;
 
 @required
 /**

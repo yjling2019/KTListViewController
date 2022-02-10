@@ -21,12 +21,11 @@ UICollectionViewDelegate,
 VVListViewProtocol,
 VVCollectionViewContainerProtocol>
 
-- (BOOL)vv_autoInit;
+- (void)registerCells;
+- (void)registerReuseViews;
 
 - (void)setUpUI;
 - (void)setUpConstraints;
-- (void)registerCells;
-- (void)registerReuseViews;
 - (void)bindUIActions;
 
 - (nullable UICollectionViewCell *)cellOfViewModel:(id)vm;

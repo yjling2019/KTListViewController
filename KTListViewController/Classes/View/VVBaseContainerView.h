@@ -12,15 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VVBaseContainerView : UIView<VVContainerViewProtocol>
 
-
-/// 是否自动初始化 默认是
-/// 如果是会默认自动调用如下方法
-/*
- - (void)setUpUI;
- - (void)setUpConstraints;
- */
-- (BOOL)vv_autoInit;
-
 - (void)setUpUI;
 - (void)setUpConstraints;
 

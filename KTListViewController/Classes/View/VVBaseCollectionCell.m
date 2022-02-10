@@ -10,6 +10,7 @@
 #import "VVBaseViewModel.h"
 
 @implementation VVBaseCollectionReuseView
+
 @synthesize vv_model;
 @dynamic viewModel;
 
@@ -88,6 +89,7 @@
 @end
 
 @implementation VVBaseCollectionCell
+
 @synthesize vv_model;
 @dynamic viewModel;
 

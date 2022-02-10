@@ -18,22 +18,17 @@
 @end
 
 @implementation VVSimpleCollectionContainerView
-@synthesize collectionViewModel;
 
-- (BOOL)vv_autoInit
-{
-    return NO;
-}
+@synthesize collectionViewModel;
 
 + (instancetype)initWithCellClasses:(NSArray <Class>*)cellClasses
                    reuseViewClasses:(nullable NSArray <Class>*)reuseViewClasses
                     scrollDirection:(UICollectionViewScrollDirection)scrollDirection
                 collectionViewModel:(__kindof NSObject<VVCollectionVMProtocol>*)collectionViewModel
 {
-#if DEBUG
     NSAssert(cellClasses.count > 0, @"make sure cellClasses.count > 0");
-#endif
-    VVSimpleCollectionContainerView *containerView = [[super alloc] init];
+
+	VVSimpleCollectionContainerView *containerView = [[super alloc] init];
     containerView.simple_cellClasses = cellClasses;
     containerView.simple_reuseViewClasses = reuseViewClasses;
     containerView.collectionViewModel = collectionViewModel;
@@ -42,6 +37,7 @@
     [containerView registerReuseViews];
     [containerView setUpUI];
     [containerView setUpConstraints];
+	[containerView bindUIActions];
     return containerView;
 }
 
@@ -76,10 +72,9 @@
 
 - (void)updateWithModel:(__kindof NSObject<VVCollectionVMProtocol>*)collectionViewModel
 {
-#if DEBUG
     NSAssert([collectionViewModel conformsToProtocol:@protocol(VVCollectionVMProtocol)], @"collectionViewModel should conform VVCollectionVMProtocol");
-#endif
-    self.collectionViewModel = collectionViewModel;
+
+	self.collectionViewModel = collectionViewModel;
     [self.collectionView reloadData];
 }
 

@@ -15,13 +15,13 @@
 
 @optional
 
-/**
- 根据model动态改变view的height
-
- @param model 数据源
- @return 高度
- */
-+ (CGFloat)viewHeightWithModel:(id)model;
+///**
+// 根据model动态改变view的height
+//
+// @param model 数据源
+// @return 高度
+// */
+//+ (CGFloat)viewHeightWithModel:(id)model;
 
 /// 根据配置创建视图
 /// @param config 配置

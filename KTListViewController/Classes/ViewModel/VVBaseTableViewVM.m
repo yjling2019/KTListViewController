@@ -240,4 +240,5 @@ KTSynthesizeListVMProtocol
     }
     return _config;
 }
+
 @end
