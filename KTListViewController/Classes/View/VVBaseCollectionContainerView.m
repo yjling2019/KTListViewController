@@ -92,27 +92,20 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
 	
 	NSIndexPath *indexPath;
 	
-	if (self.collectionViewModel.config.isMultiSection) {
-		for (VVBaseCollectionViewVM *sectionVM in self.collectionViewModel.datas) {
-			NSInteger item = [sectionVM.datas indexOfObject:vm];
-			if (item == NSNotFound) {
-				continue;
-			}
+	for (VVBaseCollectionViewVM *sectionVM in self.collectionViewModel.datas) {
+		NSInteger item = [sectionVM.datas indexOfObject:vm];
+		if (item == NSNotFound) {
+			continue;
+		}
+		
+		NSInteger section = [self.collectionViewModel.datas indexOfObject:sectionVM];
+		if (section == NSNotFound) {
+			NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
+			continue;
+		}
 			
-			NSInteger section = [self.collectionViewModel.datas indexOfObject:sectionVM];
-			if (section == NSNotFound) {
-				NSAssert(NO, @"VVBaseCollectionViewVM: section not found, maybe self.datas changed");
-				continue;
-			}
-				
-			indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-			break;
-		}
-	} else {
-		NSInteger item = [self.collectionViewModel.datas indexOfObject:vm];
-		if (item != NSNotFound) {
-			indexPath = [NSIndexPath indexPathForItem:item inSection:0];
-		}
+		indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+		break;
 	}
 	
 	if (!indexPath) {

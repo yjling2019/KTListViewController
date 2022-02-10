@@ -65,10 +65,7 @@ KTSynthesizeListVMProtocol
 #pragma mark - VVListVMProtocol
 - (NSInteger)sectionCount
 {
-    if (self.config.isMultiSection) {
-        return self.datas.count;
-    }
-    return 1;
+	return self.datas.count;
 }
 
 - (NSInteger)itemCountWithSection:(NSInteger)section

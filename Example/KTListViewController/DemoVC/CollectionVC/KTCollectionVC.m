@@ -40,8 +40,6 @@
 {
 	if (!_collectionViewModel) {
 		_collectionViewModel = [[KTCollectionVM alloc] init];
-		
-		_collectionViewModel.config.isMultiSection = YES;
 	}
 	return _collectionViewModel;
 }

@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @synthesize interSpace = _interSpace;\
 @synthesize sectionInsets = _sectionInsets;\
 @synthesize columnNumber = _columnNumber;\
-@synthesize isMultiSection = _isMultiSection;\
-@synthesize isMultiCell = _isMultiCell;\
 @synthesize headerModel = _headerModel;\
 @synthesize footerModel = _footerModel;
 
@@ -52,12 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// collectionView对应的列数
 @property (nonatomic, assign) NSInteger columnNumber;
-
-/// 是否是多section，默认为NO
-@property (nonatomic, assign) BOOL isMultiSection;
-
-/// 是否是多种类型cell
-@property (nonatomic, assign, readonly) BOOL isMultiCell;
 
 @end
 
