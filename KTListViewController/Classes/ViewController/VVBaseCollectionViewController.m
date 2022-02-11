@@ -36,6 +36,7 @@
 	[self vc_loadInitialDataFromServer];
 }
 
+#pragma mark - VVViewControllerProtocol
 - (void)vc_setUpUI
 {
     
@@ -69,6 +70,7 @@
 	
 }
 
+#pragma mark - VVListViewControllerProtocol
 - (void)vc_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
@@ -90,6 +92,7 @@
 			[self.collectionView registerClass:cellClass forCellWithReuseIdentifier:[cellClass identifier]];
 		}
 	}
+	
 	[self.collectionView registerClass:VVBaseCollectionCell.class
 			forCellWithReuseIdentifier:[VVBaseCollectionCell identifier]];
 }
@@ -131,6 +134,28 @@
 	[self.collectionView registerClass:VVBaseCollectionReuseView.class
 			forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
 				   withReuseIdentifier:[VVBaseCollectionReuseView identifier]];
+}
+
+- (void)vc_pullRefresh
+{
+	
+}
+
+- (void)vc_loadMore
+{
+	
+}
+
+- (UICollectionViewLayout *)vc_collectionViewLayout
+{
+	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+	return layout;
+}
+
+#pragma mark - VVCollectionViewContainerProtocol
+- (void)collectionView:(UIView *)collectionView didSelectItem:(id <VVReuseViewModelProtocol>)item
+{
+	
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -365,18 +390,11 @@ referenceSizeForFooterInSection:(NSInteger)section
     return footerViewSize;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-//    if ([model isKindOfClass:[VVBaseViewModel class]]) {
-//        VVBaseViewModel *viewModel = (VVBaseViewModel *)model;
-//        if (viewModel.vv_link) {
-//            
-//        } else if (viewModel.vv_eventName) {
-//            
-//        }
-//    }
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	[self collectionView:collectionView didSelectItem:model];
+}
 
 #pragma mark - getter
 - (UICollectionView *)collectionView
@@ -396,12 +414,6 @@ referenceSizeForFooterInSection:(NSInteger)section
         _collectionView.delegate = self;
     }
     return _collectionView;
-}
-
-- (UICollectionViewLayout *)vc_collectionViewLayout
-{
-	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-	return layout;
 }
 
 #pragma mark - dealloc

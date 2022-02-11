@@ -140,6 +140,12 @@
 	return UITableViewStylePlain;
 }
 
+#pragma mark - VVTableViewContainerProtocol
+- (void)tableView:(UITableView *)tableView didSelectItem:(id <VVReuseViewModelProtocol>)item
+{
+	
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -269,18 +275,11 @@
     }
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    id model = [self.tableViewModel modelWithIndexPath:indexPath];
-//    if ([model isKindOfClass:[VVBaseViewModel class]]) {
-//        VVBaseViewModel *viewModel = (VVBaseViewModel *)model;
-//        if (viewModel.vv_link) {
-//            
-//        } else if (viewModel.vv_eventName) {
-//            
-//        }
-//    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	id model = [self.tableViewModel modelWithIndexPath:indexPath];
+	[self tableView:tableView didSelectItem:model];
+}
 
 #pragma mark - getter
 - (UITableView *)tableView

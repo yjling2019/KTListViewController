@@ -7,11 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import "VVViewProtocol.h"
+#import "VVModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VVContainerViewProtocol <VVViewProtocol>
 
+@optional
 - (void)container_viewWillAppear:(BOOL)animated;
 - (void)container_viewDidAppear:(BOOL)animated;
 - (void)container_viewWillDisappear:(BOOL)animated;

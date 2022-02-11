@@ -19,6 +19,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) __kindof id <VVTableVMProtocol> tableViewModel;
 
+@optional
+- (void)tableView:(UITableView *)tableView didSelectItem:(id <VVReuseViewModelProtocol>)item;
+
 @end
 
 @protocol VVCollectionViewContainerProtocol<NSObject>
@@ -29,6 +32,7 @@
 
 @optional
 - (void)preloadWithIndexPath:(NSIndexPath *)indexpath;
+- (void)collectionView:(UIView *)collectionView didSelectItem:(id <VVReuseViewModelProtocol>)item;
 
 @end
 

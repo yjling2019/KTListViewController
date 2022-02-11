@@ -188,6 +188,12 @@
 	return layout;
 }
 
+#pragma mark - VVCollectionViewContainerProtocol
+- (void)collectionView:(UIView *)collectionView didSelectItem:(id <VVReuseViewModelProtocol>)item
+{
+	
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -385,18 +391,11 @@
     return footerViewSize;
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-//    if ([model isKindOfClass:[VVBaseViewModel class]]) {
-//        VVBaseViewModel *viewModel = (VVBaseViewModel *)model;
-//        if (viewModel.vv_link) {
-//
-//        } else if (viewModel.vv_eventName) {
-//
-//        }
-//    }
-//}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	[self collectionView:collectionView didSelectItem:model];
+}
 
 #pragma mark - getter
 - (UICollectionView *)collectionView
