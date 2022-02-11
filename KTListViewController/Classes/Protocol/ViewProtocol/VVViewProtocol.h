@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import "VVViewProtocol.h"
+#import "VVModelProtocol.h"
 
 #ifndef VVViewProtocol_h
 #define VVViewProtocol_h
@@ -39,7 +40,7 @@
 
 /// 根据数据源更新视图
 /// @param model 数据源
-- (void)updateWithModel:(id)model;
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model;
 
 /// 下拉刷新
 - (void)pullRefresh;

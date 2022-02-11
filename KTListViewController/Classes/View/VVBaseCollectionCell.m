@@ -76,7 +76,7 @@
     
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
 {
     
 }
@@ -110,6 +110,7 @@
         [self setUpUI];
         [self setUpConstraints];
         [self bindUIActions];
+		[self loadInitialData];
         [self view_addObservers];
     }
     return self;
@@ -128,6 +129,11 @@
 - (void)bindUIActions
 {
     
+}
+
+- (void)loadInitialData
+{
+	
 }
 
 - (void)view_addObservers
@@ -150,7 +156,7 @@
     
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
 {
     
 }

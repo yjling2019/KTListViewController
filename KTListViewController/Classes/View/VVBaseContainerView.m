@@ -16,6 +16,7 @@
 		[self setUpUI];
 		[self setUpConstraints];
 		[self bindUIActions];
+		[self loadInitialData];
 		[self view_addObservers];
     }
     return self;

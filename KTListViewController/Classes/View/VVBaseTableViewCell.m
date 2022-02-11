@@ -86,7 +86,7 @@
     
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
 {
     
 }
@@ -126,7 +126,8 @@
         [self setUpUI];
         [self setUpConstraints];
         [self bindUIActions];
-        [self view_addObservers];
+		[self loadInitialData];
+		[self view_addObservers];
     }
     return self;
 }
@@ -146,6 +147,11 @@
     
 }
 
+- (void)loadInitialData
+{
+	
+}
+
 - (void)view_addObservers
 {
     
@@ -156,17 +162,17 @@
     
 }
 
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
+{
+	
+}
+
 - (void)addReuseViewModelObservers
 {
     
 }
 
 - (void)removeReuseViewModelObservers
-{
-    
-}
-
-- (void)updateWithModel:(id)model
 {
     
 }

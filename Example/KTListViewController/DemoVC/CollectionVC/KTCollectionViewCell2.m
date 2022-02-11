@@ -35,7 +35,7 @@
 	}];
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
 {
 	self.titleLabel.backgroundColor = [UIColor greenColor];
 

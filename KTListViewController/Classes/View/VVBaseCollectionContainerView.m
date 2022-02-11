@@ -95,7 +95,7 @@
 	
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModelmodel
 {
     
 }

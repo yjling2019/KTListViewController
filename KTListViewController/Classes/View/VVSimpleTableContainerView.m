@@ -67,7 +67,7 @@
     }];
 }
 
-- (void)updateWithModel:(__kindof NSObject<VVTableVMProtocol>*)tableViewModel
+- (void)updateWithModel:(__kindof NSObject<VVTableVMProtocol> *)tableViewModel
 {
     NSAssert([tableViewModel conformsToProtocol:@protocol(VVTableVMProtocol)], @"tableViewModel should conform VVTableVMProtocol");
 

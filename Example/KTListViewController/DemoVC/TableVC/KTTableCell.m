@@ -36,7 +36,7 @@
     }];
 }
 
-- (void)updateWithModel:(id)model
+- (void)updateWithModel:(id <VVReuseViewModelProtocol>)model
 {
     if (model) {
         self.titleLabel.text = NSStringFromClass([model class]);
