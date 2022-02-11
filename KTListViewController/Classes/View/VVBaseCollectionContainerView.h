@@ -13,6 +13,7 @@
 #import "VVViewProtocol.h"
 #import "VVListViewContainerProtocol.h"
 #import "VVListViewProtocol.h"
+#import "VVModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,14 +22,7 @@ UICollectionViewDelegate,
 VVListViewProtocol,
 VVCollectionViewContainerProtocol>
 
-- (void)registerCells;
-- (void)registerReuseViews;
-
-- (void)setUpUI;
-- (void)setUpConstraints;
-- (void)bindUIActions;
-
-- (nullable UICollectionViewCell *)cellOfViewModel:(id)vm;
+- (nullable UICollectionViewCell *)cellOfReuseViewModel:(id <VVReuseViewModelProtocol>)vm;
 
 @end
 

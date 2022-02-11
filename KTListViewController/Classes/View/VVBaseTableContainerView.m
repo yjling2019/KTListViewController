@@ -85,7 +85,7 @@
     
 }
 
-- (nullable UITableViewCell *)cellOfViewModel:(id)vm
+- (nullable UITableViewCell *)cellOfReuseViewModel:(id<VVReuseViewModelProtocol>)vm
 {
 	if (!vm) {
 		return nil;

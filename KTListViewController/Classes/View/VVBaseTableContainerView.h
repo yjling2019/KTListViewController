@@ -12,6 +12,7 @@
 #import "VVViewProtocol.h"
 #import "VVListViewProtocol.h"
 #import "VVListViewContainerProtocol.h"
+#import "VVModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,7 +28,7 @@ VVTableViewContainerProtocol>
 - (void)registerReuseViews;
 - (void)bindUIActions;
 
-- (nullable UITableViewCell *)cellOfViewModel:(id)vm;
+- (nullable UITableViewCell *)cellOfReuseViewModel:(id <VVReuseViewModelProtocol>)vm;
 
 @end
 

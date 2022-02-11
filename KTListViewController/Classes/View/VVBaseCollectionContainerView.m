@@ -25,38 +25,14 @@
 		[self setUpUI];
 		[self setUpConstraints];
 		[self bindUIActions];
+		[self loadInitialData];
 		[self view_addObservers];
     }
     return self;
 }
 
 #pragma mark - public
-- (void)setUpUI
-{
-    
-}
-
-- (void)setUpConstraints
-{
-    
-}
-
-- (void)bindUIActions
-{
-    
-}
-
-- (void)view_addObservers
-{
-    
-}
-
-- (void)view_removeObservers
-{
-    
-}
-
-- (nullable UICollectionViewCell *)cellOfViewModel:(id)vm
+- (nullable UICollectionViewCell *)cellOfReuseViewModel:(id)vm
 {
 	if (!vm) {
 		return nil;
@@ -88,12 +64,53 @@
 	return cell;
 }
 
-#pragma mark -
+#pragma mark - VVViewProtocol
+- (void)setUpUI
+{
+	
+}
+
+- (void)setUpConstraints
+{
+	
+}
+
+- (void)bindUIActions
+{
+	
+}
+
+- (void)loadInitialData
+{
+	
+}
+
+- (void)view_addObservers
+{
+	
+}
+
+- (void)view_removeObservers
+{
+	
+}
+
 - (void)updateWithModel:(id)model
 {
     
 }
 
+- (void)pullRefresh
+{
+	
+}
+
+- (void)loadMore
+{
+	
+}
+
+#pragma mark - VVListViewProtocol
 - (void)registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
@@ -157,6 +174,12 @@
     [self.collectionView registerClass:VVBaseCollectionReuseView.class
             forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                    withReuseIdentifier:[VVBaseCollectionReuseView identifier]];
+}
+
+- (UICollectionViewLayout *)collectionViewLayout
+{
+	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+	return layout;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -367,7 +390,7 @@
 //    }
 //}
 
-#pragma mark - - getter - -
+#pragma mark - getter
 - (UICollectionView *)collectionView
 {
     if (!_collectionView) {
@@ -385,12 +408,6 @@
         _collectionView.delegate = self;
     }
     return _collectionView;
-}
-
-- (UICollectionViewLayout *)collectionViewLayout
-{
-	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-	return layout;
 }
 
 #pragma mark - dealloc

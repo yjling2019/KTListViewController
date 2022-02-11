@@ -23,5 +23,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'Masonry'
   s.dependency 'KVOController'
+  s.dependency 'MJRefresh'
 
 end

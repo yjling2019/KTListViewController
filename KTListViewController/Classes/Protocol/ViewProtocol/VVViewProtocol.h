@@ -11,7 +11,7 @@
 #ifndef VVViewProtocol_h
 #define VVViewProtocol_h
 
-@protocol VVViewProtocol<NSObject>
+@protocol VVViewProtocol <NSObject>
 
 @optional
 
