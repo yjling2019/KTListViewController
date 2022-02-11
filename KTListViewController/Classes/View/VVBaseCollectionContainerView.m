@@ -9,6 +9,7 @@
 #import "VVBaseCollectionContainerView.h"
 #import "VVBaseViewModel.h"
 #import "VVDataHelper.h"
+#import <KVOController/KVOController.h>
 
 @implementation VVBaseCollectionContainerView
 
@@ -19,9 +20,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-		[self registerCells];
-		[self registerReuseViews];
-		
 		[self setUpUI];
 		[self setUpConstraints];
 		[self bindUIActions];
@@ -32,7 +30,12 @@
 }
 
 #pragma mark - public
-- (nullable UICollectionViewCell *)cellOfReuseViewModel:(id)vm
+- (void)reloadData
+{
+	[self.collectionView reloadData];
+}
+
+- (nullable UICollectionViewCell *)cellOfReuseViewModel:(id<VVReuseViewModelProtocol>)vm
 {
 	if (!vm) {
 		return nil;
@@ -87,7 +90,10 @@
 
 - (void)view_addObservers
 {
-	
+	[self.KVOController observe:self keyPath:@"collectionViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+		[self registerCells];
+		[self registerReuseViews];
+	}];
 }
 
 - (void)view_removeObservers
@@ -95,7 +101,7 @@
 	
 }
 
-- (void)updateWithModelmodel
+- (void)updateWithModel:(id<VVReuseViewModelProtocol>)model
 {
     
 }
@@ -197,12 +203,13 @@
 {
 	if (kind == UICollectionElementKindSectionHeader) {
 		NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (vv_isEmptyStr(identifierString)) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 			identifierString = [VVBaseCollectionReuseView identifier];
 		}
-		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
 		VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
 		id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
@@ -210,12 +217,13 @@
 		return reuseHeaderView;
 	} else {
 		NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (vv_isEmptyStr(identifierString)) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 			identifierString = [VVBaseCollectionReuseView identifier];
 		}
-		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
 		VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
 		id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
@@ -273,7 +281,7 @@
 {
     NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
     id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
-    CGSize headerViewSize= [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
+    CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
     return headerViewSize;
 }
 
@@ -281,7 +289,7 @@
 {
     NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
     id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
-    CGSize footerViewSize= [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
+    CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
     return footerViewSize;
 }
 
@@ -334,14 +342,14 @@
 {
     NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
     id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    CGSize itemSize= [NSClassFromString(cellClassName) itemSizeWithModel:model];
+    CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
     return itemSize;
 }
 
 /// 每个区的边距
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView customLayout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets sectionInsets= [self.collectionViewModel sectionInsetsWithSection:section];
+    UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
     return sectionInsets;
 }
 
@@ -364,7 +372,7 @@
 {
     NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
     id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
-    CGSize headerViewSize= [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
+    CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
     return headerViewSize;
 }
 
@@ -373,7 +381,7 @@
 {
     NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
     id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
-    CGSize footerViewSize= [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
+    CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
     return footerViewSize;
 }
 

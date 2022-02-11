@@ -22,6 +22,7 @@ UICollectionViewDelegate,
 VVListViewProtocol,
 VVCollectionViewContainerProtocol>
 
+- (void)reloadData;
 - (nullable UICollectionViewCell *)cellOfReuseViewModel:(id <VVReuseViewModelProtocol>)vm;
 
 @end

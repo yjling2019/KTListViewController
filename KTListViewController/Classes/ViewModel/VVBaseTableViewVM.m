@@ -189,7 +189,6 @@ KTSynthesizeListVMProtocol
 	
 	id headerModel = [sectionObject headerModel];
 
-	
 	if (![headerModel conformsToProtocol:@protocol(VVReuseViewModelProtocol)]) {
 		return nil;
 	}

@@ -9,6 +9,7 @@
 #import "VVBaseTableViewController.h"
 #import "VVBaseViewModel.h"
 #import "VVDataHelper.h"
+#import <KVOController/KVOController.h>
 
 @interface VVBaseTableViewController ()
 
@@ -17,31 +18,6 @@
 @implementation VVBaseTableViewController
 @dynamic tableViewModel;
 @synthesize tableView = _tableView;
-
-- (NSArray <Class>*)vc_cellClasses
-{
-    if (self.tableViewModel.config.cellClassName && NSClassFromString(self.tableViewModel.config.cellClassName)) {
-        return @[NSClassFromString(self.tableViewModel.config.cellClassName)];
-    }
-    return @[];
-}
-
-- (NSArray <Class>*)vc_resuseViewClasses
-{
-    NSMutableArray *array = [NSMutableArray new];
-    if (self.tableViewModel.config.headerClassName && NSClassFromString(self.tableViewModel.config.headerClassName)) {
-        [array addObject:NSClassFromString(self.tableViewModel.config.headerClassName)];
-    }
-    if (self.tableViewModel.config.footerClassName && NSClassFromString(self.tableViewModel.config.footerClassName)) {
-        [array addObject:NSClassFromString(self.tableViewModel.config.footerClassName)];
-    }
-    return [array copy];
-}
-
-- (UITableViewStyle)vc_tableViewStyle
-{
-    return UITableViewStylePlain;
-}
 
 - (void)viewDidLoad
 {
@@ -74,6 +50,11 @@
     
 }
 
+- (void)vc_loadInitialDataFromServer
+{
+	
+}
+
 - (void)vc_bindUIActions
 {
     
@@ -81,7 +62,10 @@
 
 - (void)vc_addObservers
 {
-    
+	[self.KVOController observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+		[self vc_registerCells];
+		[self vc_registerReuseViews];
+	}];
 }
 
 - (void)vc_removeObservers
@@ -92,22 +76,53 @@
 #pragma mark - VVListViewControllerProtocol
 - (void)vc_registerCells
 {
-	for (Class cellClass in [self vc_cellClasses]) {
+	NSMutableSet *set = [NSMutableSet set];
+	
+	for (id <VVSectionModelProtocol> section in self.tableViewModel.datas) {
+		for (id <VVReuseViewModelProtocol> model in section.datas) {
+			if ([model respondsToSelector:@selector(reuseViewClassName)] && model.reuseViewClassName) {
+				Class cls = NSClassFromString(model.reuseViewClassName);
+				if (cls) {
+					[set addObject:cls];
+				}
+			}
+		}
+	}
+	
+	for (Class cellClass in [set allObjects]) {
 		if ([cellClass conformsToProtocol:@protocol(VVTableCellProtocol)]
 			&& [cellClass respondsToSelector:@selector(identifier)]) {
 			[self.tableView registerClass:cellClass forCellReuseIdentifier:[cellClass identifier]];
 		}
 	}
+	
+	[self.tableView registerClass:VVBaseTableViewCell.class
+		   forCellReuseIdentifier:[VVBaseTableViewCell identifier]];
 }
 
 - (void)vc_registerReuseViews
 {
-	for (Class reuseViewClass in [self vc_resuseViewClasses]) {
-		if ([reuseViewClass conformsToProtocol:@protocol(VVTableReuseViewProtocol)]
-			&& [reuseViewClass respondsToSelector:@selector(identifier)]) {
-			[self.tableView registerClass:reuseViewClass forHeaderFooterViewReuseIdentifier:[reuseViewClass identifier]];
+	NSMutableSet *set = [NSMutableSet set];
+	
+	for (id <VVSectionModelProtocol> section in self.tableViewModel.datas) {
+		if ([section respondsToSelector:@selector(headerModel)] &&
+			[section.headerModel respondsToSelector:@selector(reuseViewClassName)] &&
+			section.headerModel.reuseViewClassName) {
+			Class cls = NSClassFromString(section.headerModel.reuseViewClassName);
+			if (cls) {
+				[set addObject:cls];
+			}
 		}
 	}
+	
+	for (Class cellClass in [set allObjects]) {
+		if ([cellClass conformsToProtocol:@protocol(VVTableCellProtocol)]
+			&& [cellClass respondsToSelector:@selector(identifier)]) {
+			[self.tableView registerClass:cellClass forHeaderFooterViewReuseIdentifier:[cellClass identifier]];
+		}
+	}
+	
+	[self.tableView registerClass:VVBaseTableReuseView.class forHeaderFooterViewReuseIdentifier:[VVBaseTableReuseView identifier]];
 }
 
 - (void)vc_pullRefresh
@@ -118,6 +133,11 @@
 - (void)vc_loadMore
 {
 	
+}
+
+- (UITableViewStyle)vc_tableViewStyle
+{
+	return UITableViewStylePlain;
 }
 
 #pragma mark - UITableViewDataSource
@@ -137,7 +157,7 @@
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-        return UITableViewCell.new;
+		identifierString = [VVBaseTableViewCell identifier];
     }
     VVBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierString forIndexPath:indexPath];
     id model = [self.tableViewModel modelWithIndexPath:indexPath];

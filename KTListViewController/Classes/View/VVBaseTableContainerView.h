@@ -22,12 +22,7 @@ VVViewProtocol,
 VVListViewProtocol,
 VVTableViewContainerProtocol>
 
-- (void)setUpUI;
-- (void)setUpConstraints;
-- (void)registerCells;
-- (void)registerReuseViews;
-- (void)bindUIActions;
-
+- (void)reloadData;
 - (nullable UITableViewCell *)cellOfReuseViewModel:(id <VVReuseViewModelProtocol>)vm;
 
 @end

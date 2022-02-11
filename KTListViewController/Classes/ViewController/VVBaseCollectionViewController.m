@@ -53,7 +53,7 @@
 
 - (void)vc_addObservers
 {
-	[self.KVOController observe:self.collectionViewModel keyPath:@"datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+	[self.KVOController observe:self keyPath:@"collectionViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
 		[self vc_registerCells];
 		[self vc_registerReuseViews];
 	}];
@@ -148,12 +148,13 @@
 {
     if (kind == UICollectionElementKindSectionHeader) {
         NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+
         NSString *identifierString = [NSClassFromString(className) identifier];
         if (vv_isEmptyStr(identifierString)) {
             NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
             identifierString = [VVBaseCollectionReuseView identifier];
         }
-		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
         
 		VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
         id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
@@ -161,12 +162,13 @@
         return reuseHeaderView;
 	} else {
 		NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (vv_isEmptyStr(identifierString)) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 			identifierString = [VVBaseCollectionReuseView identifier];
 		}
-		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
 		VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
 		id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
