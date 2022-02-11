@@ -11,9 +11,6 @@
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 
-static NSString * const kDefaultReuseIdentifier = @"com.KOTU.UILibrary.collectionVCVVDefaultCellID";
-static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.collectionVCVVReuseViewID";
-
 @interface VVBaseCollectionViewController ()
 
 @end
@@ -93,7 +90,8 @@ static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.colle
 			[self.collectionView registerClass:cellClass forCellWithReuseIdentifier:[cellClass identifier]];
 		}
 	}
-	[self.collectionView registerClass:VVBaseCollectionCell.class forCellWithReuseIdentifier:kDefaultReuseIdentifier];
+	[self.collectionView registerClass:VVBaseCollectionCell.class
+			forCellWithReuseIdentifier:[VVBaseCollectionCell identifier]];
 }
 
 - (void)vc_registerReuseViews
@@ -128,11 +126,11 @@ static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.colle
 	
 	[self.collectionView registerClass:VVBaseCollectionReuseView.class
 			forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-				   withReuseIdentifier:kDefaultViewReuseIdentifier];
+				   withReuseIdentifier:[VVBaseCollectionReuseView identifier]];
 	
 	[self.collectionView registerClass:VVBaseCollectionReuseView.class
 			forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
-				   withReuseIdentifier:kDefaultViewReuseIdentifier];
+				   withReuseIdentifier:[VVBaseCollectionReuseView identifier]];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -153,11 +151,11 @@ static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.colle
         NSString *identifierString = [NSClassFromString(className) identifier];
         if (vv_isEmptyStr(identifierString)) {
             NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-            identifierString = kDefaultViewReuseIdentifier;
+            identifierString = [VVBaseCollectionReuseView identifier];
         }
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
         
-		VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
+		VVBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
         id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
         [reuseHeaderView updateWithModel:model];
         return reuseHeaderView;
@@ -166,11 +164,11 @@ static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.colle
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (vv_isEmptyStr(identifierString)) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-			identifierString = kDefaultViewReuseIdentifier;
+			identifierString = [VVBaseCollectionReuseView identifier];
 		}
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
-		VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
+		VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
 		id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
 		[reuseFooterView updateWithModel:model];
 		return reuseFooterView;
@@ -186,7 +184,7 @@ static NSString * const kDefaultViewReuseIdentifier = @"com.KOTU.UILibrary.colle
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-        identifierString = kDefaultReuseIdentifier;
+        identifierString = [VVBaseCollectionCell identifier];
     }
     VVBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];
     id model = [self.collectionViewModel modelWithIndexPath:indexPath];

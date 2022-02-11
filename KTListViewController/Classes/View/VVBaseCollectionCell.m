@@ -95,7 +95,7 @@
 
 + (NSString *)identifier
 {
-    return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
+    return [NSString stringWithFormat:@"%@_ID", NSStringFromClass(self)];
 }
 
 + (CGSize)itemSizeWithModel:(id)model
