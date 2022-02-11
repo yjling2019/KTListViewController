@@ -72,7 +72,7 @@
     [self.vvContainerView bindUIActions];
 }
 
-#pragma mark - - getter - -
+#pragma mark - getter
 - (UIView<VVContainerViewProtocol> *)vvContainerView
 {
     if (!_vvContainerView) {

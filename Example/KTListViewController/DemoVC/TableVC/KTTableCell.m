@@ -45,7 +45,7 @@
     }
 }
 
-#pragma mark - - getter - -
+#pragma mark - getter
 - (UILabel *)titleLabel
 {
     if (!_titleLabel) {
