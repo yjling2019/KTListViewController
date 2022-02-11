@@ -12,6 +12,8 @@
 #import "KTCollectionVC2.h"
 #import "KTTableVC.h"
 
+// TODO: 瀑布流layout、站位图
+
 @interface KTViewController ()
 @property (strong, nonatomic) KTTableViewController *tableVC;
 @property (strong, nonatomic) KTTableVC *tableVC2;
