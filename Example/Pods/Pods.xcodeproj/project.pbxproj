@@ -23,7 +23,6 @@
 		1BB18DDE16245E672E743BD398F1D5AF /* MJRefreshConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FFD106E8C85D0CDDF75D05F1AE3C15 /* MJRefreshConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C9A32FB434D42A0BE1B580B0E6FE603 /* Pods-KTListViewController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB0FA1A1A549568AE3E3FFA58852865E /* Pods-KTListViewController_Tests-dummy.m */; };
 		1FDE0FA246BD966F58159B6924A82744 /* UICollectionViewLayout+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 495652241BC8C3AA074673D5D0987789 /* UICollectionViewLayout+MJRefresh.m */; };
-		205BBEBB032F2941B2E52DCA8C0699CF /* VVBaseContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0409CC4DBA526AD1527F9A2A5247CF88 /* VVBaseContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		232EF6D6260B369C9F02A335526B205B /* NSMutableArray+Protect.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD2AB9440E28935A3E5663E5C06AF00 /* NSMutableArray+Protect.m */; };
 		247B1607779707BB670688F52D7628E0 /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BA30217405D4F6B93F3A6A5C251741A /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		260689D9D0392B332CC2374F7ADD5370 /* MJRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = D9E4B0D26EC5FFE9F332DC8BEF247E58 /* MJRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,7 +100,6 @@
 		92E0CFF54C57517BDB6B4935C4933FD2 /* MJRefreshAutoStateFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA928FF4F75415AC1BC8FDED0F5963D /* MJRefreshAutoStateFooter.m */; };
 		95ADBBD651DD92AE62707C5A46438CF4 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4BE0B4F129E5CBA2A2AB62EBD9EF22 /* UIScrollView+MJExtension.m */; };
 		9AE88B1D8C559C0926B89A11CFD92A0D /* NSDictionary+DataProtect.h in Headers */ = {isa = PBXBuildFile; fileRef = 339CE40836E8E7A1E7A7354917721EF0 /* NSDictionary+DataProtect.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A16F388BF4F306C46DFA62BFB9F57701 /* VVBaseContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A20184A8F177B6BED04464333112DBC /* VVBaseContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A21A6161F3FCA2FD9D2C72427FD5341F /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FB71E75B69EEA546A0919F434EFD33 /* Masonry.framework */; };
 		A31D197CB7BD0CE367C1EA600E4EEAA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6919147D1FCACEC910247950566A3A74 /* Foundation.framework */; };
 		A3C7FD0A9FB7C19D9AFB7FCD738B8613 /* VVBaseTableContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B72506A5E771D5AB13CECB1438FED87E /* VVBaseTableContainerView.m */; };
@@ -129,7 +127,6 @@
 		C9154742F4C89FCF4270B668B9F3E79B /* VVCollectionVMProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F3F716E5C7FE6CB120ED82CCF8F1349F /* VVCollectionVMProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB4DFDDB80CD80F61CD485102A7B68C7 /* MJRefreshBackNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 71B07FD16F635BE9575C28122C458235 /* MJRefreshBackNormalFooter.m */; };
 		CC438BA825D33B01AE6EF644B64547A0 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D397A05303C4829023122AC05EB140 /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD8DD64337ABE7D39E03149731631F54 /* VVBaseContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6931CF393F2D5BCD33D2F891E248E6E /* VVBaseContainerViewController.m */; };
 		CDD158592C77D3732225DE494617D5DD /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA3259776F41957152F7F6AD3CC2191 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE8376F22D5DBE9DBE86E0F2EC267357 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 690DB5C1A0BB3288EC49E9FC1BB7C15B /* Masonry-dummy.m */; };
 		CF312A7264AB6A923A3FA6D1C86C049C /* VVBaseCollectionViewVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FE32183447C9159412FFE80ECEE1A8 /* VVBaseCollectionViewVM.m */; };
@@ -140,7 +137,6 @@
 		D493829A4678797C401593ADA96BF0CC /* MJRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5735A391AD8BBF2F5945C98B9CC0086 /* MJRefreshGifHeader.m */; };
 		D83D5D247A24C6E30C0DDE364BC4E5BE /* KTListViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D968B7651A83FBB5A078F60090A339AF /* KTListViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8664A765BE3D49240AC7E5E4049525E /* VVListViewControllerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6644E4BCF1A6453B21006D4F2187689B /* VVListViewControllerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB998372AECF7FBD4711089AA90E99CE /* VVBaseContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72234FA68FD110AFB1C5F6260DA8F519 /* VVBaseContainerView.m */; };
 		DBB83CF96CFEEDAB060822D916D8C394 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E7931B56A75217DCFDEBBD68E1E69C0 /* MASConstraintMaker.m */; };
 		DC4EC7E78B5555DB224608F342F4DC0E /* Pods-KTListViewController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F159458BD501659C729ED9881390984 /* Pods-KTListViewController_Example-dummy.m */; };
 		DCC9B0819B8A54A0AC210BEF392751A7 /* VVListViewProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 68300FF91959ED903FF606723A96875E /* VVListViewProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -234,7 +230,6 @@
 /* Begin PBXFileReference section */
 		039421FE35F732D481BF5A9F2FADC45C /* VVBaseCollectionDecorationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseCollectionDecorationView.h; sourceTree = "<group>"; };
 		03B9A148CA3C34C298B59298FBE9F646 /* VVBaseDecorationModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseDecorationModel.h; sourceTree = "<group>"; };
-		0409CC4DBA526AD1527F9A2A5247CF88 /* VVBaseContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseContainerView.h; sourceTree = "<group>"; };
 		06DF4CB42F082470BB0E0F78F641154F /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
 		09DDDDD55B5F507E59E0CB30969B23E0 /* VVViewControllerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVViewControllerProtocol.h; sourceTree = "<group>"; };
 		0B4E4F01948CB00002F1D573D510F2A4 /* VVBaseCollectionDecorationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseCollectionDecorationView.m; sourceTree = "<group>"; };
@@ -251,7 +246,6 @@
 		1491B4CFEFBD44D9AF0814F775D760E9 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		17FE32183447C9159412FFE80ECEE1A8 /* VVBaseCollectionViewVM.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseCollectionViewVM.m; sourceTree = "<group>"; };
 		192E4F573C42CD80F0E9298C2CF6DC60 /* Pods_KTListViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A20184A8F177B6BED04464333112DBC /* VVBaseContainerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseContainerViewController.h; sourceTree = "<group>"; };
 		1AEE2E08228E81B2C4F33605F89C0326 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		1CB22A23744B65D844016C2C2F047121 /* KVOController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KVOController.release.xcconfig; sourceTree = "<group>"; };
 		1E7931B56A75217DCFDEBBD68E1E69C0 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
@@ -318,7 +312,6 @@
 		6EBB65A28533E7207FF9B86C7EF083F0 /* VVSimpleTableContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVSimpleTableContainerView.m; sourceTree = "<group>"; };
 		71706079EB2ABB488B13E4FEF9818DBA /* MJRefreshStateHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshStateHeader.m; path = MJRefresh/Custom/Header/MJRefreshStateHeader.m; sourceTree = "<group>"; };
 		71B07FD16F635BE9575C28122C458235 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
-		72234FA68FD110AFB1C5F6260DA8F519 /* VVBaseContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseContainerView.m; sourceTree = "<group>"; };
 		7324EC0CC2472588668D8E73B92F8800 /* KVOController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVOController-umbrella.h"; sourceTree = "<group>"; };
 		734927064A607771E092C2C14AC04259 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		760C2A70F745AFF62460FB754487A5A8 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
@@ -361,7 +354,6 @@
 		A49EAE1AEF22EB157F532875B23B4CFA /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
 		A4BF04138B1721D6DA2E231F89E4A081 /* VVBaseTableViewVM.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseTableViewVM.h; sourceTree = "<group>"; };
 		A59F2BC87DDB7E818BE5721AB2D523FA /* KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KVOController.modulemap; sourceTree = "<group>"; };
-		A6931CF393F2D5BCD33D2F891E248E6E /* VVBaseContainerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseContainerViewController.m; sourceTree = "<group>"; };
 		A7A72E72DE051F7F5A93E0A4E46875C4 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
 		A85D297A30ADAFAF0924CB22D64B9F66 /* KTListViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KTListViewController.release.xcconfig; sourceTree = "<group>"; };
 		AB0FA1A1A549568AE3E3FFA58852865E /* Pods-KTListViewController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KTListViewController_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -621,8 +613,6 @@
 				0B4E4F01948CB00002F1D573D510F2A4 /* VVBaseCollectionDecorationView.m */,
 				E77ACE9A6CEF29B4640E98C8C70DFDF6 /* VVBaseCollectionCell.h */,
 				7C4049215357CD22AF23E3541580D844 /* VVBaseCollectionCell.m */,
-				0409CC4DBA526AD1527F9A2A5247CF88 /* VVBaseContainerView.h */,
-				72234FA68FD110AFB1C5F6260DA8F519 /* VVBaseContainerView.m */,
 				B833B3E91E257DA21AFAAD8C115A5CAC /* VVBaseTableContainerView.h */,
 				B72506A5E771D5AB13CECB1438FED87E /* VVBaseTableContainerView.m */,
 				833C9350B4F66489858C0205B9AE4C85 /* VVSimpleTableContainerView.h */,
@@ -717,8 +707,6 @@
 			children = (
 				C4E67BAAC8A692A20C475A535A915F80 /* VVBaseCollectionViewController.h */,
 				51E8468B25D8C0CAE959B6BE3871B59D /* VVBaseCollectionViewController.m */,
-				1A20184A8F177B6BED04464333112DBC /* VVBaseContainerViewController.h */,
-				A6931CF393F2D5BCD33D2F891E248E6E /* VVBaseContainerViewController.m */,
 				4FD6CDCA2A536B729213CBF9C596187F /* VVBaseTableViewController.h */,
 				F117718C51695690097BE493CFFFEA9F /* VVBaseTableViewController.m */,
 			);
@@ -1052,8 +1040,6 @@
 				192C69E5480313B433D19D12642BBD92 /* VVBaseCollectionDecorationView.h in Headers */,
 				4D9B1536D71462BEAD36B8242D3D9A98 /* VVBaseCollectionViewController.h in Headers */,
 				F68D8AA7249437F775AE80CDA1938D0A /* VVBaseCollectionViewVM.h in Headers */,
-				205BBEBB032F2941B2E52DCA8C0699CF /* VVBaseContainerView.h in Headers */,
-				A16F388BF4F306C46DFA62BFB9F57701 /* VVBaseContainerViewController.h in Headers */,
 				0797FCDAE712F6DA84345B1273A78B2A /* VVBaseDecorationModel.h in Headers */,
 				77964E3161417A227F292F26E1C0D1A2 /* VVBaseDecorationViewLayoutAttributes.h in Headers */,
 				F00A681022D6FAC8A8BC40B8D78E0D72 /* VVBaseReuseViewModel.h in Headers */,
@@ -1397,8 +1383,6 @@
 				D314ACA797B9B79C94145FFB9288F0EF /* VVBaseCollectionDecorationView.m in Sources */,
 				2C950035F5B4F8CE6848FC825AF04156 /* VVBaseCollectionViewController.m in Sources */,
 				CF312A7264AB6A923A3FA6D1C86C049C /* VVBaseCollectionViewVM.m in Sources */,
-				DB998372AECF7FBD4711089AA90E99CE /* VVBaseContainerView.m in Sources */,
-				CD8DD64337ABE7D39E03149731631F54 /* VVBaseContainerViewController.m in Sources */,
 				54373D5EA448073A57F9AC8E319FFC70 /* VVBaseDecorationModel.m in Sources */,
 				6283CA04267547F1198398448968F970 /* VVBaseDecorationViewLayoutAttributes.m in Sources */,
 				F322D4A4FA1EC7878856AE30AE0C3911 /* VVBaseReuseViewModel.m in Sources */,
