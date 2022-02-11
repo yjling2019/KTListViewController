@@ -14,20 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-/**
- 单元格的高度，根据model动态可变
-
- @param model 数据源
- @return 高度
- */
+/// 单元格的高度，根据model动态可变
+/// @param model 数据源
 + (CGFloat)cellHeightWithModel:(id)model;
 
-/**
- 单元格的预估高度，根据model动态可变
-
- @param model 数据源
- @return 预估高度
- */
+/// 单元格的预估高度，根据model动态可变
+/// @param model 数据源
 + (CGFloat)estimateHeightWithModel:(id)model;
 
 @end

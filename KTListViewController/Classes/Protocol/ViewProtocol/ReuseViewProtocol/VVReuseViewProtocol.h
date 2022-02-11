@@ -16,11 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 视图对应的数据源
 @property (nonatomic, strong) __kindof NSObject *vv_model;
-/**
- 重用是的标识
- 
- @return 标识
- */
+
+/// 重用的标识
 + (NSString *)identifier;
 
 /// 为重用视图添加对应viewModel的监听,禁止开发者主动调用

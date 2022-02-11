@@ -16,27 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否还有更多可上拉刷新
 @property (nonatomic, assign) BOOL hasMore;
 
-/**
- 用于tableView和CollectionView标识section的数量
-
- @return section的数量
- */
+/// 用于tableView和CollectionView标识section的数量
 - (NSInteger)sectionCount;
 
-/**
- 根据indexPath获取Model，注意model只能是数据模型，不能是ViewModel
-
- @param indexPath indexPath
- @return 数据model
- */
+/// 根据indexPath获取Model，注意model只能是数据模型，不能是ViewModel
+/// @param indexPath indexPath
 - (nullable id)modelWithIndexPath:(nonnull NSIndexPath *)indexPath;
 
-/**
- 根据indexPath获取对应的重用视图的类名
-
- @param indexPath indexPath
- @return viewModel
- */
+/// 根据indexPath获取对应的重用视图的类名
+/// @param indexPath indexPath
 - (nullable NSString *)reuseViewClassNameWithIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @optional

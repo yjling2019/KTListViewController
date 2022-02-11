@@ -17,21 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)kind;
 
 @optional
-
-/**
- section头视图的size，根据model动态可变
-
- @param model 数据源
- @return size
- */
+/// section头视图的size，根据model动态可变
+/// @param model 数据源
 + (CGSize)headerViewSizeWithModel:(id)model;
 
-/**
- section尾视图的size，根据model动态可变
- 
- @param model 数据源
- @return size
- */
+/// section尾视图的size，根据model动态可变
+/// @param model 数据源
 + (CGSize)footerViewSizeWithModel:(id)model;
 
 @end

@@ -12,16 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol VVListViewProtocol <VVViewProtocol>
 
-@optional
-
-/**
- 如果view上有tableView或者collectionView的时候注册相关的cell
- */
+@required
+/// 如果view上有tableView或者collectionView的时候注册相关的cell
 - (void)registerCells;
-
-/**
- 如果view上有tableView或者collectionView的时候注册相关的ReuseView
- */
+/// 如果view上有tableView或者collectionView的时候注册相关的ReuseView
 - (void)registerReuseViews;
 
 @optional
