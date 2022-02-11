@@ -181,10 +181,10 @@
 		13A512489C4EAD565235E04AE90039E4 /* VVDataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVDataHelper.h; sourceTree = "<group>"; };
 		17669D939DD00065E0D11A0E681E2CCD /* KVOController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KVOController-umbrella.h"; sourceTree = "<group>"; };
 		17FE32183447C9159412FFE80ECEE1A8 /* VVBaseCollectionViewVM.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseCollectionViewVM.m; sourceTree = "<group>"; };
-		192E4F573C42CD80F0E9298C2CF6DC60 /* Pods_KTListViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KTListViewController_Example.framework; path = "Pods-KTListViewController_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		192E4F573C42CD80F0E9298C2CF6DC60 /* Pods_KTListViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A20184A8F177B6BED04464333112DBC /* VVBaseContainerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseContainerViewController.h; sourceTree = "<group>"; };
 		1F826501E427ADFE0A4D84089AA1CBE5 /* VVModelProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVModelProtocol.h; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A10D9FE0D6D73A7609368AB1F464B7 /* Pods-KTListViewController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KTListViewController_Tests.modulemap"; sourceTree = "<group>"; };
 		2575C0FE9F3FD63F61E2468C3598F04B /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		295912C1355455E570B966AC601B9F8D /* KTListViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KTListViewController-dummy.m"; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		339CE40836E8E7A1E7A7354917721EF0 /* NSDictionary+DataProtect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DataProtect.h"; sourceTree = "<group>"; };
 		33CF6E4E095D950808716B0B60775D5C /* VVListViewContainerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVListViewContainerProtocol.h; sourceTree = "<group>"; };
 		385F409E3ADE8A87A54D1BBC12EDFA65 /* FBKVOController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBKVOController.m; path = FBKVOController/FBKVOController.m; sourceTree = "<group>"; };
-		399EC9508E73C0D54D9BBD8741FBA137 /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KVOController.framework; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		399EC9508E73C0D54D9BBD8741FBA137 /* KVOController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KVOController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BD0A6F05622577A8D0FF1E0B9BC8FAF /* VVSimpleCollectionContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVSimpleCollectionContainerView.h; sourceTree = "<group>"; };
 		4A4E8D76C76E3B8A2E3FD68C65D78491 /* FBKVOController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBKVOController.h; path = FBKVOController/FBKVOController.h; sourceTree = "<group>"; };
 		4A54E82A500169404C085DD317DF7254 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		5F159458BD501659C729ED9881390984 /* Pods-KTListViewController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KTListViewController_Example-dummy.m"; sourceTree = "<group>"; };
 		6004F2F07E811914B6A197D2AA0B67C2 /* VVBaseTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseTableViewCell.h; sourceTree = "<group>"; };
 		607DE6BB637238E485A9E3A7F2FBED8F /* VVReuseViewProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVReuseViewProtocol.h; sourceTree = "<group>"; };
-		6099AA301381135AA27FCE43068F94AC /* Pods_KTListViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KTListViewController_Tests.framework; path = "Pods-KTListViewController_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6099AA301381135AA27FCE43068F94AC /* Pods_KTListViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KTListViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6644E4BCF1A6453B21006D4F2187689B /* VVListViewControllerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVListViewControllerProtocol.h; sourceTree = "<group>"; };
 		67D69003DD12D0F2876073EB1A591890 /* Pods-KTListViewController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KTListViewController_Example.modulemap"; sourceTree = "<group>"; };
 		68300FF91959ED903FF606723A96875E /* VVListViewProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVListViewProtocol.h; sourceTree = "<group>"; };
@@ -223,14 +223,14 @@
 		6EBB65A28533E7207FF9B86C7EF083F0 /* VVSimpleTableContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVSimpleTableContainerView.m; sourceTree = "<group>"; };
 		708096449BC60D6F128DA56B36A5E5C0 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		72234FA68FD110AFB1C5F6260DA8F519 /* VVBaseContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseContainerView.m; sourceTree = "<group>"; };
-		7B14D22BFC9362AB33226CF8FD3CD8B1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7B14D22BFC9362AB33226CF8FD3CD8B1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7B3B722B1969A73080621291C9A2B857 /* VVBaseViewModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseViewModel.h; sourceTree = "<group>"; };
 		7C4049215357CD22AF23E3541580D844 /* VVBaseCollectionCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseCollectionCell.m; sourceTree = "<group>"; };
 		7CB8B1025605F00AA4137268EB9D98C4 /* Pods-KTListViewController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KTListViewController_Example-frameworks.sh"; sourceTree = "<group>"; };
 		7DAA39200A6B472F767E71C015F82685 /* VVBaseCollectionContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseCollectionContainerView.m; sourceTree = "<group>"; };
 		833C9350B4F66489858C0205B9AE4C85 /* VVSimpleTableContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVSimpleTableContainerView.h; sourceTree = "<group>"; };
 		8562179DE24975A4067DEB73E0A59E79 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
-		862C43E14BB673CAE85B01973868254C /* KTListViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KTListViewController.framework; path = KTListViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		862C43E14BB673CAE85B01973868254C /* KTListViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KTListViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B0466A86B4821B140FCF8BEBCF84D2 /* VVTableVMProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVTableVMProtocol.h; sourceTree = "<group>"; };
 		89D9D89E70B4C3AD7DF33CA71B48D16B /* KTListViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KTListViewController.debug.xcconfig; sourceTree = "<group>"; };
 		89E65791C22AF47B8837FF913F333D32 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 		9994944BA22021C8C8399D0484C70428 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B5C9C5F3215559D225CA4F200F4A540 /* VVBaseReuseViewModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseReuseViewModel.m; sourceTree = "<group>"; };
 		9D8F50576FDE6879F13C35E821B5AEAF /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FD2AB9440E28935A3E5663E5C06AF00 /* NSMutableArray+Protect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Protect.m"; sourceTree = "<group>"; };
 		A017CFEBCCBCBB2553433A98D3881FEE /* VVBaseSectionModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseSectionModel.h; sourceTree = "<group>"; };
 		A25636E077F8BF5A2C3CE8F7B8FF1391 /* Pods-KTListViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KTListViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		AB0FA1A1A549568AE3E3FFA58852865E /* Pods-KTListViewController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KTListViewController_Tests-dummy.m"; sourceTree = "<group>"; };
 		AC27AC9CD0D492DD60625EF8881C0B2F /* VVViewProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVViewProtocol.h; sourceTree = "<group>"; };
 		AF860812878E9B17060764AE6436DD31 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
-		AF8734AB0C3DF24E69DF3EF6C65E4916 /* KTListViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = KTListViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AF8734AB0C3DF24E69DF3EF6C65E4916 /* KTListViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = KTListViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B3CAA46B8B4622F04C0728C5F1FEB92C /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		B72506A5E771D5AB13CECB1438FED87E /* VVBaseTableContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VVBaseTableContainerView.m; sourceTree = "<group>"; };
 		B833B3E91E257DA21AFAAD8C115A5CAC /* VVBaseTableContainerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VVBaseTableContainerView.h; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 		C6D66007B43921AF4BA84E07E6C775FF /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		C703D06D17A474BE1845D7F36DF23DC7 /* KVOController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KVOController.modulemap; sourceTree = "<group>"; };
 		C97534E9156969E1F3F6F48442B1DE4A /* NSMutableArray+Protect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Protect.h"; sourceTree = "<group>"; };
-		CDBE303702DD68ADFCF8092E2A7103FC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		CDBE303702DD68ADFCF8092E2A7103FC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CFC7048F6C55C4B7DA1C603A6DE5356B /* NSArray+DataProtect.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DataProtect.m"; sourceTree = "<group>"; };
 		D168D39F5D530B841E2B5BD4AA53065F /* Pods-KTListViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KTListViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D180E5D9F1395D4BF3AC125DB3547230 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
@@ -369,18 +369,16 @@
 			children = (
 				68300FF91959ED903FF606723A96875E /* VVListViewProtocol.h */,
 			);
-			name = ListViewPrototol;
 			path = ListViewPrototol;
 			sourceTree = "<group>";
 		};
 		23C8DD4E720AA12E95135C4EDE044758 /* VMProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				F3F716E5C7FE6CB120ED82CCF8F1349F /* VVCollectionVMProtocol.h */,
 				DD88CF2712170391A534ED1695297A40 /* VVListVMProtocol.h */,
+				F3F716E5C7FE6CB120ED82CCF8F1349F /* VVCollectionVMProtocol.h */,
 				89B0466A86B4821B140FCF8BEBCF84D2 /* VVTableVMProtocol.h */,
 			);
-			name = VMProtocol;
 			path = VMProtocol;
 			sourceTree = "<group>";
 		};
@@ -404,7 +402,6 @@
 				1DA33D90E75ECB50CDA9598D67FDB97D /* ListViewPrototol */,
 				5AC865E9C87C28CE79E552062DA7F587 /* ReuseViewProtocol */,
 			);
-			name = ViewProtocol;
 			path = ViewProtocol;
 			sourceTree = "<group>";
 		};
@@ -414,7 +411,6 @@
 				F2C4B0C562D99D805CD562F876F27BBF /* VVCollectionVMConfigProtocol.h */,
 				F03345BC484F591D23103FA6B0AB1D13 /* VVTableVMConfigProtocol.h */,
 			);
-			name = ConfigProtocol;
 			path = ConfigProtocol;
 			sourceTree = "<group>";
 		};
@@ -463,7 +459,6 @@
 			children = (
 				1F826501E427ADFE0A4D84089AA1CBE5 /* VVModelProtocol.h */,
 			);
-			name = ModelProtocol;
 			path = ModelProtocol;
 			sourceTree = "<group>";
 		};
@@ -494,13 +489,12 @@
 		5AC865E9C87C28CE79E552062DA7F587 /* ReuseViewProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				607DE6BB637238E485A9E3A7F2FBED8F /* VVReuseViewProtocol.h */,
 				BF32D0ECD0E444078F5B91FA0F811BD3 /* VVCollectionCellProtocol.h */,
 				1209F041A886A1C6320267CD01152331 /* VVCollectionReuseViewProtocol.h */,
-				607DE6BB637238E485A9E3A7F2FBED8F /* VVReuseViewProtocol.h */,
 				C4E52B54938FD66FB46FD593BB1F60AB /* VVTableCellProtocol.h */,
 				8F307964438EE93D7C74282806CD9E7B /* VVTableReuseViewProtocol.h */,
 			);
-			name = ReuseViewProtocol;
 			path = ReuseViewProtocol;
 			sourceTree = "<group>";
 		};
@@ -608,7 +602,6 @@
 				4C13212039740436F5A4597933CCA954 /* VVContainerViewProtocol.h */,
 				33CF6E4E095D950808716B0B60775D5C /* VVListViewContainerProtocol.h */,
 			);
-			name = ContainerViewProtocol;
 			path = ContainerViewProtocol;
 			sourceTree = "<group>";
 		};
@@ -619,7 +612,6 @@
 				6644E4BCF1A6453B21006D4F2187689B /* VVListViewControllerProtocol.h */,
 				09DDDDD55B5F507E59E0CB30969B23E0 /* VVViewControllerProtocol.h */,
 			);
-			name = VCProtocol;
 			path = VCProtocol;
 			sourceTree = "<group>";
 		};
@@ -711,7 +703,6 @@
 				DBD4B75F4E4DB2D0EFE24C515A3ECBC7 /* ViewController+MASAdditions.m */,
 				77A9D5C3F593AF0A625FEB4658D335EF /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -762,7 +753,6 @@
 				E73C61C66E0713E1F3FB1F3E24A161A6 /* NSObject+FBKVOController.m */,
 				83C5B303FF5E865C2240995097256C52 /* Support Files */,
 			);
-			name = KVOController;
 			path = KVOController;
 			sourceTree = "<group>";
 		};
@@ -1555,8 +1545,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

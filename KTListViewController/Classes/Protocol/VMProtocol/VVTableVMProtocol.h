@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "VVTableVMConfigProtocol.h"
+#import "VVModelProtocol.h"
 
 #define KTSynthesizeTableVMProtocol     @synthesize datas = _datas;\
                                         @synthesize config = _config;
@@ -15,16 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol VVTableVMProtocol <VVListVMProtocol>
 
-@property (nonatomic, strong, nullable) __kindof NSArray *datas;
-@property (nonatomic, strong, nonnull) __kindof NSObject<VVTableVMConfigProtocol> *config;
-
 @required
-/**
- 用于tableView标识每个section中row的数量
- 
- @param section tableView的section
- @return row数量
- */
+
+@property (nonatomic, strong, nullable) NSArray <id <VVSectionModelProtocol>> *datas;
+@property (nonatomic, strong) id <VVTableVMConfigProtocol> config;
+
+/// 用于tableView标识每个section中row的数量
+/// @param section ableView的section
 - (NSInteger)rowCountWithSection:(NSInteger)section;
 
 @end

@@ -17,30 +17,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol VVCollectionVMProtocol <VVListVMProtocol>
 
-@property (nonatomic, strong, nullable) __kindof NSArray <VVSectionModelProtocol> *datas;
-@property (nonatomic, strong, nonnull) __kindof NSObject <VVCollectionVMConfigProtocol, VVCollectionLayoutConfigProtocol> *config;
-
 @required
-/**
- 用于tableView标识每个section中item的数量
- 
- @param section collectionView的section
- @return item数量
- */
+
+@property (nonatomic, strong, nullable) NSArray <id <VVSectionModelProtocol>> *datas;
+@property (nonatomic, strong) id <VVCollectionVMConfigProtocol, VVCollectionLayoutConfigProtocol> config;
+
+/// 用于collectionView标识每个section中item的数量
+/// @param section section
 - (NSInteger)itemCountWithSection:(NSInteger)section;
 
-/**
- 每个section下单元格行间距
- 
- @return 行间距
- */
+/// 每个section下单元格行间距
+/// @param section section
 - (CGFloat)itemMinLineSpacingWithSection:(NSInteger)section;
 
-/**
- 单元格列间距
- 
- @return 列间距
- */
+/// 单元格列间距
+/// @param section section
 - (CGFloat)itemMinInterSpacingWithSection:(NSInteger)section;
 
 /// 获取某个section的缩进
