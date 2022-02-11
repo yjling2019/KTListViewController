@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, VVDecorationOriginType)
 @optional
 
 /// 分区列表的数据源
-@property (nonatomic, strong, nullable) __kindof NSArray <id<VVReuseViewModelProtocol>> *datas;
+@property (nonatomic, strong, nullable) __kindof NSArray <id <VVReuseViewModelProtocol>> *datas;
 
 @property (nonatomic, strong, nullable) __kindof NSObject <VVDecorationViewModelProtocol> *decorationModel;
 

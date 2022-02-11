@@ -38,7 +38,7 @@ KTSynthesizeListVMProtocol
 	
 	NSIndexPath *indexPath;
 	
-	for (VVBaseTableViewVM *sectionVM in self.datas) {
+	for (id <VVSectionModelProtocol> sectionVM in self.datas) {
 		NSInteger item = [sectionVM.datas indexOfObject:vm];
 		if (item == NSNotFound) {
 			continue;

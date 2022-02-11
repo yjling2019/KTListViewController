@@ -93,7 +93,7 @@
 	
 	NSIndexPath *indexPath;
 	
-	for (VVBaseTableViewVM *sectionVM in self.tableViewModel.datas) {
+	for (id <VVSectionModelProtocol> sectionVM in self.tableViewModel.datas) {
 		NSInteger item = [sectionVM.datas indexOfObject:vm];
 		if (item == NSNotFound) {
 			continue;

@@ -64,7 +64,7 @@
 	
 	NSIndexPath *indexPath;
 	
-	for (VVBaseCollectionViewVM *sectionVM in self.collectionViewModel.datas) {
+	for (id <VVSectionModelProtocol> sectionVM in self.collectionViewModel.datas) {
 		NSInteger item = [sectionVM.datas indexOfObject:vm];
 		if (item == NSNotFound) {
 			continue;

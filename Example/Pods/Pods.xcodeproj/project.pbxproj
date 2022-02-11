@@ -375,8 +375,8 @@
 		23C8DD4E720AA12E95135C4EDE044758 /* VMProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				DD88CF2712170391A534ED1695297A40 /* VVListVMProtocol.h */,
 				F3F716E5C7FE6CB120ED82CCF8F1349F /* VVCollectionVMProtocol.h */,
+				DD88CF2712170391A534ED1695297A40 /* VVListVMProtocol.h */,
 				89B0466A86B4821B140FCF8BEBCF84D2 /* VVTableVMProtocol.h */,
 			);
 			path = VMProtocol;
@@ -489,9 +489,9 @@
 		5AC865E9C87C28CE79E552062DA7F587 /* ReuseViewProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				607DE6BB637238E485A9E3A7F2FBED8F /* VVReuseViewProtocol.h */,
 				BF32D0ECD0E444078F5B91FA0F811BD3 /* VVCollectionCellProtocol.h */,
 				1209F041A886A1C6320267CD01152331 /* VVCollectionReuseViewProtocol.h */,
+				607DE6BB637238E485A9E3A7F2FBED8F /* VVReuseViewProtocol.h */,
 				C4E52B54938FD66FB46FD593BB1F60AB /* VVTableCellProtocol.h */,
 				8F307964438EE93D7C74282806CD9E7B /* VVTableReuseViewProtocol.h */,
 			);
