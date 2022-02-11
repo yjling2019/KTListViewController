@@ -17,7 +17,7 @@
 
 @required
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) __kindof id<VVTableVMProtocol> tableViewModel;
+@property (nonatomic, strong) __kindof id <VVTableVMProtocol> tableViewModel;
 
 @end
 
@@ -25,7 +25,7 @@
 
 @required
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) __kindof id<VVCollectionVMProtocol> collectionViewModel;
+@property (nonatomic, strong) __kindof id <VVCollectionVMProtocol> collectionViewModel;
 
 @optional
 - (void)preloadWithIndexPath:(NSIndexPath *)indexpath;

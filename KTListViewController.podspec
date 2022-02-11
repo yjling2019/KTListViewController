@@ -22,5 +22,6 @@ Pod::Spec.new do |s|
   s.source_files = 'KTListViewController/Classes/**/*'
 
   s.dependency 'Masonry'
+  s.dependency 'KVOController'
 
 end

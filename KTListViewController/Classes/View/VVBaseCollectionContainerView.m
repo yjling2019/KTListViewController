@@ -11,37 +11,13 @@
 #import "VVDataHelper.h"
 
 @implementation VVBaseCollectionContainerView
+
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
 
 static NSString * const defaultReuseIdentifier = @"VVDefaultCellID";
 static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
 
-- (NSArray <Class>*)cellClasses
-{
-    if (self.collectionViewModel.config.cellClassName && NSClassFromString(self.collectionViewModel.config.cellClassName)) {
-        return @[NSClassFromString(self.collectionViewModel.config.cellClassName)];
-    }
-    return @[];
-}
-
-- (NSArray <Class>*)resuseViewClasses
-{
-    NSMutableArray *array = [NSMutableArray new];
-    if (self.collectionViewModel.config.headerClassName && NSClassFromString(self.collectionViewModel.config.headerClassName)) {
-        [array addObject:NSClassFromString(self.collectionViewModel.config.headerClassName)];
-    }
-    if (self.collectionViewModel.config.footerClassName && NSClassFromString(self.collectionViewModel.config.footerClassName)) {
-        [array addObject:NSClassFromString(self.collectionViewModel.config.footerClassName)];
-    }
-    return [array copy];
-}
-
-- (UICollectionViewLayout *)collectionViewLayout
-{
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    return layout;
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -165,7 +141,6 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
     if (kind == UICollectionElementKindSectionHeader) {
         NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
         NSString *identifierString = nil;
@@ -186,26 +161,27 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
         id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
         [reuseHeaderView updateWithModel:model];
         return reuseHeaderView;
-    }
-    NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
-    NSString *identifierString = nil;
-    if (!className
-        && ![self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section]) {
-        className = NSStringFromClass([VVBaseCollectionReuseView class]);
-        identifierString = defaultViewReuseIdentifier;
-    } else {
-        identifierString = [NSClassFromString(className) identifier];
-    }
-    if (vv_isEmptyStr(identifierString)) {
-        NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-        identifierString = defaultViewReuseIdentifier;
-    }
-    NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
+	} else {
+		NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
+		NSString *identifierString = nil;
+		if (!className
+			&& ![self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section]) {
+			className = NSStringFromClass([VVBaseCollectionReuseView class]);
+			identifierString = defaultViewReuseIdentifier;
+		} else {
+			identifierString = [NSClassFromString(className) identifier];
+		}
+		if (vv_isEmptyStr(identifierString)) {
+			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+			identifierString = defaultViewReuseIdentifier;
+		}
+		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 
-	VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
-    id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
-    [reuseFooterView updateWithModel:model];
-    return reuseFooterView;
+		VVBaseCollectionReuseView *reuseFooterView = [collectionView dequeueReusableSupplementaryViewOfKind:[NSClassFromString(className) kind] withReuseIdentifier:identifierString forIndexPath:indexPath];
+		id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:indexPath.section];
+		[reuseFooterView updateWithModel:model];
+		return reuseFooterView;
+	}
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -231,19 +207,19 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
 {
     NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
     id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    CGSize itemSize= [NSClassFromString(cellClassName) itemSizeWithModel:model];
+    CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
     return itemSize;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets sectionInsets= [self.collectionViewModel sectionInsetsWithSection:section];
+    UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
     return sectionInsets;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemMinLineSpacing= [self.collectionViewModel itemMinLineSpacingWithSection:section];
+    CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
     return itemMinLineSpacing;
 }
 
@@ -394,6 +370,13 @@ static NSString * const defaultViewReuseIdentifier = @"VVReuseViewID";
     return _collectionView;
 }
 
+- (UICollectionViewLayout *)collectionViewLayout
+{
+	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+	return layout;
+}
+
+#pragma mark - dealloc
 - (void)dealloc
 {
     [self view_removeObservers];

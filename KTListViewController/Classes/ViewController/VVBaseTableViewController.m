@@ -46,7 +46,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self vc_registerCells];
     [self vc_registerReuseViews];
@@ -54,7 +53,8 @@
     [self vc_setUpUI];
     [self vc_setUpConstraints];
     [self vc_bindUIActions];
-    [self vc_bindVMObserver];
+	[self vc_loadInitData];
+	[self vc_loadInitialDataFromServer];
 }
 
 - (void)vc_setUpUI

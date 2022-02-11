@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "VVListVMProtocol.h"
 #import "VVCollectionVMConfigProtocol.h"
+#import "VVModelProtocol.h"
 
 #define KTSynthesizeCollectionVMProtocol    @synthesize datas = _datas;\
                                             @synthesize config = _config;
@@ -16,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol VVCollectionVMProtocol <VVListVMProtocol>
 
-@property (nonatomic, strong, nullable) __kindof NSArray *datas;
-@property (nonatomic, strong, nonnull) __kindof NSObject <VVCollectionVMConfigProtocol> *config;
+@property (nonatomic, strong, nullable) __kindof NSArray <VVSectionModelProtocol> *datas;
+@property (nonatomic, strong, nonnull) __kindof NSObject <VVCollectionVMConfigProtocol, VVCollectionLayoutConfigProtocol> *config;
 
 @required
 /**

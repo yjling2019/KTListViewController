@@ -23,15 +23,13 @@
 
 - (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
 {
-#warning TODO
-//    VVAssertReturnVoid([layoutAttributes isKindOfClass:VVBaseDecorationViewLayoutAttributes.class], @"类型错误");
+    NSAssert([layoutAttributes isKindOfClass:VVBaseDecorationViewLayoutAttributes.class], @"类型错误");
     
     VVBaseDecorationViewLayoutAttributes *baseDecorationlayoutAttributes = (VVBaseDecorationViewLayoutAttributes *)layoutAttributes;
     
     VVBaseDecorationModel *decorationModel = baseDecorationlayoutAttributes.decorationModel;
     
     self.backgroundColor = decorationModel.backgroundColor;
-    
     self.layer.cornerRadius = decorationModel.cornerRadius;
 }
 

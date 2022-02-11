@@ -15,16 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 /**
- 如果viewController上有tableView或者collectionView的时候 注册的相关的cell的class列表
- */
-- (NSArray <Class> *)vc_cellClasses;
-
-/**
- 如果viewController上有tableView或者collectionView的时候 注册的相关的ReuseView的class列表
- */
-- (NSArray <Class> *)vc_resuseViewClasses;
-
-/**
  如果viewController上有tableView或者collectionView的时候注册相关的cell
  */
 - (void)vc_registerCells;

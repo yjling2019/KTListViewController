@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VVBaseCollectionVMConfig : NSObject<VVCollectionVMConfigProtocol>
+@interface VVBaseCollectionVMConfig : NSObject<VVCollectionVMConfigProtocol, VVCollectionLayoutConfigProtocol>
  
 @end
 

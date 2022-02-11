@@ -1,13 +1,17 @@
 PODS:
   - KTListViewController (0.1.0):
+    - KVOController
     - Masonry
+  - KVOController (1.2.0)
   - Masonry (1.1.0)
 
 DEPENDENCIES:
   - KTListViewController (from `../`)
+  - KVOController
 
 SPEC REPOS:
   trunk:
+    - KVOController
     - Masonry
 
 EXTERNAL SOURCES:
@@ -15,9 +19,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KTListViewController: c6264a07f024de0c10ad431ca56d5e6f47b38bca
+  KTListViewController: 1270713173a643a0225bf4ea5d4874c992c92d6a
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 1b2ea513adcd89173103a85c012a1302d56a245b
+PODFILE CHECKSUM: 8d4158d7f309438290e69ca7506f6d0f7d9fa284
 
 COCOAPODS: 1.10.1

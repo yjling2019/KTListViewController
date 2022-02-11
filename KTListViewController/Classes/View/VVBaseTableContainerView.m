@@ -154,9 +154,7 @@
     NSString *className = [self.tableViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
-#if DEBUG
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-#endif
         return UITableViewCell.new;
     }
     VVBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierString forIndexPath:indexPath];
@@ -296,6 +294,5 @@
 {
     [self view_removeObservers];
 }
-
 
 @end

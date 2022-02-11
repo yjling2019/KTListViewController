@@ -57,7 +57,7 @@
 /**
  控制器从接口加载Init数据
  */
-- (void)vc_loadingInitialDataFromServer;
+- (void)vc_loadInitialDataFromServer;
 
 /**
  控制器中刷新UI

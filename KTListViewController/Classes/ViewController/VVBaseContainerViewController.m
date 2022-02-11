@@ -21,13 +21,15 @@
     return [VVBaseContainerView class];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self vc_setUpUI];
+
+	[self vc_setUpUI];
     [self vc_setUpConstraints];
+	[self vc_bindUIActions];
     [self vc_loadInitData];
-    [self vc_bindUIActions];
+	[self vc_loadInitialDataFromServer];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -13,19 +13,12 @@
 
 @interface VVBaseCollectionVMConfig()
 
-@property (nonatomic, assign, readwrite) BOOL isMultiCell;
-
 @end
 
 @implementation VVBaseCollectionVMConfig
 
 KTSynthesizeCollectionVMConfigProtocol
-
-#pragma mark - - getter - -
-- (BOOL)isMultiCell
-{
-    return !(self.cellClassName.length > 0);
-}
+KTSynthesizeCollectionLayoutConfigProtocol
 
 @end
 

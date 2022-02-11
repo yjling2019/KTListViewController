@@ -10,34 +10,25 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define KTSynthesizeCollectionVMConfigProtocol \
-@synthesize cellClassName = _cellClassName;\
-@synthesize headerClassName = _headerClassName;\
-@synthesize footerClassName = _footerClassName;\
+
+
+#define KTSynthesizeCollectionLayoutConfigProtocol \
 @synthesize lineSpace = _lineSpace;\
 @synthesize interSpace = _interSpace;\
 @synthesize sectionInsets = _sectionInsets;\
 @synthesize columnNumber = _columnNumber;\
-@synthesize headerModel = _headerModel;\
-@synthesize footerModel = _footerModel;
+
 
 @protocol VVCollectionVMConfigProtocol <NSObject>
 
 @optional
 
-/// cell类名
-@property (nonatomic, copy, nullable) NSString *cellClassName;
+@end
 
-/// 分区区头类名
-@property (nonatomic, copy, nullable) NSString *headerClassName;
 
-/// 分区区尾类名
-@property (nonatomic, copy, nullable) NSString *footerClassName;
+@protocol VVCollectionLayoutConfigProtocol <NSObject>
 
-/// 分区区头的数据源
-@property (nonatomic, strong, nullable) __kindof NSObject *headerModel;
-
-/// 分区区尾的数据源
-@property (nonatomic, strong, nullable) __kindof NSObject *footerModel;
+@optional
 
 /// collectionView对应的lineSpace
 @property (nonatomic, assign) CGFloat lineSpace;
