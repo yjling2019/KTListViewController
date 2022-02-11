@@ -11,7 +11,7 @@
 #import "VVModelProtocol.h"
 
 #define KTSynthesizeCollectionVMProtocol    @synthesize datas = _datas;\
-                                            @synthesize config = _config;
+                                            @synthesize config = _config;\
 
 NS_ASSUME_NONNULL_BEGIN
 

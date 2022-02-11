@@ -35,6 +35,11 @@
 	}];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectItem:(id<VVReuseViewModelProtocol>)item
+{
+	NSLog(@"aaaa");
+}
+
 #pragma mark - lazy load
 - (KTTableVM *)tableViewModel
 {

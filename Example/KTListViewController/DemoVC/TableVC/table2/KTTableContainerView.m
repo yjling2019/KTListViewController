@@ -1,0 +1,27 @@
+//
+//  KTTableContainerView.m
+//  KTListViewController_Example
+//
+//  Created by 凌永剑 on 2022/2/11.
+//  Copyright © 2022 KOTU. All rights reserved.
+//
+
+#import "KTTableContainerView.h"
+#import <Masonry/Masonry.h>
+
+@implementation KTTableContainerView
+
+@synthesize tableViewModel = _tableViewModel;
+
+- (void)setUpUI
+{
+	self.backgroundColor = [UIColor redColor];
+	
+	[self addSubview:self.tableView];
+	[self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
+	}];
+}
+
+
+@end

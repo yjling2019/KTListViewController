@@ -23,4 +23,9 @@
 	}];
 }
 
+- (void)collectionView:(UIView *)collectionView didSelectItem:(id<VVReuseViewModelProtocol>)item
+{
+	NSLog(@"aaaaa");
+}
+
 @end

@@ -13,6 +13,8 @@
 		5D84AFDD27B50475000383DD /* KTCollectionViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D84AFDC27B50475000383DD /* KTCollectionViewCell2.m */; };
 		5DAD7AC127B64A7A007B1220 /* KTCollectionVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD7AC027B64A7A007B1220 /* KTCollectionVC2.m */; };
 		5DAD7AC527B64C05007B1220 /* KTCollectionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD7AC427B64C05007B1220 /* KTCollectionContainerView.m */; };
+		5DAD7AC927B667D1007B1220 /* KTTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD7AC827B667D1007B1220 /* KTTableVC.m */; };
+		5DAD7ACC27B66815007B1220 /* KTTableContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD7ACB27B66815007B1220 /* KTTableContainerView.m */; };
 		5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8402763679400C705AE /* KTTableViewController.m */; };
 		5DCEE8462763680E00C705AE /* KTTableVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE8452763680E00C705AE /* KTTableVM.m */; };
 		5DCEE849276368AF00C705AE /* KTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCEE848276368AF00C705AE /* KTTableCell.m */; };
@@ -61,6 +63,10 @@
 		5DAD7AC027B64A7A007B1220 /* KTCollectionVC2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionVC2.m; sourceTree = "<group>"; };
 		5DAD7AC327B64C05007B1220 /* KTCollectionContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTCollectionContainerView.h; sourceTree = "<group>"; };
 		5DAD7AC427B64C05007B1220 /* KTCollectionContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTCollectionContainerView.m; sourceTree = "<group>"; };
+		5DAD7AC727B667D1007B1220 /* KTTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableVC.h; sourceTree = "<group>"; };
+		5DAD7AC827B667D1007B1220 /* KTTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTTableVC.m; sourceTree = "<group>"; };
+		5DAD7ACA27B66815007B1220 /* KTTableContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableContainerView.h; sourceTree = "<group>"; };
+		5DAD7ACB27B66815007B1220 /* KTTableContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTTableContainerView.m; sourceTree = "<group>"; };
 		5DCEE8402763679400C705AE /* KTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTableViewController.m; sourceTree = "<group>"; };
 		5DCEE8412763679400C705AE /* KTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTableViewController.h; sourceTree = "<group>"; };
 		5DCEE8442763680E00C705AE /* KTTableVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KTTableVM.h; sourceTree = "<group>"; };
@@ -149,6 +155,17 @@
 			path = collection2;
 			sourceTree = "<group>";
 		};
+		5DAD7AC627B667B4007B1220 /* table2 */ = {
+			isa = PBXGroup;
+			children = (
+				5DAD7AC727B667D1007B1220 /* KTTableVC.h */,
+				5DAD7AC827B667D1007B1220 /* KTTableVC.m */,
+				5DAD7ACA27B66815007B1220 /* KTTableContainerView.h */,
+				5DAD7ACB27B66815007B1220 /* KTTableContainerView.m */,
+			);
+			path = table2;
+			sourceTree = "<group>";
+		};
 		5DCEE83F2763679400C705AE /* DemoVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +178,7 @@
 		5DCEE843276367CB00C705AE /* TableVC */ = {
 			isa = PBXGroup;
 			children = (
+				5DAD7AC627B667B4007B1220 /* table2 */,
 				5DCEE8412763679400C705AE /* KTTableViewController.h */,
 				5DCEE8402763679400C705AE /* KTTableViewController.m */,
 				5DCEE8442763680E00C705AE /* KTTableVM.h */,
@@ -448,6 +466,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DCEE8422763679400C705AE /* KTTableViewController.m in Sources */,
+				5DAD7AC927B667D1007B1220 /* KTTableVC.m in Sources */,
+				5DAD7ACC27B66815007B1220 /* KTTableContainerView.m in Sources */,
 				5D84AFD727B4FD4B000383DD /* KTCollectionVM.m in Sources */,
 				5D84AFDA27B4FD81000383DD /* KTCollectionVC.m in Sources */,
 				6003F59E195388D20070C39A /* KTAppDelegate.m in Sources */,

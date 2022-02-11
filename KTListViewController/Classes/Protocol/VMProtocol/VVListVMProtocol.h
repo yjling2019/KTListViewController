@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define KTSynthesizeListVMProtocol @synthesize hasMore = _hasMore;
+#define KTSynthesizeListVMProtocol @synthesize hasMore = _hasMore;\
 
 NS_ASSUME_NONNULL_BEGIN
 

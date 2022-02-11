@@ -91,7 +91,10 @@
 
 - (void)view_addObservers
 {
-    
+	[self.KVOController observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+		[self registerCells];
+		[self registerReuseViews];
+	}];
 }
 
 - (void)view_removeObservers
@@ -110,7 +113,7 @@
 	
 }
 
-#pragma mark -
+#pragma mark - VVListViewProtocol
 - (void)registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
@@ -159,7 +162,7 @@
 		}
 	}
 	
-	[self.tableView registerClass:VVBaseTableViewCell.class forHeaderFooterViewReuseIdentifier:[VVBaseTableViewCell identifier]];
+	[self.tableView registerClass:VVBaseTableReuseView.class forHeaderFooterViewReuseIdentifier:[VVBaseTableReuseView identifier]];
 }
 
 - (UITableViewStyle)tableViewStyle

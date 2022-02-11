@@ -10,9 +10,11 @@
 #import "KTTableViewController.h"
 #import "KTCollectionVC.h"
 #import "KTCollectionVC2.h"
+#import "KTTableVC.h"
 
 @interface KTViewController ()
 @property (strong, nonatomic) KTTableViewController *tableVC;
+@property (strong, nonatomic) KTTableVC *tableVC2;
 @property (strong, nonatomic) KTCollectionVC *cvc;
 @property (nonatomic, strong) KTCollectionVC2 *cvc2;
 @end
@@ -24,7 +26,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	[self testTableVC];
+//	[self testTableVC];
+	[self testTableVC2];
 //	[self testCollectionVC];
 //	[self testCollectionVC2];
 }
@@ -33,6 +36,12 @@
 {
 	[self.view addSubview:self.tableVC.view];
 	self.tableVC.view.frame = self.view.bounds;
+}
+
+- (void)testTableVC2
+{
+	[self.view addSubview:self.tableVC2.view];
+	self.tableVC2.view.frame = self.view.bounds;
 }
 
 - (void)testCollectionVC
@@ -62,6 +71,14 @@
 		_cvc = [[KTCollectionVC alloc] init];
 	}
 	return _cvc;
+}
+
+- (KTTableVC *)tableVC2
+{
+	if (!_tableVC2) {
+		_tableVC2 = [[KTTableVC alloc] init];
+	}
+	return _tableVC2;
 }
 
 - (KTTableViewController *)tableVC
