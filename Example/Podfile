@@ -1,0 +1,15 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'KTListViewController_Example' do
+  pod 'KTListViewController', :path => '../'
+	pod 'KVOController'
+	pod 'MJRefresh'
+	
+  target 'KTListViewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
