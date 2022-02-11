@@ -31,7 +31,7 @@
     [self vc_setUpUI];
     [self vc_setUpConstraints];
     [self vc_bindUIActions];
-	[self vc_bindVMObserver];
+	[self vc_addObservers];
 	[self vc_loadInitialData];
 	[self vc_loadInitialDataFromServer];
 }
@@ -51,7 +51,7 @@
     
 }
 
-- (void)vc_bindVMObserver
+- (void)vc_addObservers
 {
 	[self.KVOController observe:self.collectionViewModel keyPath:@"datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
 		[self vc_registerCells];
@@ -400,6 +400,12 @@ referenceSizeForFooterInSection:(NSInteger)section
 {
 	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 	return layout;
+}
+
+#pragma mark - dealloc
+- (void)dealloc
+{
+	[self vc_removeObservers];
 }
 
 @end

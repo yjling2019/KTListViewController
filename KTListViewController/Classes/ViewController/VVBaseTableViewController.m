@@ -53,10 +53,12 @@
     [self vc_setUpUI];
     [self vc_setUpConstraints];
     [self vc_bindUIActions];
+	[self vc_addObservers];
 	[self vc_loadInitData];
 	[self vc_loadInitialDataFromServer];
 }
 
+#pragma mark - VVViewControllerProtocol
 - (void)vc_setUpUI
 {
     
@@ -72,34 +74,50 @@
     
 }
 
-- (void)vc_registerCells
-{
-    for (Class cellClass in [self vc_cellClasses]) {
-        if ([cellClass conformsToProtocol:@protocol(VVTableCellProtocol)]
-            && [cellClass respondsToSelector:@selector(identifier)]) {
-            [self.tableView registerClass:cellClass forCellReuseIdentifier:[cellClass identifier]];
-        }
-    }
-}
-
-- (void)vc_registerReuseViews
-{
-    for (Class reuseViewClass in [self vc_resuseViewClasses]) {
-        if ([reuseViewClass conformsToProtocol:@protocol(VVTableReuseViewProtocol)]
-            && [reuseViewClass respondsToSelector:@selector(identifier)]) {
-            [self.tableView registerClass:reuseViewClass forHeaderFooterViewReuseIdentifier:[reuseViewClass identifier]];
-        }
-    }
-}
-
 - (void)vc_bindUIActions
 {
     
 }
 
-- (void)vc_bindVMObserver
+- (void)vc_addObservers
 {
     
+}
+
+- (void)vc_removeObservers
+{
+	
+}
+
+#pragma mark - VVListViewControllerProtocol
+- (void)vc_registerCells
+{
+	for (Class cellClass in [self vc_cellClasses]) {
+		if ([cellClass conformsToProtocol:@protocol(VVTableCellProtocol)]
+			&& [cellClass respondsToSelector:@selector(identifier)]) {
+			[self.tableView registerClass:cellClass forCellReuseIdentifier:[cellClass identifier]];
+		}
+	}
+}
+
+- (void)vc_registerReuseViews
+{
+	for (Class reuseViewClass in [self vc_resuseViewClasses]) {
+		if ([reuseViewClass conformsToProtocol:@protocol(VVTableReuseViewProtocol)]
+			&& [reuseViewClass respondsToSelector:@selector(identifier)]) {
+			[self.tableView registerClass:reuseViewClass forHeaderFooterViewReuseIdentifier:[reuseViewClass identifier]];
+		}
+	}
+}
+
+- (void)vc_pullRefresh
+{
+	
+}
+
+- (void)vc_loadMore
+{
+	
 }
 
 #pragma mark - UITableViewDataSource
@@ -253,6 +271,12 @@
         _tableView.delegate = self;
     }
     return _tableView;
+}
+
+#pragma mark - dealloc
+- (void)dealloc
+{
+	[self vc_removeObservers];
 }
 
 @end
