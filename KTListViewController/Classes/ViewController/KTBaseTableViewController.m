@@ -10,6 +10,7 @@
 #import "KTBaseViewModel.h"
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
+#import "UIScrollView+Preload.h"
 
 @interface KTBaseTableViewController ()
 
@@ -133,6 +134,20 @@
 - (void)vc_loadMore
 {
 	
+}
+
+- (void)vc_preloadListView:(UITableView *)listView atIndexPath:(NSIndexPath *)indexPath
+{
+	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+		return;
+	}
+	
+	id <KTSectionModelProtocol> section = [self.tableViewModel.datas vv_objectWithIndex:indexPath.section];
+	if (![section respondsToSelector:@selector(datas)]) {
+		return;
+	}
+	
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
 }
 
 - (UITableViewStyle)vc_tableViewStyle

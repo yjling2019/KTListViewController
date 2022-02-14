@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define KTSynthesizeCollectionVMConfigProtocol \
-
+@synthesize preloadMinCount = _preloadMinCount;\
 
 #define KTSynthesizeCollectionLayoutConfigProtocol \
 @synthesize lineSpace = _lineSpace;\
@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol KTCollectionVMConfigProtocol <NSObject>
 
 @optional
+/// 预加载最小间隔，即提前加载的数量
+@property (nonatomic, assign) NSUInteger preloadMinCount;
 
 @end
 

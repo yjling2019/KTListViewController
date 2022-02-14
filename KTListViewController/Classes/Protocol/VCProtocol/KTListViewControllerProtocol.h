@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 上拉加载更多
 - (void)vc_loadMore;
 
+/// 预加载数据
+/// @param indexPath indexPath
+- (void)vc_preloadListView:(__kindof UIView *)listView atIndexPath:(NSIndexPath *)indexPath;
+
 @optional
 
 /// 设置tableView的样式
