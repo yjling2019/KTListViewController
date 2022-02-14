@@ -11,7 +11,6 @@
 
 @implementation KTBaseTableReuseView
 
-@synthesize vv_model;
 @dynamic viewModel;
 
 + (NSString *)identifier
@@ -101,7 +100,6 @@
 
 @implementation KTBaseTableViewCell
 
-@synthesize vv_model;
 @dynamic viewModel;
 
 + (NSString *)identifier

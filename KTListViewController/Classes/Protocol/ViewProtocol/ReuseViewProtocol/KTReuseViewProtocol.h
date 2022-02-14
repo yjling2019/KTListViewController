@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define KTSynthesizeReuseViewProtocol    @synthesize vv_model = _vv_model;\
+#define KTSynthesizeReuseViewProtocol    @synthesize viewModel = _viewModel;\
 
 @protocol KTReuseViewProtocol <KTViewProtocol>
 
 /// 视图对应的数据源
-@property (nonatomic, strong) __kindof NSObject *vv_model;
+@property (nonatomic, strong) __kindof id <KTReuseViewModelProtocol> viewModel;
 
 /// 重用的标识
 + (NSString *)identifier;

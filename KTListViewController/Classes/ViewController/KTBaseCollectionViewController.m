@@ -229,7 +229,6 @@
     }
     KTBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];
     id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    cell.vv_model = model;
     [cell updateWithModel:model];
     return cell;
 }

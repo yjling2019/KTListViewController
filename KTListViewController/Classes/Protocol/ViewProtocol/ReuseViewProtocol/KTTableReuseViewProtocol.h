@@ -15,19 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 /// tableView区头高度
 /// @param model 数据源
-+ (CGFloat)headerViewHeightWithModel:(id)model;
++ (CGFloat)headerViewHeightWithModel:(id <KTReuseViewModelProtocol>)model;
 
 /// tableView区头预估高度
 /// @param model 数据源
-+ (CGFloat)headerViewEstimateHeightWithModel:(id)model;
++ (CGFloat)headerViewEstimateHeightWithModel:(id <KTReuseViewModelProtocol>)model;
 
 /// tableView区尾高度
 /// @param model 数据源
-+ (CGFloat)footerViewHeightWithModel:(id)model;
++ (CGFloat)footerViewHeightWithModel:(id <KTReuseViewModelProtocol>)model;
 
 /// ableView区尾预估高度
 /// @param model 数据源
-+ (CGFloat)footerViewEstimateHeightWithModel:(id)model;
++ (CGFloat)footerViewEstimateHeightWithModel:(id <KTReuseViewModelProtocol>)model;
 
 @end
 

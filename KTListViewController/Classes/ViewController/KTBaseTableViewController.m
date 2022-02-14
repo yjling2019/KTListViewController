@@ -182,7 +182,6 @@
     }
     KTBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierString forIndexPath:indexPath];
     id model = [self.tableViewModel modelWithIndexPath:indexPath];
-    cell.vv_model = model;
     [cell updateWithModel:model];
     return cell;
 }

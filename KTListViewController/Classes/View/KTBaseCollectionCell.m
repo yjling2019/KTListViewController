@@ -11,7 +11,6 @@
 
 @implementation KTBaseCollectionReuseView
 
-@synthesize vv_model;
 @dynamic viewModel;
 
 + (NSString *)kind
@@ -90,7 +89,6 @@
 
 @implementation KTBaseCollectionCell
 
-@synthesize vv_model;
 @dynamic viewModel;
 
 + (NSString *)identifier

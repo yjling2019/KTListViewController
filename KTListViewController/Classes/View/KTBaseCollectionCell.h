@@ -15,13 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseCollectionReuseView : UICollectionReusableView<KTCollectionReuseViewProtocol>
 
-@property (nonatomic, strong) __kindof NSObject *viewModel;
-
 @end
 
 @interface KTBaseCollectionCell : UICollectionViewCell<KTCollectionCellProtocol>
-
-@property (nonatomic, strong) __kindof NSObject *viewModel;
 
 @end
 

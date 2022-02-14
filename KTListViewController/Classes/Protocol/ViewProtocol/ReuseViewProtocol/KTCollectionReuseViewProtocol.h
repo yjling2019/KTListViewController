@@ -19,11 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 /// section头视图的size，根据model动态可变
 /// @param model 数据源
-+ (CGSize)headerViewSizeWithModel:(id)model;
++ (CGSize)headerViewSizeWithModel:(id <KTReuseViewModelProtocol>)model;
 
 /// section尾视图的size，根据model动态可变
 /// @param model 数据源
-+ (CGSize)footerViewSizeWithModel:(id)model;
++ (CGSize)footerViewSizeWithModel:(id <KTReuseViewModelProtocol>)model;
 
 @end
 
