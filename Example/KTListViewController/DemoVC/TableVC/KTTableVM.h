@@ -6,13 +6,13 @@
 //  Copyright © 2021 KOTU. All rights reserved.
 //
 
-#import <KTListViewController/VVBaseTableViewVM.h>
-#import "VVBaseSectionModel.h"
-#import "VVBaseViewModel.h"
+#import <KTListViewController/KTBaseTableViewVM.h>
+#import "KTBaseSectionModel.h"
+#import "KTBaseViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KTTableVM : VVBaseTableViewVM
+@interface KTTableVM : KTBaseTableViewVM
 
 - (void)requestDataWithCompletion:(void(^)(void))completion;
 

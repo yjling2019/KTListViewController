@@ -19,11 +19,11 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSMutableArray *array = [NSMutableArray array];
 		for (int i = 0 ; i < 2 ; i++) {
-			VVBaseSectionModel *sm = [[VVBaseSectionModel alloc] init];
+			KTBaseSectionModel *sm = [[KTBaseSectionModel alloc] init];
 			
 			NSMutableArray *cells = [NSMutableArray array];
 			for (int i = 0 ; i < 20 ; i++) {
-				VVBaseViewModel *vm = [VVBaseViewModel new];
+				KTBaseViewModel *vm = [KTBaseViewModel new];
 				if (i % 2 == 0) {
 					vm.reuseViewClassName = @"KTCollectionViewCell";
 				} else {

@@ -275,7 +275,7 @@
         return nil;
     }
     if ([value isKindOfClass:[NSString class]] && ![value isEqualToString:@""] && !dateFormat) {
-        NSDateFormatter *formater = [[NSDateFormatter alloc]init];
+        NSDateFormatter *formater = [[NSDateFormatter alloc] init];
         formater.dateFormat = dateFormat;
         return [formater dateFromString:value];
     }
@@ -329,7 +329,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -353,7 +353,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -377,7 +377,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -401,7 +401,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -425,7 +425,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -449,7 +449,7 @@
             if (!dic) {
                 break;
             }
-        }else {
+        } else {
           dic = [dic vv_dictionaryForKey:key];
             if (!dic) {
                 break;
@@ -473,7 +473,7 @@
            if (!dic) {
                break;
            }
-       }else {
+       } else {
          dic = [dic vv_dictionaryForKey:key];
            if (!dic) {
                break;
@@ -497,7 +497,7 @@
           if (!dic) {
               break;
           }
-      }else {
+      } else {
         dic = [dic vv_dictionaryForKey:key];
           if (!dic) {
               break;

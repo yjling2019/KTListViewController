@@ -6,11 +6,11 @@
 //  Copyright © 2022 KOTU. All rights reserved.
 //
 
-#import <KTListViewController/VVBaseCollectionCell.h>
+#import <KTListViewController/KTBaseCollectionCell.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KTCollectionViewCell : VVBaseCollectionCell
+@interface KTCollectionViewCell : KTBaseCollectionCell
 
 @end
 

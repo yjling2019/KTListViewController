@@ -35,7 +35,7 @@
 	}];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectItem:(id<VVReuseViewModelProtocol>)item
+- (void)tableView:(UITableView *)tableView didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
 	NSLog(@"aaaa");
 }

@@ -6,11 +6,11 @@
 //  Copyright © 2021 KOTU. All rights reserved.
 //
 
-#import <KTListViewController/VVBaseTableViewController.h>
+#import <KTListViewController/KTBaseTableViewController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KTTableViewController : VVBaseTableViewController
+@interface KTTableViewController : KTBaseTableViewController
 
 @end
 

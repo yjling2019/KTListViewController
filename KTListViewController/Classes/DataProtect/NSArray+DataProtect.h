@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param index 索引
 /// @param theClass 指定的类型
 - (nullable ObjectType)vv_objectWithIndex:(NSInteger)index
-                      verifyClass:(nullable Class)theClass;
+							  verifyClass:(nullable Class)theClass;
 
 - (nullable NSString *)vv_stringWithIndex:(NSInteger)index;
 
@@ -87,7 +87,6 @@ NS_ASSUME_NONNULL_BEGIN
  @return 排序后的数组
  */
 - (nonnull NSMutableArray <ObjectType>*)vv_descSort;
-
 
 @end
 

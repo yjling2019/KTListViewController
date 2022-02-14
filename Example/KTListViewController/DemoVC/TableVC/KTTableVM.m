@@ -9,17 +9,17 @@
 #import "KTTableVM.h"
 
 @interface KTTableVM ()
-@property (nonatomic, strong) VVBaseSectionModel *section;
+@property (nonatomic, strong) KTBaseSectionModel *section;
 @end
 
 @implementation KTTableVM
 
 @synthesize config = _config;
 
-- (__kindof NSObject<VVTableVMConfigProtocol> *)config
+- (__kindof NSObject<KTTableVMConfigProtocol> *)config
 {
 	if (!_config) {
-		_config = [VVBaseTableVMConfig new];
+		_config = [KTBaseTableVMConfig new];
 	}
 	return _config;
 }
@@ -29,8 +29,8 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSMutableArray *array = [NSMutableArray array];
 		for (int i = 0 ; i < 100 ; i++) {
-			VVBaseSectionModel *sm = [[VVBaseSectionModel alloc] init];
-			VVBaseViewModel *vm = [VVBaseViewModel new];
+			KTBaseSectionModel *sm = [[KTBaseSectionModel alloc] init];
+			KTBaseViewModel *vm = [KTBaseViewModel new];
 			vm.reuseViewClassName = @"KTTableCell";
 			sm.datas = @[vm];
 			[array addObject:sm];
