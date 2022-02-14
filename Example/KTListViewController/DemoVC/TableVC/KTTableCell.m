@@ -28,7 +28,7 @@
 
 - (void)setUpConstraints
 {
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.leading.mas_equalTo(10);
 		make.top.mas_equalTo(10);
 		make.trailing.mas_equalTo(-10);

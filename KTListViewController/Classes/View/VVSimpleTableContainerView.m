@@ -62,7 +62,7 @@
 
 - (void)setUpConstraints
 {
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.inset(0);
     }];
 }

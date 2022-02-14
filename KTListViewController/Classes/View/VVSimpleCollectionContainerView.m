@@ -65,7 +65,7 @@
 
 - (void)setUpConstraints
 {
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.inset(0);
     }];
 }
