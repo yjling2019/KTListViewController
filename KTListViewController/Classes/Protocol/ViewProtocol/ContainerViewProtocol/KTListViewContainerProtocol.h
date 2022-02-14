@@ -20,6 +20,7 @@
 @property (nonatomic, strong) __kindof id <KTTableVMProtocol> tableViewModel;
 
 @optional
+- (void)preloadListView:(UITableView *)listView atIndexPath:(NSIndexPath *)indexPath;
 - (void)tableView:(UITableView *)tableView didSelectItem:(id <KTReuseViewModelProtocol>)item;
 
 @end
@@ -31,8 +32,8 @@
 @property (nonatomic, strong) __kindof id <KTCollectionVMProtocol> collectionViewModel;
 
 @optional
-- (void)preloadWithIndexPath:(NSIndexPath *)indexpath;
-- (void)collectionView:(UIView *)collectionView didSelectItem:(id <KTReuseViewModelProtocol>)item;
+- (void)preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItem:(id <KTReuseViewModelProtocol>)item;
 
 @end
 

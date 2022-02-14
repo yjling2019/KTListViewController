@@ -9,6 +9,7 @@
 #import "KTBaseTableContainerView.h"
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
+#import "UIScrollView+Preload.h"
 
 @implementation KTBaseTableContainerView
 
@@ -113,6 +114,20 @@
 	
 }
 
+- (void)preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
+{
+	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+		return;
+	}
+	
+	id <KTSectionModelProtocol> section = [self.tableViewModel.datas vv_objectWithIndex:indexPath.section];
+	if (![section respondsToSelector:@selector(datas)]) {
+		return;
+	}
+	
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
+}
+
 #pragma mark - KTListViewProtocol
 - (void)registerCells
 {
@@ -183,6 +198,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	[self preloadListView:tableView atIndexPath:indexPath];
     NSString *className = [self.tableViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {

@@ -10,6 +10,7 @@
 #import "KTBaseViewModel.h"
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
+#import "UIScrollView+Preload.h"
 
 @implementation KTBaseCollectionContainerView
 
@@ -194,6 +195,20 @@
 	
 }
 
+- (void)preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
+{
+	if (![self.collectionViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+		return;
+	}
+	
+	id <KTSectionModelProtocol> section = [self.collectionViewModel.datas vv_objectWithIndex:indexPath.section];
+	if (![section respondsToSelector:@selector(datas)]) {
+		return;
+	}
+	
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.collectionViewModel.config.preloadMinCount];
+}
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -240,9 +255,8 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	if ([self respondsToSelector:@selector(preloadWithIndexPath:)]) {
-		[self preloadWithIndexPath:indexPath];
-	}
+	[self preloadListView:collectionView atIndexPath:indexPath];
+
 	NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
 	NSString *identifierString = [NSClassFromString(className) identifier];
 	if (vv_isEmptyStr(identifierString)) {
