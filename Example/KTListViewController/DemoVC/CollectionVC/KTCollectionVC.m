@@ -8,6 +8,7 @@
 
 #import "KTCollectionVC.h"
 #import "KTCollectionVM.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface KTCollectionVC ()
 
@@ -21,20 +22,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
 
+- (void)kt_setUpUI
+{
 	[self.view addSubview:self.collectionView];
 	self.collectionView.frame = self.view.bounds;
 	self.collectionView.backgroundColor = [UIColor whiteColor];
-	
+}
+
+- (void)kt_loadInitialDataFromServer
+{
 	[self.collectionViewModel requestDataWithCompletion:^{
 		[self.collectionView reloadData];
 	}];
+}
+
+- (void)kt_pullRefresh
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.collectionView.mj_header endRefreshing];
+	});
+}
+
+- (void)kt_loadMore
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.collectionView.mj_footer endRefreshing];
+	});
 }
 
 - (KTCollectionVM *)collectionViewModel
 {
 	if (!_collectionViewModel) {
 		_collectionViewModel = [[KTCollectionVM alloc] init];
+		_collectionViewModel.config.refreshHeaderClass = @"MJRefreshNormalHeader";
+		_collectionViewModel.config.refreshFooterClass = @"MJRefreshAutoNormalFooter";
 	}
 	return _collectionViewModel;
 }

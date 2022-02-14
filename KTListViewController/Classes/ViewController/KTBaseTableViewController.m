@@ -42,11 +42,13 @@
 	[self kt_setUpUI];
 	[self kt_setUpConstraints];
 	[self kt_bindUIActions];
-	[self kt_setUpRefresher];
 	[self kt_addObservers];
 	[self kt_loadInitialData];
 	[self kt_loadInitialDataFromServer];
+	
+	[self kt_setUpRefresher];
 }
+
 - (void)kt_setUpUI
 {
 }
@@ -140,9 +142,9 @@
 	if ([self.tableViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
 		self.tableViewModel.config.refreshHeaderClass &&
 		NSClassFromString(self.tableViewModel.config.refreshHeaderClass) &&
-		[NSClassFromString(self.tableViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		[NSClassFromString(self.tableViewModel.config.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
 		!self.tableView.mj_header) {
-
+		
 		__weak typeof(self) weakSelf = self;
 		MJRefreshHeader *header = [NSClassFromString(self.tableViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
 			[weakSelf kt_pullRefresh];
@@ -153,11 +155,11 @@
 	if ([self.tableViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
 		self.tableViewModel.config.refreshFooterClass &&
 		NSClassFromString(self.tableViewModel.config.refreshFooterClass) &&
-		[NSClassFromString(self.tableViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		[NSClassFromString(self.tableViewModel.config.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
 		!self.tableView.mj_footer) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.config.refreshFooterClass) footerWithRefreshingBlock:^{
 			[weakSelf kt_loadMore];
 		}];
 		self.tableView.mj_footer = footer;

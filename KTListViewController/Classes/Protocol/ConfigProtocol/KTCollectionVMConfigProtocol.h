@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define KTSynthesizeCollectionVMConfigProtocol \
 @synthesize preloadMinCount = _preloadMinCount;\
+@synthesize refreshHeaderClass = _refreshHeaderClass;\
+@synthesize refreshFooterClass = _refreshFooterClass;\
 
 #define KTSynthesizeCollectionLayoutConfigProtocol \
 @synthesize lineSpace = _lineSpace;\

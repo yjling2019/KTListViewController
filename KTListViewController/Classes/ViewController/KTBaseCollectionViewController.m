@@ -43,10 +43,11 @@
 	[self kt_setUpUI];
 	[self kt_setUpConstraints];
 	[self kt_bindUIActions];
-	[self kt_setUpRefresher];
 	[self kt_addObservers];
 	[self kt_loadInitialData];
 	[self kt_loadInitialDataFromServer];
+	
+	[self kt_setUpRefresher];
 }
 
 - (void)kt_setUpUI
@@ -157,7 +158,7 @@
 	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
 		self.collectionViewModel.config.refreshHeaderClass &&
 		NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) &&
-		[NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		[NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
 		!self.collectionView.mj_header) {
 		
 		__weak typeof(self) weakSelf = self;
@@ -170,11 +171,11 @@
 	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
 		self.collectionViewModel.config.refreshFooterClass &&
 		NSClassFromString(self.collectionViewModel.config.refreshFooterClass) &&
-		[NSClassFromString(self.collectionViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		[NSClassFromString(self.collectionViewModel.config.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
 		!self.collectionView.mj_footer) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.config.refreshFooterClass) footerWithRefreshingBlock:^{
 			[weakSelf kt_loadMore];
 		}];
 		self.collectionView.mj_footer = footer;
