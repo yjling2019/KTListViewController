@@ -28,8 +28,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-//	[self testTableVC];
-	[self testTableVC2];
+	[self testTableVC];
+//	[self testTableVC2];
 //	[self testCollectionVC];
 //	[self testCollectionVC2];
 }

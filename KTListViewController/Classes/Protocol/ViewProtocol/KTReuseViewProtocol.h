@@ -6,13 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KTViewProtocol.h"
+#import "KTViewContainerProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 #define KTSynthesizeReuseViewProtocol    @synthesize viewModel = _viewModel;\
 
-@protocol KTReuseViewProtocol <KTViewProtocol>
+@protocol KTReuseViewProtocol <KTViewContainerProtocol>
 
 /// 视图对应的数据源
 @property (nonatomic, strong) __kindof id <KTReuseViewModelProtocol> viewModel;
@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 移除重用视图对应viewModel上的监听,禁止开发者主动调用
 - (void)removeReuseViewModelObservers;
+
+/// 更新数据
+/// @param model 数据模型
+- (void)updateWithModel:(id <KTReuseViewModelProtocol>)model;
 
 @end
 

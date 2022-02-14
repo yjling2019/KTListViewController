@@ -19,11 +19,6 @@
 
 @synthesize collectionViewModel = _collectionViewModel;
 
-- (NSArray<Class> *)vc_cellClasses
-{
-	return @[NSClassFromString(@"KTCollectionViewCell"), NSClassFromString(@"KTCollectionViewCell2")];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 

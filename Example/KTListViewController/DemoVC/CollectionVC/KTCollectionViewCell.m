@@ -20,12 +20,12 @@
 	return CGSizeMake(100, 80);
 }
 
-- (void)setUpUI
+- (void)kt_setUpUI
 {
 	[self.contentView addSubview:self.titleLabel];
 }
 
-- (void)setUpConstraints
+- (void)kt_setUpConstraints
 {
 	[self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.leading.mas_equalTo(10);

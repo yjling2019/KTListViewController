@@ -10,23 +10,21 @@
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
+#import <MJRefresh/MJRefresh.h>
 
 @implementation KTBaseTableContainerView
 
 @dynamic tableViewModel;
 @synthesize tableView = _tableView;
 
+#pragma mark - init override
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		[self registerCells];
-		[self registerReuseViews];
-		
-		[self setUpUI];
-		[self setUpConstraints];
-		[self bindUIActions];
-		[self view_addObservers];
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
     }
     return self;
 }
@@ -69,67 +67,60 @@
 	return cell;
 }
 
-#pragma mark - KTViewProtocol
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_setUpRefresher];
+	[self kt_addObservers];
+	[self kt_loadInitialData];
 }
 
-- (void)bindUIActions
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)loadInitialData
+- (void)kt_setUpConstraints
 {
-	
 }
 
-- (void)view_addObservers
+- (void)kt_bindUIActions
+{
+}
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
 {
 	[self.KVOController observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
-		[self registerCells];
-		[self registerReuseViews];
+		[self kt_registerCells];
+		[self kt_registerReuseViews];
 	}];
 }
 
-- (void)view_removeObservers
+- (void)kt_removeObservers
 {
-    
 }
 
-- (void)updateWithModel:(id<KTReuseViewModelProtocol>)model
-{
-    
-}
-
-#pragma mark - VVTableViewContainerProtocol
-- (void)tableView:(UITableView *)tableView didSelectItem:(id <KTReuseViewModelProtocol>)item
-{
-	
-}
-
-- (void)preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
-{
-	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
-		return;
-	}
-	
-	id <KTSectionModelProtocol> section = [self.tableViewModel.datas vv_objectWithIndex:indexPath.section];
-	if (![section respondsToSelector:@selector(datas)]) {
-		return;
-	}
-	
-	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
-}
-
-#pragma mark - KTListViewProtocol
-- (void)registerCells
+#pragma mark - VVListViewControllerProtocol
+- (void)kt_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -155,7 +146,7 @@
 		   forCellReuseIdentifier:[KTBaseTableViewCell identifier]];
 }
 
-- (void)registerReuseViews
+- (void)kt_registerReuseViews
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -180,6 +171,60 @@
 	[self.tableView registerClass:KTBaseTableReuseView.class forHeaderFooterViewReuseIdentifier:[KTBaseTableReuseView identifier]];
 }
 
+- (void)kt_setUpRefresher
+{
+	if (self.tableViewModel.config.refreshHeaderClass &&
+		NSClassFromString(self.tableViewModel.config.refreshHeaderClass) &&
+		[NSClassFromString(self.tableViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		!self.tableView.mj_header) {
+
+		__weak typeof(self) weakSelf = self;
+		MJRefreshHeader *header = [NSClassFromString(self.tableViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_pullRefresh];
+		}];
+		self.tableView.mj_header = header;
+	}
+	
+	if (self.tableViewModel.config.refreshFooterClass &&
+		NSClassFromString(self.tableViewModel.config.refreshFooterClass) &&
+		[NSClassFromString(self.tableViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		!self.tableView.mj_footer) {
+		
+		__weak typeof(self) weakSelf = self;
+		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_loadMore];
+		}];
+		self.tableView.mj_footer = footer;
+	}
+}
+
+- (void)kt_pullRefresh
+{
+}
+
+- (void)kt_loadMore
+{
+}
+
+- (void)kt_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
+{
+	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+		return;
+	}
+	
+	id <KTSectionModelProtocol> section = [self.tableViewModel.datas vv_objectWithIndex:indexPath.section];
+	if (![section respondsToSelector:@selector(datas)]) {
+		return;
+	}
+	
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
+}
+
+- (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
+{
+}
+
+#pragma mark - KTTableViewContainerProtocol
 - (UITableViewStyle)tableViewStyle
 {
 	return UITableViewStylePlain;
@@ -198,7 +243,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self preloadListView:tableView atIndexPath:indexPath];
+	[self kt_preloadListView:tableView atIndexPath:indexPath];
     NSString *className = [self.tableViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (vv_isEmptyStr(identifierString)) {
@@ -316,7 +361,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id model = [self.tableViewModel modelWithIndexPath:indexPath];
-	[self tableView:tableView didSelectItem:model];
+	[self kt_listView:tableView didSelectItem:model];
 }
 
 #pragma mark - getter
@@ -330,9 +375,10 @@
     return _tableView;
 }
 
+#pragma mark - delloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end

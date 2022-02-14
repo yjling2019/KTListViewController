@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KTViewProtocol.h"
 #import "KTCollectionReuseViewProtocol.h"
 #import "KTCollectionCellProtocol.h"
 

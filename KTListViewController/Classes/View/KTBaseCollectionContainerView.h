@@ -10,16 +10,13 @@
 #import "KTBaseCollectionCell.h"
 #import "KTViewControllerProtocol.h"
 #import "KTBaseCollectionViewVM.h"
-#import "KTViewProtocol.h"
 #import "KTListViewContainerProtocol.h"
-#import "KTListViewProtocol.h"
 #import "KTModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseCollectionContainerView : UIView<UICollectionViewDataSource,
 UICollectionViewDelegate,
-KTListViewProtocol,
 KTCollectionViewContainerProtocol>
 
 - (void)reloadData;

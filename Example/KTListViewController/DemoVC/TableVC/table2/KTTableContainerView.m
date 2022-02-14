@@ -13,7 +13,7 @@
 
 @synthesize tableViewModel = _tableViewModel;
 
-- (void)setUpUI
+- (void)kt_setUpUI
 {
 	self.backgroundColor = [UIColor redColor];
 	

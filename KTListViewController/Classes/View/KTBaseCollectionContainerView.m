@@ -11,21 +11,21 @@
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
+#import <MJRefresh/MJRefresh.h>
 
 @implementation KTBaseCollectionContainerView
 
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
 
+#pragma mark - init override
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-		[self setUpUI];
-		[self setUpConstraints];
-		[self bindUIActions];
-		[self loadInitialData];
-		[self view_addObservers];
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
     }
     return self;
 }
@@ -68,57 +68,60 @@
 	return cell;
 }
 
-#pragma mark - KTViewProtocol
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-	
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-	
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_setUpRefresher];
+	[self kt_addObservers];
+	[self kt_loadInitialData];
 }
 
-- (void)bindUIActions
+- (void)kt_setUpUI
 {
-	
 }
 
-- (void)loadInitialData
+- (void)kt_setUpConstraints
 {
-	
 }
 
-- (void)view_addObservers
+- (void)kt_bindUIActions
+{
+}
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
 {
 	[self.KVOController observe:self keyPath:@"collectionViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
-		[self registerCells];
-		[self registerReuseViews];
+		[self kt_registerCells];
+		[self kt_registerReuseViews];
 	}];
 }
 
-- (void)view_removeObservers
+- (void)kt_removeObservers
 {
-	
 }
 
-- (void)updateWithModel:(id<KTReuseViewModelProtocol>)model
-{
-    
-}
-
-- (void)pullRefresh
-{
-	
-}
-
-- (void)loadMore
-{
-	
-}
-
-#pragma mark - KTListViewProtocol
-- (void)registerCells
+#pragma mark - VVListViewControllerProtocol
+- (void)kt_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -144,7 +147,7 @@
 			forCellWithReuseIdentifier:[KTBaseCollectionCell identifier]];
 }
 
-- (void)registerReuseViews
+- (void)kt_registerReuseViews
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -183,19 +186,42 @@
                    withReuseIdentifier:[KTBaseCollectionReuseView identifier]];
 }
 
-- (UICollectionViewLayout *)collectionViewLayout
+- (void)kt_setUpRefresher
 {
-	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-	return layout;
-}
+	if (self.collectionViewModel.config.refreshHeaderClass &&
+		NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) &&
+		[NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		!self.collectionView.mj_header) {
 
-#pragma mark - VVCollectionViewContainerProtocol
-- (void)collectionView:(UIView *)collectionView didSelectItem:(id <KTReuseViewModelProtocol>)item
-{
+		__weak typeof(self) weakSelf = self;
+		MJRefreshHeader *header = [NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_pullRefresh];
+		}];
+		self.collectionView.mj_header = header;
+	}
 	
+	if (self.collectionViewModel.config.refreshFooterClass &&
+		NSClassFromString(self.collectionViewModel.config.refreshFooterClass) &&
+		[NSClassFromString(self.collectionViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		!self.collectionView.mj_footer) {
+		
+		__weak typeof(self) weakSelf = self;
+		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_loadMore];
+		}];
+		self.collectionView.mj_footer = footer;
+	}
 }
 
-- (void)preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
+- (void)kt_pullRefresh
+{
+}
+
+- (void)kt_loadMore
+{
+}
+
+- (void)kt_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
 {
 	if (![self.collectionViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
 		return;
@@ -207,6 +233,17 @@
 	}
 	
 	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.collectionViewModel.config.preloadMinCount];
+}
+
+- (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
+{
+}
+
+#pragma mark - KTCollectionViewContainerProtocol
+- (UICollectionViewLayout *)collectionViewLayout
+{
+	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+	return layout;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -255,7 +292,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self preloadListView:collectionView atIndexPath:indexPath];
+	[self kt_preloadListView:collectionView atIndexPath:indexPath];
 
 	NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
 	NSString *identifierString = [NSClassFromString(className) identifier];
@@ -407,7 +444,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-	[self collectionView:collectionView didSelectItem:model];
+	[self kt_listView:collectionView didSelectItem:model];
 }
 
 #pragma mark - getter
@@ -430,10 +467,10 @@
     return _collectionView;
 }
 
-#pragma mark - dealloc
+#pragma mark - dealloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end

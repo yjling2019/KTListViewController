@@ -20,13 +20,13 @@
     return 88;
 }
 
-- (void)setUpUI
+- (void)kt_setUpUI
 {
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.contentView addSubview:self.titleLabel];
 }
 
-- (void)setUpConstraints
+- (void)kt_setUpConstraints
 {
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.leading.mas_equalTo(10);

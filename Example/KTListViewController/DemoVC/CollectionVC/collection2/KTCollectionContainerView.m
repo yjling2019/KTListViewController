@@ -13,7 +13,7 @@
 
 @synthesize collectionViewModel = _collectionViewModel;
 
-- (void)setUpUI
+- (void)kt_setUpUI
 {
 	self.backgroundColor = [UIColor redColor];
 	
@@ -23,7 +23,7 @@
 	}];
 }
 
-- (void)collectionView:(UIView *)collectionView didSelectItem:(id<KTReuseViewModelProtocol>)item
+- (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
 	NSLog(@"aaaaa");
 }

@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "KTBaseTableViewCell.h"
 #import "KTBaseTableViewVM.h"
-#import "KTViewProtocol.h"
-#import "KTListViewProtocol.h"
 #import "KTListViewContainerProtocol.h"
 #import "KTModelProtocol.h"
 
@@ -18,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseTableContainerView : UIView<UITableViewDataSource,
 UITableViewDelegate,
-KTViewProtocol,
-KTListViewProtocol,
 KTTableViewContainerProtocol>
 
 - (void)reloadData;

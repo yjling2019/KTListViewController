@@ -13,76 +13,103 @@
 
 @dynamic viewModel;
 
+#pragma mark - KTCollectionReuseViewProtocol
 + (NSString *)kind
 {
     return UICollectionElementKindSectionHeader;
 }
 
-+ (NSString *)identifier
-{
-    return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
-}
-
-+ (CGSize)headerViewSizeWithModel:(id)model
++ (CGSize)headerViewSizeWithModel:(id<KTReuseViewModelProtocol>)model
 {
     return CGSizeZero;
 }
 
++ (CGSize)footerViewSizeWithModel:(id<KTReuseViewModelProtocol>)model
+{
+	return CGSizeZero;
+}
+
+#pragma mark - init override
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setUpUI];
-        [self setUpConstraints];
-        [self bindUIActions];
-        [self view_addObservers];
-    }
-    return self;
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
+	}
+	return self;
 }
 
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_loadInitialData];
+	[self kt_addObservers];
 }
 
-- (void)bindUIActions
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)view_addObservers
+- (void)kt_setUpConstraints
 {
-    
 }
 
-- (void)view_removeObservers
+- (void)kt_bindUIActions
 {
-    
+}
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
+{
+}
+
+- (void)kt_removeObservers
+{
+}
+
+#pragma mark - KTReuseViewProtocol
++ (NSString *)identifier
+{
+	return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
 }
 
 - (void)addReuseViewModelObservers
 {
-    
 }
 
 - (void)removeReuseViewModelObservers
 {
-    
 }
 
 - (void)updateWithModel:(id <KTReuseViewModelProtocol>)model
 {
-    
 }
 
+#pragma mark - dealloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end
@@ -91,77 +118,94 @@
 
 @dynamic viewModel;
 
-+ (NSString *)identifier
-{
-    return [NSString stringWithFormat:@"%@_ID", NSStringFromClass(self)];
-}
-
+#pragma mark - KTCollectionCellProtocol
 + (CGSize)itemSizeWithModel:(id)model
 {
-    return CGSizeZero;
+	return CGSizeZero;
 }
 
+#pragma mark - init override
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setUpUI];
-        [self setUpConstraints];
-        [self bindUIActions];
-		[self loadInitialData];
-        [self view_addObservers];
-    }
-    return self;
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
+	}
+	return self;
 }
 
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_loadInitialData];
+	[self kt_addObservers];
 }
 
-- (void)bindUIActions
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)loadInitialData
+- (void)kt_setUpConstraints
 {
-	
 }
 
-- (void)view_addObservers
+- (void)kt_bindUIActions
 {
-    
 }
 
-- (void)view_removeObservers
+- (void)kt_loadInitialData
 {
-    
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
+{
+}
+
+- (void)kt_removeObservers
+{
+}
+
+#pragma mark - KTReuseViewProtocol
++ (NSString *)identifier
+{
+	return [NSString stringWithFormat:@"%@_ID", NSStringFromClass(self)];
 }
 
 - (void)addReuseViewModelObservers
 {
-    
 }
 
 - (void)removeReuseViewModelObservers
 {
-    
+
 }
 
 - (void)updateWithModel:(id <KTReuseViewModelProtocol>)model
 {
-    
 }
 
+#pragma mark - dealloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end

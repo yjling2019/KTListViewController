@@ -11,6 +11,7 @@
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface KTBaseCollectionViewController ()
 
@@ -21,58 +22,72 @@
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
 
-#pragma mark - life circle
+#pragma mark - init override
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self vc_registerCells];
-    [self vc_registerReuseViews];
-    
-    [self vc_setUpUI];
-    [self vc_setUpConstraints];
-    [self vc_bindUIActions];
-	[self vc_addObservers];
-	[self vc_loadInitialData];
-	[self vc_loadInitialDataFromServer];
+	if ([self kt_autoSetup]) {
+		[self kt_setUp];
+	}
 }
 
-#pragma mark - KTViewControllerProtocol
-- (void)vc_setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)vc_setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_setUpRefresher];
+	[self kt_addObservers];
+	[self kt_loadInitialData];
+	[self kt_loadInitialDataFromServer];
 }
 
-- (void)vc_bindUIActions
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)vc_addObservers
+- (void)kt_setUpConstraints
+{
+}
+
+- (void)kt_bindUIActions
+{
+}
+
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
 {
 	[self.KVOController observe:self keyPath:@"collectionViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
-		[self vc_registerCells];
-		[self vc_registerReuseViews];
+		[self kt_registerCells];
+		[self kt_registerReuseViews];
 	}];
 }
 
-- (void)vc_loadInitialData
+- (void)kt_removeObservers
 {
-	
 }
 
-- (void)vc_loadInitialDataFromServer
-{
-	
-}
-
-#pragma mark - VVListViewControllerProtocol
-- (void)vc_registerCells
+#pragma mark - KTListViewContainerProtocol
+- (void)kt_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -98,7 +113,7 @@
 			forCellWithReuseIdentifier:[KTBaseCollectionCell identifier]];
 }
 
-- (void)vc_registerReuseViews
+- (void)kt_registerReuseViews
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -137,17 +152,44 @@
 				   withReuseIdentifier:[KTBaseCollectionReuseView identifier]];
 }
 
-- (void)vc_pullRefresh
+- (void)kt_setUpRefresher
 {
+	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
+		self.collectionViewModel.config.refreshHeaderClass &&
+		NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) &&
+		[NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		!self.collectionView.mj_header) {
+		
+		__weak typeof(self) weakSelf = self;
+		MJRefreshHeader *header = [NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_pullRefresh];
+		}];
+		self.collectionView.mj_header = header;
+	}
 	
+	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
+		self.collectionViewModel.config.refreshFooterClass &&
+		NSClassFromString(self.collectionViewModel.config.refreshFooterClass) &&
+		[NSClassFromString(self.collectionViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		!self.collectionView.mj_footer) {
+		
+		__weak typeof(self) weakSelf = self;
+		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_loadMore];
+		}];
+		self.collectionView.mj_footer = footer;
+	}
 }
 
-- (void)vc_loadMore
+- (void)kt_pullRefresh
 {
-	
 }
 
-- (void)vc_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
+- (void)kt_loadMore
+{	
+}
+
+- (void)kt_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
 {
 	if (![self.collectionViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
 		return;
@@ -161,49 +203,48 @@
 	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.collectionViewModel.config.preloadMinCount];
 }
 
-- (UICollectionViewLayout *)vc_collectionViewLayout
+- (void)kt_listView:(UICollectionView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
+{
+}
+
+#pragma mark - KTCollectionViewContainerProtocol
+- (UICollectionViewLayout *)kt_collectionViewLayout
 {
 	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 	return layout;
 }
 
-#pragma mark - VVCollectionViewContainerProtocol
-- (void)collectionView:(UIView *)collectionView didSelectItem:(id <KTReuseViewModelProtocol>)item
-{
-	
-}
-
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.collectionViewModel sectionCount];
+	return [self.collectionViewModel sectionCount];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.collectionViewModel itemCountWithSection:section];
+	return [self.collectionViewModel itemCountWithSection:section];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    if (kind == UICollectionElementKindSectionHeader) {
-        NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
+	if (kind == UICollectionElementKindSectionHeader) {
+		NSString *className = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:indexPath.section];
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
-
-        NSString *identifierString = [NSClassFromString(className) identifier];
-        if (vv_isEmptyStr(identifierString)) {
-            NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-            identifierString = [KTBaseCollectionReuseView identifier];
-        }
-        
+		
+		NSString *identifierString = [NSClassFromString(className) identifier];
+		if (vv_isEmptyStr(identifierString)) {
+			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+			identifierString = [KTBaseCollectionReuseView identifier];
+		}
+		
 		KTBaseCollectionReuseView *reuseHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifierString forIndexPath:indexPath];
-        id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
-        [reuseHeaderView updateWithModel:model];
-        return reuseHeaderView;
+		id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:indexPath.section];
+		[reuseHeaderView updateWithModel:model];
+		return reuseHeaderView;
 	} else {
 		NSString *className = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:indexPath.section];
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
-
+		
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (vv_isEmptyStr(identifierString)) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
@@ -219,18 +260,18 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self vc_preloadListView:collectionView atIndexPath:indexPath];
-    
-    NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
-    NSString *identifierString = [NSClassFromString(className) identifier];
-    if (vv_isEmptyStr(identifierString)) {
-        NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
-        identifierString = [KTBaseCollectionCell identifier];
-    }
-    KTBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];
-    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    [cell updateWithModel:model];
-    return cell;
+	[self kt_preloadListView:collectionView atIndexPath:indexPath];
+	
+	NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
+	NSString *identifierString = [NSClassFromString(className) identifier];
+	if (vv_isEmptyStr(identifierString)) {
+		NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+		identifierString = [KTBaseCollectionCell identifier];
+	}
+	KTBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];
+	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	[cell updateWithModel:model];
+	return cell;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -238,76 +279,76 @@
 				  layout:(UICollectionViewLayout*)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
-    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
-    return itemSize;
+	NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
+	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
+	return itemSize;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
 						layout:(UICollectionViewLayout*)collectionViewLayout
 		insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
-    return sectionInsets;
+	UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
+	return sectionInsets;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
 				   layout:(UICollectionViewLayout*)collectionViewLayout
 minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
-    return itemMinLineSpacing;
+	CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
+	return itemMinLineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
 				   layout:(UICollectionViewLayout*)collectionViewLayout
 minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemMinInterSpacing = [self.collectionViewModel itemMinInterSpacingWithSection:section];
-    return itemMinInterSpacing;
+	CGFloat itemMinInterSpacing = [self.collectionViewModel itemMinInterSpacingWithSection:section];
+	return itemMinInterSpacing;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
 				  layout:(UICollectionViewLayout*)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section
 {
-    NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
-    id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
-    CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
-    return headerViewSize;
+	NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
+	id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
+	CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
+	return headerViewSize;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
 				  layout:(UICollectionViewLayout*)collectionViewLayout
 referenceSizeForFooterInSection:(NSInteger)section
 {
-    NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
-    id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
-    CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
-    return footerViewSize;
+	NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
+	id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
+	CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
+	return footerViewSize;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 willDisplaySupplementaryView:(UICollectionReusableView *)view
 		forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
-    if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [view respondsToSelector:@selector(addReuseViewModelObservers)]) {
-        UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-        [reuseView addReuseViewModelObservers];
-    }
+	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [view respondsToSelector:@selector(addReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
+		[reuseView addReuseViewModelObservers];
+	}
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
 	   willDisplayCell:(UICollectionViewCell *)cell
 	forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [cell respondsToSelector:@selector(addReuseViewModelObservers)]) {
-        UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-        [reuseView addReuseViewModelObservers];
-    }
+	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [cell respondsToSelector:@selector(addReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
+		[reuseView addReuseViewModelObservers];
+	}
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
@@ -315,22 +356,22 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 	  forElementOfKind:(NSString *)elementKind
 		   atIndexPath:(NSIndexPath *)indexPath
 {
-    if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [view respondsToSelector:@selector(removeReuseViewModelObservers)]) {
-        UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-        [reuseView removeReuseViewModelObservers];
-    }
+	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [view respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
+		[reuseView removeReuseViewModelObservers];
+	}
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
   didEndDisplayingCell:(UICollectionViewCell *)cell
 	forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [cell respondsToSelector:@selector(removeReuseViewModelObservers)]) {
-        UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-        [reuseView removeReuseViewModelObservers];
-    }
+	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [cell respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
+		[reuseView removeReuseViewModelObservers];
+	}
 }
 
 #pragma mark - VVCollectionCustomLayoutDelegate
@@ -339,8 +380,8 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 			   customLayout:(UICollectionViewLayout *)collectionViewLayout
 	  columnNumberAtSection:(NSInteger )section
 {
-    NSInteger columnNumber = [self.collectionViewModel sectionColumnNumberWithSection:section];
-    return columnNumber;
+	NSInteger columnNumber = [self.collectionViewModel sectionColumnNumberWithSection:section];
+	return columnNumber;
 }
 
 /// cell size
@@ -348,10 +389,10 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 			customLayout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
-    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-    CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
-    return itemSize;
+	NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
+	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
+	return itemSize;
 }
 
 /// 每个区的边距
@@ -359,8 +400,8 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 				  customLayout:(UICollectionViewLayout*)collectionViewLayout
 		insetForSectionAtIndex:(NSInteger)section
 {
-    UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
-    return sectionInsets;
+	UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
+	return sectionInsets;
 }
 
 /// 每个区内部的垂直距离
@@ -368,8 +409,8 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 			 customLayout:(UICollectionViewLayout *)collectionViewLayout
 minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
-    return itemMinLineSpacing;
+	CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
+	return itemMinLineSpacing;
 }
 
 /// 每个区内部的水平距离
@@ -377,8 +418,8 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section
 			 customLayout:(UICollectionViewLayout*)collectionViewLayout
 minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    CGFloat itemMinInterSpacing = [self.collectionViewModel itemMinInterSpacingWithSection:section];
-    return itemMinInterSpacing;
+	CGFloat itemMinInterSpacing = [self.collectionViewModel itemMinInterSpacingWithSection:section];
+	return itemMinInterSpacing;
 }
 
 /// header size
@@ -386,10 +427,10 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 			customLayout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForHeaderInSection:(NSInteger)section
 {
-    NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
-    id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
-    CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
-    return headerViewSize;
+	NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
+	id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
+	CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
+	return headerViewSize;
 }
 
 /// footer size
@@ -397,42 +438,42 @@ referenceSizeForHeaderInSection:(NSInteger)section
 			customLayout:(UICollectionViewLayout *)collectionViewLayout
 referenceSizeForFooterInSection:(NSInteger)section
 {
-    NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
-    id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
-    CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
-    return footerViewSize;
+	NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
+	id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
+	CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
+	return footerViewSize;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-	[self collectionView:collectionView didSelectItem:model];
+	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
+	[self kt_listView:collectionView didSelectItem:model];
 }
 
 #pragma mark - getter
 - (UICollectionView *)collectionView
 {
-    if (!_collectionView) {
+	if (!_collectionView) {
 #warning TODO 1210
-        UICollectionViewLayout *layout = [self vc_collectionViewLayout];
-//        if ([layout conformsToProtocol:@protocol(VVCollectionViewCustomLayoutProtocol)]) {
-//            UICollectionViewLayout<VVCollectionViewCustomLayoutProtocol> *customLayout = (UICollectionViewLayout<VVCollectionViewCustomLayoutProtocol> *)layout;
-//            if ([customLayout respondsToSelector:@selector(vv_layoutDelegate)]
-//                && [customLayout respondsToSelector:NSSelectorFromString(@"setVv_layoutDelegate:")]) {
-//                customLayout.vv_layoutDelegate = self;
-//            }
-//        }
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-    }
-    return _collectionView;
+		UICollectionViewLayout *layout = [self kt_collectionViewLayout];
+		//        if ([layout conformsToProtocol:@protocol(VVCollectionViewCustomLayoutProtocol)]) {
+		//            UICollectionViewLayout<VVCollectionViewCustomLayoutProtocol> *customLayout = (UICollectionViewLayout<VVCollectionViewCustomLayoutProtocol> *)layout;
+		//            if ([customLayout respondsToSelector:@selector(vv_layoutDelegate)]
+		//                && [customLayout respondsToSelector:NSSelectorFromString(@"setVv_layoutDelegate:")]) {
+		//                customLayout.vv_layoutDelegate = self;
+		//            }
+		//        }
+		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+		_collectionView.dataSource = self;
+		_collectionView.delegate = self;
+	}
+	return _collectionView;
 }
 
-#pragma mark - dealloc
+#pragma mark - dealloc override
 - (void)dealloc
 {
-	[self vc_removeObservers];
+	[self kt_removeObservers];
 }
 
 @end

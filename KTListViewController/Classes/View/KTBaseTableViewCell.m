@@ -13,11 +13,7 @@
 
 @dynamic viewModel;
 
-+ (NSString *)identifier
-{
-    return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
-}
-
+#pragma mark - KTTableReuseViewProtocol
 + (CGFloat)headerViewHeightWithModel:(id)model
 {
     return UITableViewAutomaticDimension;
@@ -38,51 +34,78 @@
     return UITableViewAutomaticDimension;
 }
 
+#pragma mark - init override
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setUpUI];
-        [self setUpConstraints];
-        [self bindUIActions];
-        [self view_addObservers];
-    }
-    return self;
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
+	}
+	return self;
 }
 
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_loadInitialData];
+	[self kt_addObservers];
 }
 
-- (void)bindUIActions
+#pragma mark - KTViewContainerProtocol
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)view_addObservers
+- (void)kt_setUpConstraints
 {
-    
 }
 
-- (void)view_removeObservers
+- (void)kt_bindUIActions
 {
-    
+}
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
+{
+}
+
+- (void)kt_removeObservers
+{
+}
+
+#pragma mark - KTReuseViewProtocol
++ (NSString *)identifier
+{
+	return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
 }
 
 - (void)addReuseViewModelObservers
 {
-    
 }
 
 - (void)removeReuseViewModelObservers
 {
-    
 }
 
 - (void)updateWithModel:(id <KTReuseViewModelProtocol>)model
@@ -90,9 +113,10 @@
     
 }
 
+#pragma mark - dealloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end
@@ -102,11 +126,7 @@
 
 @dynamic viewModel;
 
-+ (NSString *)identifier
-{
-    return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
-}
-
+#pragma mark - KTTableCellProtocol
 + (CGFloat)cellHeightWithModel:(id)model
 {
     return UITableViewAutomaticDimension;
@@ -117,67 +137,87 @@
     return UITableViewAutomaticDimension;
 }
 
+#pragma mark - init override
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setUpUI];
-        [self setUpConstraints];
-        [self bindUIActions];
-		[self loadInitialData];
-		[self view_addObservers];
-    }
-    return self;
+		if ([self kt_autoSetup]) {
+			[self kt_setUp];
+		}
+	}
+	return self;
 }
 
-- (void)setUpUI
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)setUpConstraints
+- (void)kt_setUp
 {
-    
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_loadInitialData];
+	[self kt_addObservers];
 }
 
-- (void)bindUIActions
+- (void)kt_setUpUI
 {
-    
 }
 
-- (void)loadInitialData
+- (void)kt_setUpConstraints
 {
-	
 }
 
-- (void)view_addObservers
+- (void)kt_bindUIActions
 {
-    
 }
 
-- (void)view_removeObservers
+- (void)kt_loadInitialData
 {
-    
 }
 
-- (void)updateWithModel:(id <KTReuseViewModelProtocol>)model
+- (void)kt_loadInitialDataFromServer
 {
-	
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
+{
+}
+
+- (void)kt_removeObservers
+{
+}
+
+#pragma mark - KTReuseViewProtocol
++ (NSString *)identifier
+{
+	return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
 }
 
 - (void)addReuseViewModelObservers
 {
-    
 }
 
 - (void)removeReuseViewModelObservers
 {
-    
 }
 
+- (void)updateWithModel:(id <KTReuseViewModelProtocol>)model
+{
+}
+
+#pragma mark - dealloc override
 - (void)dealloc
 {
-    [self view_removeObservers];
+    [self kt_removeObservers];
 }
 
 @end

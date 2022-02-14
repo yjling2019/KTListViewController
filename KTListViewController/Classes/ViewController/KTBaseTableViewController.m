@@ -11,6 +11,7 @@
 #import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface KTBaseTableViewController ()
 
@@ -20,62 +21,70 @@
 @dynamic tableViewModel;
 @synthesize tableView = _tableView;
 
+#pragma mark - init override
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self vc_registerCells];
-    [self vc_registerReuseViews];
-    
-    [self vc_setUpUI];
-    [self vc_setUpConstraints];
-    [self vc_bindUIActions];
-	[self vc_addObservers];
-	[self vc_loadInitData];
-	[self vc_loadInitialDataFromServer];
-}
-
-#pragma mark - KTViewControllerProtocol
-- (void)vc_setUpUI
-{
-    
-}
-
-- (void)vc_setUpConstraints
-{
-    
-}
-
-- (void)vc_loadInitData
-{
-    
-}
-
-- (void)vc_loadInitialDataFromServer
-{
 	
+	if ([self kt_autoSetup]) {
+		[self kt_setUp];
+	}
 }
 
-- (void)vc_bindUIActions
+#pragma mark - KTViewContainerProtocol
+- (BOOL)kt_autoSetup
 {
-    
+	return YES;
 }
 
-- (void)vc_addObservers
+- (void)kt_setUp
+{
+	[self kt_setUpUI];
+	[self kt_setUpConstraints];
+	[self kt_bindUIActions];
+	[self kt_setUpRefresher];
+	[self kt_addObservers];
+	[self kt_loadInitialData];
+	[self kt_loadInitialDataFromServer];
+}
+- (void)kt_setUpUI
+{
+}
+
+- (void)kt_setUpConstraints
+{
+}
+
+- (void)kt_bindUIActions
+{
+}
+
+- (void)kt_loadInitialData
+{
+}
+
+- (void)kt_loadInitialDataFromServer
+{
+}
+
+- (void)kt_refreshUI
+{
+}
+
+- (void)kt_addObservers
 {
 	[self.KVOController observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
-		[self vc_registerCells];
-		[self vc_registerReuseViews];
+		[self kt_registerCells];
+		[self kt_registerReuseViews];
 	}];
 }
 
-- (void)vc_removeObservers
+- (void)kt_removeObservers
 {
-	
 }
 
 #pragma mark - VVListViewControllerProtocol
-- (void)vc_registerCells
+- (void)kt_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -101,7 +110,7 @@
 		   forCellReuseIdentifier:[KTBaseTableViewCell identifier]];
 }
 
-- (void)vc_registerReuseViews
+- (void)kt_registerReuseViews
 {
 	NSMutableSet *set = [NSMutableSet set];
 	
@@ -126,17 +135,44 @@
 	[self.tableView registerClass:KTBaseTableReuseView.class forHeaderFooterViewReuseIdentifier:[KTBaseTableReuseView identifier]];
 }
 
-- (void)vc_pullRefresh
+- (void)kt_setUpRefresher
 {
+	if ([self.tableViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
+		self.tableViewModel.config.refreshHeaderClass &&
+		NSClassFromString(self.tableViewModel.config.refreshHeaderClass) &&
+		[NSClassFromString(self.tableViewModel.config.refreshHeaderClass) isKindOfClass:[MJRefreshHeader class]] &&
+		!self.tableView.mj_header) {
+
+		__weak typeof(self) weakSelf = self;
+		MJRefreshHeader *header = [NSClassFromString(self.tableViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_pullRefresh];
+		}];
+		self.tableView.mj_header = header;
+	}
 	
+	if ([self.tableViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
+		self.tableViewModel.config.refreshFooterClass &&
+		NSClassFromString(self.tableViewModel.config.refreshFooterClass) &&
+		[NSClassFromString(self.tableViewModel.config.refreshFooterClass) isKindOfClass:[MJRefreshFooter class]] &&
+		!self.tableView.mj_footer) {
+		
+		__weak typeof(self) weakSelf = self;
+		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.config.refreshFooterClass) headerWithRefreshingBlock:^{
+			[weakSelf kt_loadMore];
+		}];
+		self.tableView.mj_footer = footer;
+	}
 }
 
-- (void)vc_loadMore
+- (void)kt_pullRefresh
 {
-	
 }
 
-- (void)vc_preloadListView:(UITableView *)listView atIndexPath:(NSIndexPath *)indexPath
+- (void)kt_loadMore
+{
+}
+
+- (void)kt_preloadListView:(UITableView *)listView atIndexPath:(NSIndexPath *)indexPath
 {
 	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
 		return;
@@ -150,15 +186,14 @@
 	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
 }
 
-- (UITableViewStyle)vc_tableViewStyle
+- (void)kt_listView:(UITableView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
-	return UITableViewStylePlain;
 }
 
-#pragma mark - VVTableViewContainerProtocol
-- (void)tableView:(UITableView *)tableView didSelectItem:(id <KTReuseViewModelProtocol>)item
+#pragma mark - KTTableViewContainerProtocol
+- (UITableViewStyle)kt_tableViewStyle
 {
-	
+	return UITableViewStylePlain;
 }
 
 #pragma mark - UITableViewDataSource
@@ -292,24 +327,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	id model = [self.tableViewModel modelWithIndexPath:indexPath];
-	[self tableView:tableView didSelectItem:model];
+	[self kt_listView:tableView didSelectItem:model];
 }
 
 #pragma mark - getter
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:[self vc_tableViewStyle]];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:[self kt_tableViewStyle]];
         _tableView.dataSource = self;
         _tableView.delegate = self;
     }
     return _tableView;
 }
 
-#pragma mark - dealloc
+#pragma mark - dealloc override
 - (void)dealloc
 {
-	[self vc_removeObservers];
+	[self kt_removeObservers];
 }
 
 @end

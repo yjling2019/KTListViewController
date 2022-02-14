@@ -17,11 +17,6 @@
 
 @synthesize tableViewModel = _tableViewModel;
 
-- (NSArray<Class> *)vc_cellClasses
-{
-	return @[NSClassFromString(@"KTTableCell")];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -35,7 +30,7 @@
 	}];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectItem:(id<KTReuseViewModelProtocol>)item
+- (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
 	NSLog(@"aaaa");
 }
