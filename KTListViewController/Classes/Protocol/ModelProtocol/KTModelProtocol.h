@@ -8,6 +8,15 @@
 #ifndef KTModelProtocol_h
 #define KTModelProtocol_h
 
+#define KTSynthesizeSectionModelProtocol 	@synthesize datas = _datas;\
+											@synthesize decorationModel = _decorationModel;\
+											@synthesize headerModel = _headerModel;\
+											@synthesize footerModel = _footerModel;\
+											@synthesize columnNumber = _columnNumber;\
+											@synthesize minimumLineSpacing = _minimumLineSpacing;\
+											@synthesize minimumInteritemSpacing = _minimumInteritemSpacing;\
+											@synthesize sectionInsets = _sectionInsets;\
+
 @protocol KTReuseViewModelProtocol <NSObject>
 
 @optional

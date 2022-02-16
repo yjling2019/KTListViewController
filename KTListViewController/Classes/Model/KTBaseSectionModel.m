@@ -9,13 +9,6 @@
 
 @implementation KTBaseSectionModel
 
-@synthesize datas;
-@synthesize decorationModel;
-@synthesize headerModel;
-@synthesize footerModel;
-@synthesize columnNumber;
-@synthesize minimumLineSpacing;
-@synthesize minimumInteritemSpacing;
-@synthesize sectionInsets;
+KTSynthesizeSectionModelProtocol
 
 @end

@@ -16,7 +16,8 @@
  @param rowIndex 当前滚动行数（cellforitem 的indexpath.row 参数）
  @param totalCount 当前列表数据源数量
  */
-- (void)preloadWithCurrentItemIndex:(NSUInteger)rowIndex totalDataCount:(NSUInteger)totalCount;
+- (void)preloadWithCurrentItemIndex:(NSUInteger)rowIndex
+					 totalDataCount:(NSUInteger)totalCount;
 
 /// 添加预加载功能
 /// @param rowIndex 当前滚动的行数
