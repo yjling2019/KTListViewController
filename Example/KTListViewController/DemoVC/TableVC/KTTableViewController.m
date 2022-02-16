@@ -8,6 +8,7 @@
 
 #import "KTTableViewController.h"
 #import "KTTableVM.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface KTTableViewController ()
 @property (strong, nonatomic) KTTableVM *tableViewModel;
@@ -33,6 +34,20 @@
 - (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
 	NSLog(@"aaaa");
+}
+
+- (void)kt_pullRefresh
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.tableView.mj_header endRefreshing];
+	});
+}
+
+- (void)kt_loadMore
+{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[self.tableView.mj_footer endRefreshing];
+	});
 }
 
 #pragma mark - lazy load

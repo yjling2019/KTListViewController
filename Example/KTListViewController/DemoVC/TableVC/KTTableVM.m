@@ -20,6 +20,8 @@
 {
 	if (!_config) {
 		_config = [KTBaseTableVMConfig new];
+		_config.refreshHeaderClass = @"MJRefreshGifHeader";
+		_config.refreshFooterClass = @"MJRefreshBackGifFooter";
 	}
 	return _config;
 }

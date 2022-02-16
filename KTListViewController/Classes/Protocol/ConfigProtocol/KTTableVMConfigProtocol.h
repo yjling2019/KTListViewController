@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define KTSynthesizeTableVMConfigProtocol \
 @synthesize preloadMinCount = _preloadMinCount;\
+@synthesize refreshHeaderClass = _refreshHeaderClass;\
+@synthesize refreshFooterClass = _refreshFooterClass;\
 
 @protocol KTTableVMConfigProtocol <NSObject>
 
