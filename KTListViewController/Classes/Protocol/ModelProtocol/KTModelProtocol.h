@@ -8,6 +8,8 @@
 #ifndef KTModelProtocol_h
 #define KTModelProtocol_h
 
+#define KTSynthesizeReuseViewModelProtocol 	@synthesize reuseViewClassName = _reuseViewClassName;
+
 #define KTSynthesizeSectionModelProtocol 	@synthesize datas = _datas;\
 											@synthesize decorationModel = _decorationModel;\
 											@synthesize headerModel = _headerModel;\

@@ -9,7 +9,7 @@
 
 @implementation KTBaseDecorationModel
 
-@synthesize reuseViewClassName = _reuseViewClassName;
+KTSynthesizeReuseViewModelProtocol
 @synthesize insets = _insets;
 @synthesize zIndex = _zIndex;
 

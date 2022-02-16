@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "KTBaseCollectionCell.h"
-#import "KTViewControllerProtocol.h"
 #import "KTBaseCollectionViewVM.h"
 #import "KTListViewContainerProtocol.h"
 #import "KTModelProtocol.h"

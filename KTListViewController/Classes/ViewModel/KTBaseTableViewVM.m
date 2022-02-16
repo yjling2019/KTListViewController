@@ -30,7 +30,7 @@ KTSynthesizeTableVMProtocol
 KTSynthesizeListVMProtocol
 
 #pragma mark - public
-- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm
+- (nullable NSIndexPath *)indexPathOfViewModel:(id<KTReuseViewModelProtocol>)vm
 {
 	if (!vm) {
 		return nil;
@@ -57,7 +57,7 @@ KTSynthesizeListVMProtocol
 	return indexPath;
 }
 
-#pragma mark -
+#pragma mark - KTListVMProtocol
 - (NSInteger)sectionCount
 {
 	return self.datas.count;

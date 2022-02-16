@@ -22,6 +22,24 @@
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
 
+#pragma mark - KTViewControllerProtocol
++ (instancetype)kt_controller
+{
+	return [[[self class] alloc] init];
+}
+
++ (instancetype)kt_controllerWithJSON:(NSDictionary *)json
+{
+	KTBaseCollectionViewController *controller = [self kt_controller];
+	return controller;
+}
+
++ (instancetype)kt_controllerWithModel:(id)model
+{
+	KTBaseCollectionViewController *controller = [self kt_controller];
+	return controller;
+}
+
 #pragma mark - init override
 - (void)viewDidLoad
 {
@@ -335,9 +353,9 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 		forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
 	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [view respondsToSelector:@selector(addReuseViewModelObservers)]) {
+		&& [view respondsToSelector:@selector(kt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObservers)]) {
 		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-		[reuseView addReuseViewModelObservers];
+		[reuseView kt_addReuseViewModelObservers];
 	}
 }
 
@@ -346,9 +364,9 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 	forItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [cell respondsToSelector:@selector(addReuseViewModelObservers)]) {
+		&& [cell respondsToSelector:@selector(kt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObservers)]) {
 		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-		[reuseView addReuseViewModelObservers];
+		[reuseView kt_addReuseViewModelObservers];
 	}
 }
 
@@ -358,9 +376,9 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 		   atIndexPath:(NSIndexPath *)indexPath
 {
 	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [view respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+		&& [view respondsToSelector:@selector(kt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObservers)]) {
 		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-		[reuseView removeReuseViewModelObservers];
+		[reuseView kt_removeReuseViewModelObservers];
 	}
 }
 
@@ -369,9 +387,9 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 	forItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [cell respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+		&& [cell respondsToSelector:@selector(kt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObservers)]) {
 		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-		[reuseView removeReuseViewModelObservers];
+		[reuseView kt_removeReuseViewModelObservers];
 	}
 }
 

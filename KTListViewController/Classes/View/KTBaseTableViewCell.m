@@ -100,11 +100,11 @@
 	return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
 }
 
-- (void)addReuseViewModelObservers
+- (void)kt_addReuseViewModelObservers
 {
 }
 
-- (void)removeReuseViewModelObservers
+- (void)kt_removeReuseViewModelObservers
 {
 }
 
@@ -202,11 +202,11 @@
 	return [NSString stringWithFormat:@"%@_ID",NSStringFromClass(self)];
 }
 
-- (void)addReuseViewModelObservers
+- (void)kt_addReuseViewModelObservers
 {
 }
 
-- (void)removeReuseViewModelObservers
+- (void)kt_removeReuseViewModelObservers
 {
 }
 

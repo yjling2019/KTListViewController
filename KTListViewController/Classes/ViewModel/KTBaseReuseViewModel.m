@@ -9,6 +9,6 @@
 
 @implementation KTBaseReuseViewModel
 
-@synthesize reuseViewClassName;
+KTSynthesizeReuseViewModelProtocol
 
 @end

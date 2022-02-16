@@ -23,7 +23,8 @@
 	}];
 }
 
-- (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item
+- (void)kt_listView:(__kindof UIView *)listVie
+	  didSelectItem:(id<KTReuseViewModelProtocol>)item
 {
 	NSLog(@"aaaaa");
 }

@@ -10,6 +10,7 @@
 #import "KTListVMProtocol.h"
 #import "KTTableVMConfigProtocol.h"
 #import "KTTableVMProtocol.h"
+#import "KTModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseTableViewVM : NSObject<KTTableVMProtocol>
 
-- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm;
+- (nullable NSIndexPath *)indexPathOfViewModel:(id <KTReuseViewModelProtocol>)vm;
 
 @end
 

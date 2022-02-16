@@ -355,36 +355,36 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [view respondsToSelector:@selector(addReuseViewModelObservers)]) {
+        && [view respondsToSelector:@selector(kt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObservers)]) {
         UIView<KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-        [reuseView addReuseViewModelObservers];
+        [reuseView kt_addReuseViewModelObservers];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [cell respondsToSelector:@selector(addReuseViewModelObservers)]) {
+        && [cell respondsToSelector:@selector(kt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObserverskt_addReuseViewModelObservers)]) {
         UIView<KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-        [reuseView addReuseViewModelObservers];
+        [reuseView kt_addReuseViewModelObservers];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [view respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+        && [view respondsToSelector:@selector(kt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObservers)]) {
         UIView<KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-        [reuseView removeReuseViewModelObservers];
+        [reuseView kt_removeReuseViewModelObservers];
     }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-        && [cell respondsToSelector:@selector(removeReuseViewModelObservers)]) {
+        && [cell respondsToSelector:@selector(kt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObserverskt_removeReuseViewModelObservers)]) {
         UIView<KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-        [reuseView removeReuseViewModelObservers];
+        [reuseView kt_removeReuseViewModelObservers];
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KTModelProtocol.h"
 
 #define KTSynthesizeListVMProtocol @synthesize hasMore = _hasMore;\
 
@@ -19,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 用于tableView和CollectionView标识section的数量
 - (NSInteger)sectionCount;
 
-/// 根据indexPath获取Model，注意model只能是数据模型，不能是ViewModel
+/// 根据indexPath获取viewmodel
 /// @param indexPath indexPath
-- (nullable id)modelWithIndexPath:(nonnull NSIndexPath *)indexPath;
+- (nullable id <KTReuseViewModelProtocol>)modelWithIndexPath:(nonnull NSIndexPath *)indexPath;
 
 /// 根据indexPath获取对应的重用视图的类名
 /// @param indexPath indexPath
@@ -31,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取某个setion对应的重用头视图数据模型
 /// @param section section
-- (nullable id)modelOfReuseViewHeaderViewWithSection:(NSInteger)section;
+- (nullable id <KTReuseViewModelProtocol>)modelOfReuseViewHeaderViewWithSection:(NSInteger)section;
 
 /// 获取某个section对应的重用尾视图数据模型
 /// @param section section
-- (nullable id)modelOfReuseViewFooterViewWithSection:(NSInteger)section;
+- (nullable id <KTReuseViewModelProtocol>)modelOfReuseViewFooterViewWithSection:(NSInteger)section;
 
 /// 获取某个section对应的重用头视图类名
 /// @param section section

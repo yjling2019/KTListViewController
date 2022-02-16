@@ -28,7 +28,7 @@ KTSynthesizeCollectionVMProtocol
 KTSynthesizeListVMProtocol
 
 #pragma mark - public
-- (nullable NSIndexPath *)indexPathOfViewModel:(id)vm
+- (nullable NSIndexPath *)indexPathOfViewModel:(id<KTReuseViewModelProtocol>)vm
 {
 	if (!vm) {
 		return nil;
