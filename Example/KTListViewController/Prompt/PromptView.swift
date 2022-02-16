@@ -38,8 +38,6 @@ import UIKit
 		self.label.text = "loading"
 		self.label.mas_updateConstraints { make in
 			make?.top.mas_equalTo()(100)
-//			make?.leading.mas_equalTo()(20)
-//			make?.trailing.mas_equalTo()(-20)
 			make?.height.mas_equalTo()(40)
 			make?.centerX.mas_equalTo()(0)
 		}
@@ -69,7 +67,8 @@ import UIKit
 		self.showInView = showInView
 		showInView.addSubview(self)
 		self.mas_updateConstraints { make in
-			make?.edges.mas_equalTo()(0)
+			make?.center.mas_equalTo()(0)
+			make?.size.mas_equalTo()(CGSize.init(width:300, height:600))
 		}
 	}
 	
