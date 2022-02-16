@@ -3,5 +3,6 @@
 //
 
 #import "KTPromptProtocol.h"
+#import "KTPromptViewDataSource.h"
 #import <Masonry/Masonry.h>
 

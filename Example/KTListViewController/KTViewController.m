@@ -29,12 +29,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	PromptView *view = [[PromptView alloc] init];
-	view.backgroundColor = [UIColor redColor];
-	view.promptRefreshBlock = ^{
-		NSLog(@"aaa");
-	};
-	[view showPromptViewInView:self.view];
+	[KTBaseCollectionViewController kt_setupGlobalPromptViewDataSource:[PromptManager new]];
 	
 	//继承base
 //	[self testTableVC];
@@ -42,7 +37,7 @@
 //	[self testTableVC2];
 	
 	//继承base
-//	[self testCollectionVC];
+	[self testCollectionVC];
 	//继承containerview
 //	[self testCollectionVC2];
 }

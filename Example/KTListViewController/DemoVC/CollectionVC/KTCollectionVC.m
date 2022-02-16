@@ -9,6 +9,7 @@
 #import "KTCollectionVC.h"
 #import "KTCollectionVM.h"
 #import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
 
 @interface KTCollectionVC ()
 
@@ -27,13 +28,18 @@
 - (void)kt_setUpUI
 {
 	[self.view addSubview:self.collectionView];
-	self.collectionView.frame = self.view.bounds;
-	self.collectionView.backgroundColor = [UIColor whiteColor];
+//	self.collectionView.frame = self.view.bounds;
+	[self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
+	}];
+	self.collectionView.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)kt_loadInitialDataFromServer
 {
+	[self kt_promptShowLoadingView];
 	[self.collectionViewModel requestDataWithCompletion:^{
+		[self kt_promptDismiss];
 		[self.collectionView reloadData];
 	}];
 }

@@ -12,7 +12,6 @@
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
 #import <MJRefresh/MJRefresh.h>
-#import <Masonry/Masonry.h>
 
 static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
@@ -132,12 +131,12 @@ KTSynthesizePromptContainerProtocol
 #pragma mark - KTPromptProtocol
 - (void)kt_promptShowLoadingView
 {
-	[self.promptLoadingView showPromptViewInView:self.view];
+	[self.promptLoadingView showPromptViewInView:self.collectionView];
 }
 
 - (void)kt_promptShowEmptyDataView
 {
-	[self.promptEmptyDataView showPromptViewInView:self.view];
+	[self.promptEmptyDataView showPromptViewInView:self.collectionView];
 }
 
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(void(^)(void))refreshBlock
@@ -146,7 +145,7 @@ KTSynthesizePromptContainerProtocol
 		self.promptExceptionView.promptRefreshBlock = refreshBlock;
 	}
 	
-	[self.promptExceptionView showPromptViewInView:self.view];
+	[self.promptExceptionView showPromptViewInView:self.collectionView];
 }
 
 - (void)kt_promptDismiss
@@ -510,7 +509,7 @@ referenceSizeForFooterInSection:(NSInteger)section
 		//                customLayout.vv_layoutDelegate = self;
 		//            }
 		//        }
-		_collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+		_collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
 		_collectionView.dataSource = self;
 		_collectionView.delegate = self;
 	}

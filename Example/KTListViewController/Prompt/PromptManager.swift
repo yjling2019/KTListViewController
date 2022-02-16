@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+@objcMembers public class PromptManager : NSObject, KTPromptViewDataSource {
+	
+	public func kt_promptLoadingView() -> UIView & KTPromptViewProtocol {
+		return PromptView.init()
+	}
+	
+	public func kt_promptEmptyDataView() -> UIView & KTPromptViewProtocol {
+		return PromptView.init()
+	}
+	
+	public func kt_promptExceptionView() -> UIView & KTPromptViewProtocol {
+		return PromptView.init()
+	}
+}

@@ -15,8 +15,9 @@ import UIKit
 	
 	lazy var label : UILabel = {
 		let _label = UILabel.init()
-		_label.font = UIFont.systemFont(ofSize: 12)
+		_label.font = UIFont.systemFont(ofSize: 20)
 		_label.backgroundColor = UIColor.blue
+		_label.textAlignment = .center
 		_label.isUserInteractionEnabled = true
 		return _label
 	}()
@@ -31,20 +32,24 @@ import UIKit
 	public init() {
 		super.init(frame: CGRect.zero)
 		
+		self.backgroundColor = .red
+		
 		self.addSubview(self.label)
+		self.label.text = "loading"
 		self.label.mas_updateConstraints { make in
-			make?.top.mas_equalTo()(100);
-			make?.bottom.mas_equalTo()(-100);
-			make?.leading.mas_equalTo()(20);
-			make?.trailing.mas_equalTo()(-20);
+			make?.top.mas_equalTo()(100)
+//			make?.leading.mas_equalTo()(20)
+//			make?.trailing.mas_equalTo()(-20)
+			make?.height.mas_equalTo()(40)
+			make?.centerX.mas_equalTo()(0)
 		}
 		
-		self.label.addSubview(self.button)
+		self.addSubview(self.button)
 		self.button.mas_updateConstraints { make in
-			make?.top.mas_equalTo()(100);
-			make?.bottom.mas_equalTo()(-100);
-			make?.leading.mas_equalTo()(20);
-			make?.trailing.mas_equalTo()(-20);
+			make?.top.mas_equalTo()(200);
+			make?.bottom.mas_equalTo()(-200);
+			make?.leading.mas_equalTo()(40);
+			make?.trailing.mas_equalTo()(-40);
 		}
 	}
 
@@ -63,13 +68,12 @@ import UIKit
 	public func showPromptView(in showInView: UIView) {
 		self.showInView = showInView
 		showInView.addSubview(self)
-		let array = self.mas_updateConstraints { make in
+		self.mas_updateConstraints { make in
 			make?.edges.mas_equalTo()(0)
 		}
-		print(array?.count ?? 0)
 	}
 	
 	public func promptDismiss() {
-		self.showInView?.removeFromSuperview()
+		self.removeFromSuperview()
 	}
 }
