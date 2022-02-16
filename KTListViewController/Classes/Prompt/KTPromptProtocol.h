@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^KTPromptRefreshBlock)(void);
 
 @protocol KTPromptViewDataSource;
+@protocol KTPromptViewProtocol;
 
 #define KTSynthesizePromptContainerProtocol \
 @synthesize promptViewDataSource = _promptViewDataSource;\
@@ -20,15 +21,19 @@ typedef void(^KTPromptRefreshBlock)(void);
 @synthesize promptExceptionView = _promptExceptionView;\
 @synthesize promptEmptyDataView = _promptEmptyDataView;\
 
+#define KTSynthesizePromptViewProtocol \
+@synthesize promptRefreshBlock = _promptRefreshBlock;\
+@synthesize showInView = _showInView;\
+
 @protocol KTPromptContainerProtocol <NSObject>
 
 @optional
 + (void)kt_setupGlobalPromptViewDataSource:(id <KTPromptViewDataSource>)dataSource;
 
 @property (strong, nonatomic) id <KTPromptViewDataSource> promptViewDataSource;
-@property (strong, nonatomic) UIView *promptLoadingView;
-@property (strong, nonatomic) UIView *promptExceptionView;
-@property (strong, nonatomic) UIView *promptEmptyDataView;
+@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptLoadingView;
+@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptExceptionView;
+@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptEmptyDataView;
 
 @end
 
@@ -38,19 +43,23 @@ typedef void(^KTPromptRefreshBlock)(void);
 - (void)kt_promptShowLoadingView;
 - (void)kt_promptShowEmptyDataView;
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(KTPromptRefreshBlock)refreshBlock;
+- (void)kt_promptShowExceptionView:(NSException *)exception
+					 refreshHandle:(KTPromptRefreshBlock)refreshBlock;
 
 - (void)kt_promptDismiss;
 
 @end
 
-@protocol KTPromptViewDataSource <NSObject>
+@protocol KTPromptViewProtocol <NSObject>
 
 @optional
-- (UIView *)kt_promptLoadingView;
-- (UIView *)kt_promptExceptionView;
-- (UIView *)kt_promptEmptyDataView;
+@property (strong, nonatomic, nullable) KTPromptRefreshBlock promptRefreshBlock;
+@property (weak, nonatomic) UIView *showInView;
+
+@required
+- (void)showPromptViewInView:(UIView *)showInView;
+- (void)promptDismiss;
 
 @end
-
 
 NS_ASSUME_NONNULL_END

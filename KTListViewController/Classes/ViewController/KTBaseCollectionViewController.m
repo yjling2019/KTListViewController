@@ -132,33 +132,28 @@ KTSynthesizePromptContainerProtocol
 #pragma mark - KTPromptProtocol
 - (void)kt_promptShowLoadingView
 {
-	[self.collectionView addSubview:self.promptLoadingView];
-	[self.promptLoadingView mas_updateConstraints:^(MASConstraintMaker *make) {
-		make.edges.mas_equalTo(0);
-	}];
+	[self.promptLoadingView showPromptViewInView:self.view];
 }
 
 - (void)kt_promptShowEmptyDataView
 {
-	[self.collectionView addSubview:self.promptEmptyDataView];
-	[self.promptEmptyDataView mas_updateConstraints:^(MASConstraintMaker *make) {
-		make.edges.mas_equalTo(0);
-	}];
+	[self.promptEmptyDataView showPromptViewInView:self.view];
 }
 
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(void(^)(void))refreshBlock
 {
-	[self.collectionView addSubview:self.promptExceptionView];
-	[self.promptExceptionView mas_updateConstraints:^(MASConstraintMaker *make) {
-		make.edges.mas_equalTo(0);
-	}];
+	if ([self.promptExceptionView respondsToSelector:@selector(promptRefreshBlock)]) {
+		self.promptExceptionView.promptRefreshBlock = refreshBlock;
+	}
+	
+	[self.promptExceptionView showPromptViewInView:self.view];
 }
 
 - (void)kt_promptDismiss
 {
-	[_promptLoadingView removeFromSuperview];
-	[_promptExceptionView removeFromSuperview];
-	[_promptEmptyDataView removeFromSuperview];
+	[_promptLoadingView promptDismiss];
+	[_promptExceptionView promptDismiss];
+	[_promptEmptyDataView promptDismiss];
 }
 
 - (UIView *)promptLoadingView

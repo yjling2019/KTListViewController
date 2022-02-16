@@ -11,6 +11,7 @@
 #import "KTCollectionVC.h"
 #import "KTCollectionVC2.h"
 #import "KTTableVC.h"
+#import "KTListViewController_Example-Swift.h"
 
 // TODO: 瀑布流layout、站位图
 
@@ -28,6 +29,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
+	PromptView *view = [[PromptView alloc] init];
+	view.backgroundColor = [UIColor redColor];
+	view.promptRefreshBlock = ^{
+		NSLog(@"aaa");
+	};
+	[view showPromptViewInView:self.view];
+	
 	//继承base
 //	[self testTableVC];
 	//继承containerview
@@ -36,7 +44,7 @@
 	//继承base
 //	[self testCollectionVC];
 	//继承containerview
-	[self testCollectionVC2];
+//	[self testCollectionVC2];
 }
 
 - (void)testTableVC
