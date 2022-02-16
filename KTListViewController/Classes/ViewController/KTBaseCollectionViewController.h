@@ -11,6 +11,7 @@
 #import "KTListViewContainerProtocol.h"
 #import "KTBaseCollectionViewVM.h"
 #import "KTWaterfallFlowLayout.h"
+#import "KTPromptProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 UICollectionViewDelegate,
 KTViewControllerProtocol,
 KTCollectionViewContainerProtocol,
-KTWaterfallFlowLayoutDelegate>
+KTWaterfallFlowLayoutDelegate,
+KTPromptProtocol,
+KTPromptContainerProtocol>
 
 @end
 

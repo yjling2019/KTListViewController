@@ -12,6 +12,9 @@
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
 #import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
+
+static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
 @interface KTBaseCollectionViewController ()
 
@@ -21,6 +24,8 @@
 
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
+
+KTSynthesizePromptContainerProtocol
 
 #pragma mark - KTViewControllerProtocol
 + (instancetype)kt_controller
@@ -80,9 +85,11 @@
 {
 }
 
-
 - (void)kt_loadInitialData
 {
+	if (!_promptViewDataSource) {
+		_promptViewDataSource = _globlePromptViewDataSource;
+	}
 }
 
 - (void)kt_loadInitialDataFromServer
@@ -103,6 +110,79 @@
 
 - (void)kt_removeObservers
 {
+}
+
+#pragma mark - KTPromptContainerProtocol
++ (void)kt_setupGlobalPromptViewDataSource:(id<KTPromptViewDataSource>)dataSource
+{
+	_globlePromptViewDataSource = dataSource;
+}
+
+- (void)setPromptViewDataSource:(id<KTPromptViewDataSource>)promptViewDataSource
+{
+	[self kt_promptDismiss];
+	
+	_promptLoadingView = nil;
+	_promptExceptionView = nil;
+	_promptEmptyDataView = nil;
+	
+	_promptViewDataSource = promptViewDataSource;
+}
+
+#pragma mark - KTPromptProtocol
+- (void)kt_promptShowLoadingView
+{
+	[self.collectionView addSubview:self.promptLoadingView];
+	[self.promptLoadingView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
+	}];
+}
+
+- (void)kt_promptShowEmptyDataView
+{
+	[self.collectionView addSubview:self.promptEmptyDataView];
+	[self.promptEmptyDataView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
+	}];
+}
+
+- (void)kt_promptShowExceptionViewWithRefreshHandle:(void(^)(void))refreshBlock
+{
+	[self.collectionView addSubview:self.promptExceptionView];
+	[self.promptExceptionView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
+	}];
+}
+
+- (void)kt_promptDismiss
+{
+	[_promptLoadingView removeFromSuperview];
+	[_promptExceptionView removeFromSuperview];
+	[_promptEmptyDataView removeFromSuperview];
+}
+
+- (UIView *)promptLoadingView
+{
+	if (!_promptLoadingView) {
+		_promptLoadingView = [self.promptViewDataSource kt_promptLoadingView];
+	}
+	return _promptLoadingView;
+}
+
+- (UIView *)promptEmptyDataView
+{
+	if (!_promptEmptyDataView) {
+		_promptEmptyDataView = [self.promptViewDataSource kt_promptEmptyDataView];
+	}
+	return _promptEmptyDataView;
+}
+
+- (UIView *)promptExceptionView
+{
+	if (!_promptExceptionView) {
+		_promptExceptionView = [self.promptViewDataSource kt_promptExceptionView];
+	}
+	return _promptExceptionView;
 }
 
 #pragma mark - KTListViewContainerProtocol
@@ -300,6 +380,51 @@
 	[self kt_listView:collectionView didSelectItem:model];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView
+willDisplaySupplementaryView:(UICollectionReusableView *)view
+		forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
+{
+	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [view respondsToSelector:@selector(kt_addReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
+		[reuseView kt_addReuseViewModelObservers];
+	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+	   willDisplayCell:(UICollectionViewCell *)cell
+	forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [cell respondsToSelector:@selector(kt_addReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
+		[reuseView kt_addReuseViewModelObservers];
+	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
+	  forElementOfKind:(NSString *)elementKind
+		   atIndexPath:(NSIndexPath *)indexPath
+{
+	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [view respondsToSelector:@selector(kt_removeReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
+		[reuseView kt_removeReuseViewModelObservers];
+	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+  didEndDisplayingCell:(UICollectionViewCell *)cell
+	forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
+		&& [cell respondsToSelector:@selector(kt_removeReuseViewModelObservers)]) {
+		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
+		[reuseView kt_removeReuseViewModelObservers];
+	}
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView
 				  layout:(UICollectionViewLayout*)collectionViewLayout
@@ -355,51 +480,6 @@ referenceSizeForFooterInSection:(NSInteger)section
 	return footerViewSize;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-willDisplaySupplementaryView:(UICollectionReusableView *)view
-		forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
-{
-	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [view respondsToSelector:@selector(kt_addReuseViewModelObservers)]) {
-		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-		[reuseView kt_addReuseViewModelObservers];
-	}
-}
-
-- (void)collectionView:(UICollectionView *)collectionView
-	   willDisplayCell:(UICollectionViewCell *)cell
-	forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [cell respondsToSelector:@selector(kt_addReuseViewModelObservers)]) {
-		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-		[reuseView kt_addReuseViewModelObservers];
-	}
-}
-
-- (void)collectionView:(UICollectionView *)collectionView
-didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
-	  forElementOfKind:(NSString *)elementKind
-		   atIndexPath:(NSIndexPath *)indexPath
-{
-	if ([view conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [view respondsToSelector:@selector(kt_removeReuseViewModelObservers)]) {
-		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)view;
-		[reuseView kt_removeReuseViewModelObservers];
-	}
-}
-
-- (void)collectionView:(UICollectionView *)collectionView
-  didEndDisplayingCell:(UICollectionViewCell *)cell
-	forItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	if ([cell conformsToProtocol:@protocol(KTReuseViewProtocol)]
-		&& [cell respondsToSelector:@selector(kt_removeReuseViewModelObservers)]) {
-		UIView <KTReuseViewProtocol> *reuseView = (UIView<KTReuseViewProtocol> *)cell;
-		[reuseView kt_removeReuseViewModelObservers];
-	}
-}
-
 #pragma mark - KTWaterfallFlowLayout
 /// 每个区多少列
 - (NSInteger)collectionView:(UICollectionView *)collectionView
@@ -421,66 +501,6 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
 	CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
 	return itemSize.height;
 }
-
-///// cell size
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//			customLayout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//	NSString *cellClassName = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
-//	id model = [self.collectionViewModel modelWithIndexPath:indexPath];
-//	CGSize itemSize = [NSClassFromString(cellClassName) itemSizeWithModel:model];
-//	return itemSize;
-//}
-
-///// 每个区的边距
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
-//				  customLayout:(UICollectionViewLayout*)collectionViewLayout
-//		insetForSectionAtIndex:(NSInteger)section
-//{
-//	UIEdgeInsets sectionInsets = [self.collectionViewModel sectionInsetsWithSection:section];
-//	return sectionInsets;
-//}
-//
-///// 每个区内部的垂直距离
-//- (CGFloat)collectionView:(UICollectionView *)collectionView
-//			 customLayout:(UICollectionViewLayout *)collectionViewLayout
-//minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//	CGFloat itemMinLineSpacing = [self.collectionViewModel itemMinLineSpacingWithSection:section];
-//	return itemMinLineSpacing;
-//}
-//
-///// 每个区内部的水平距离
-//- (CGFloat)collectionView:(UICollectionView *)collectionView
-//			 customLayout:(UICollectionViewLayout*)collectionViewLayout
-//minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//	CGFloat itemMinInterSpacing = [self.collectionViewModel itemMinInterSpacingWithSection:section];
-//	return itemMinInterSpacing;
-//}
-//
-///// header size
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//			customLayout:(UICollectionViewLayout *)collectionViewLayout
-//referenceSizeForHeaderInSection:(NSInteger)section
-//{
-//	NSString *reuseViewClassName = [self.collectionViewModel reuseViewHeaderViewClassNameWithSection:section];
-//	id model = [self.collectionViewModel modelOfReuseViewHeaderViewWithSection:section];
-//	CGSize headerViewSize = [NSClassFromString(reuseViewClassName) headerViewSizeWithModel:model];
-//	return headerViewSize;
-//}
-//
-///// footer size
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//			customLayout:(UICollectionViewLayout *)collectionViewLayout
-//referenceSizeForFooterInSection:(NSInteger)section
-//{
-//	NSString *reuseViewClassName = [self.collectionViewModel reuseViewFooterViewClassNameWithSection:section];
-//	id model = [self.collectionViewModel modelOfReuseViewFooterViewWithSection:section];
-//	CGSize footerViewSize = [NSClassFromString(reuseViewClassName) footerViewSizeWithModel:model];
-//	return footerViewSize;
-//}
 
 #pragma mark - getter
 - (UICollectionView *)collectionView

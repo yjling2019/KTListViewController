@@ -34,9 +34,9 @@
 //	[self testTableVC2];
 	
 	//继承base
-	[self testCollectionVC];
+//	[self testCollectionVC];
 	//继承containerview
-//	[self testCollectionVC2];
+	[self testCollectionVC2];
 }
 
 - (void)testTableVC

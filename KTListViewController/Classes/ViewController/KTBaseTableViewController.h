@@ -10,13 +10,15 @@
 #import "KTViewControllerProtocol.h"
 #import "KTBaseTableViewVM.h"
 #import "KTListViewContainerProtocol.h"
+#import "KTPromptProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseTableViewController : UIViewController<UITableViewDataSource,
 UITableViewDelegate,
 KTViewControllerProtocol,
-KTTableViewContainerProtocol>
+KTTableViewContainerProtocol,
+KTPromptProtocol>
 
 @end
 
