@@ -8,6 +8,7 @@
 
 #import "KTCollectionViewCell2.h"
 #import <Masonry/Masonry.h>
+#import "KTBaseViewModel.h"
 
 @interface KTCollectionViewCell2 ()
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -17,7 +18,7 @@
 
 + (CGSize)itemSizeWithModel:(id<KTReuseViewModelProtocol>)model
 {
-	return CGSizeMake(100, 80);
+	return [(KTBaseViewModel *)model viewSize];
 }
 
 - (void)kt_setUpUI

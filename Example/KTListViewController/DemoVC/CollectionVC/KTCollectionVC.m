@@ -52,6 +52,13 @@
 	});
 }
 
+- (UICollectionViewLayout *)kt_collectionViewLayout
+{
+	KTWaterfallFlowLayout *layout = [[KTWaterfallFlowLayout alloc] init];
+	layout.delegate = self;
+	return layout;
+}
+
 - (KTCollectionVM *)collectionViewModel
 {
 	if (!_collectionViewModel) {

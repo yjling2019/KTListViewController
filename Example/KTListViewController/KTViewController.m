@@ -29,12 +29,12 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	//继承base
-	[self testTableVC];
+//	[self testTableVC];
 	//继承containerview
 //	[self testTableVC2];
 	
 	//继承base
-//	[self testCollectionVC];
+	[self testCollectionVC];
 	//继承containerview
 //	[self testCollectionVC2];
 }

@@ -20,15 +20,17 @@
 		NSMutableArray *array = [NSMutableArray array];
 		for (int i = 0 ; i < 2 ; i++) {
 			KTBaseSectionModel *sm = [[KTBaseSectionModel alloc] init];
+			sm.columnNumber = 2-i;
 			
 			NSMutableArray *cells = [NSMutableArray array];
-			for (int i = 0 ; i < 20 ; i++) {
+			for (int i = 0 ; i < 50 ; i++) {
 				KTBaseViewModel *vm = [KTBaseViewModel new];
 				if (i % 2 == 0) {
 					vm.reuseViewClassName = @"KTCollectionViewCell";
 				} else {
 					vm.reuseViewClassName = @"KTCollectionViewCell2";
 				}
+				vm.viewSize = CGSizeMake(100, arc4random() % 100 + 60);
 				[cells addObject:vm];
 			}
 			sm.datas = cells.copy;

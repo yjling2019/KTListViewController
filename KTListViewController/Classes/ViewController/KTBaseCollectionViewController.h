@@ -10,13 +10,15 @@
 #import "KTViewControllerProtocol.h"
 #import "KTListViewContainerProtocol.h"
 #import "KTBaseCollectionViewVM.h"
+#import "KTWaterfallFlowLayout.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseCollectionViewController : UIViewController <UICollectionViewDataSource,
 UICollectionViewDelegate,
 KTViewControllerProtocol,
-KTCollectionViewContainerProtocol>
+KTCollectionViewContainerProtocol,
+KTWaterfallFlowLayoutDelegate>
 
 @end
 
