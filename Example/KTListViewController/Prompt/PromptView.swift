@@ -13,7 +13,7 @@ import UIKit
 	public var promptRefreshBlock : KTPromptRefreshBlock?
 	public weak var showInView : UIView?
 	
-	lazy var label : UILabel = {
+	public lazy var label : UILabel = {
 		let _label = UILabel.init()
 		_label.font = UIFont.systemFont(ofSize: 20)
 		_label.backgroundColor = UIColor.blue
@@ -53,7 +53,7 @@ import UIKit
 
 	@objc func buttonClick() {
 		guard (self.promptRefreshBlock != nil) else {
-			print("SSS")
+			print("not set refresh block")
 			return
 		}
 		self.promptRefreshBlock!()

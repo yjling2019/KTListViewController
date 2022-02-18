@@ -11,12 +11,14 @@
 #import "KTBaseTableViewVM.h"
 #import "KTListViewContainerProtocol.h"
 #import "KTModelProtocol.h"
+#import "KTPromptProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseTableContainerView : UIView<UITableViewDataSource,
 UITableViewDelegate,
-KTTableViewContainerProtocol>
+KTTableViewContainerProtocol,
+KTPromptContainerProtocol>
 
 - (void)reloadData;
 - (nullable UITableViewCell *)cellOfReuseViewModel:(id <KTReuseViewModelProtocol>)vm;

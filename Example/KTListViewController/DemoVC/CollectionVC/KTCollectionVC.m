@@ -28,7 +28,6 @@
 - (void)kt_setUpUI
 {
 	[self.view addSubview:self.collectionView];
-//	self.collectionView.frame = self.view.bounds;
 	[self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.edges.mas_equalTo(0);
 	}];
@@ -39,8 +38,15 @@
 {
 	[self kt_promptShowLoadingView];
 	[self.collectionViewModel requestDataWithCompletion:^{
-		[self kt_promptDismiss];
-		[self.collectionView reloadData];
+		BOOL success = arc4random()%2;
+		if (success) {
+			[self kt_promptDismiss];
+			[self.collectionView reloadData];
+		} else {
+			[self kt_promptShowExceptionViewWithRefreshHandle:^{
+				[self kt_loadInitialDataFromServer];
+			}];
+		}
 	}];
 }
 

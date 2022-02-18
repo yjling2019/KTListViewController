@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol KTPromptViewProtocol;
+
 @protocol KTPromptViewDataSource <NSObject>
 
 @optional

@@ -7,11 +7,12 @@
 //
 
 #import <KTListViewController/KTBaseCollectionContainerView.h>
+#import "KTCollectionVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTCollectionContainerView : KTBaseCollectionContainerView
-
+@property (strong, nonatomic) KTCollectionVM *collectionViewModel;
 @end
 
 NS_ASSUME_NONNULL_END

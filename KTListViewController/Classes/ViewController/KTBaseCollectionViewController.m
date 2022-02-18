@@ -23,7 +23,6 @@ static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
 @dynamic collectionViewModel;
 @synthesize collectionView = _collectionView;
-
 KTSynthesizePromptContainerProtocol
 
 #pragma mark - KTViewControllerProtocol
@@ -131,16 +130,20 @@ KTSynthesizePromptContainerProtocol
 #pragma mark - KTPromptProtocol
 - (void)kt_promptShowLoadingView
 {
+	[_promptLoadingView promptDismiss];
 	[self.promptLoadingView showPromptViewInView:self.collectionView];
 }
 
 - (void)kt_promptShowEmptyDataView
 {
+	[_promptEmptyDataView promptDismiss];
 	[self.promptEmptyDataView showPromptViewInView:self.collectionView];
 }
 
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(void(^)(void))refreshBlock
 {
+	[_promptExceptionView promptDismiss];
+
 	if ([self.promptExceptionView respondsToSelector:@selector(promptRefreshBlock)]) {
 		self.promptExceptionView.promptRefreshBlock = refreshBlock;
 	}
@@ -151,8 +154,8 @@ KTSynthesizePromptContainerProtocol
 - (void)kt_promptDismiss
 {
 	[_promptLoadingView promptDismiss];
-	[_promptExceptionView promptDismiss];
 	[_promptEmptyDataView promptDismiss];
+	[_promptExceptionView promptDismiss];
 }
 
 - (UIView *)promptLoadingView
@@ -474,7 +477,7 @@ referenceSizeForFooterInSection:(NSInteger)section
 	return footerViewSize;
 }
 
-#pragma mark - KTWaterfallFlowLayout
+#pragma mark - KTWaterfallFlowLayoutDelegate
 /// 每个区多少列
 - (NSInteger)collectionView:(UICollectionView *)collectionView
 					 layout:(KTWaterfallFlowLayout *)collectionViewLayout

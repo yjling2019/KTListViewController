@@ -8,10 +8,18 @@
 
 #import "KTAppDelegate.h"
 
+#import "KTListViewController_Example-Swift.h"
+
+#import "KTCollectionContainerView.h"
+#import "KTBaseCollectionViewController.h"
+
 @implementation KTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[KTCollectionContainerView kt_setupGlobalPromptViewDataSource:[PromptManager new]];
+	[KTBaseCollectionViewController kt_setupGlobalPromptViewDataSource:[PromptManager new]];
+
     // Override point for customization after application launch.
     return YES;
 }

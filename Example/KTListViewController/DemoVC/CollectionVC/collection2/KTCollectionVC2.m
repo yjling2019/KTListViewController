@@ -9,6 +9,7 @@
 #import "KTCollectionVC2.h"
 #import "KTCollectionContainerView.h"
 #import "KTCollectionVM.h"
+#import <Masonry/Masonry.h>
 
 @interface KTCollectionVC2 ()
 @property (strong, nonatomic) KTCollectionContainerView *containerView;
@@ -22,11 +23,16 @@
 	
 	[self.view addSubview:self.containerView];
 	self.containerView.collectionViewModel = self.collectionViewModel;
-	self.containerView.frame = self.view.bounds;
-	
-	[self.collectionViewModel requestDataWithCompletion:^{
-		[self.containerView reloadData];
+//	self.containerView.frame = self.view.bounds;
+	[self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+		make.edges.mas_equalTo(0);
 	}];
+	
+	[self.containerView kt_loadInitialDataFromServer];
+	
+//	[self.collectionViewModel requestDataWithCompletion:^{
+//		[self.containerView reloadData];
+//	}];
 }
 
 #pragma mark - lazy load

@@ -12,7 +12,6 @@
 #import "KTBaseCollectionViewVM.h"
 #import "KTWaterfallFlowLayout.h"
 #import "KTPromptProtocol.h"
-#import "KTPromptViewDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

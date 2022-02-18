@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 UITableViewDelegate,
 KTViewControllerProtocol,
 KTTableViewContainerProtocol,
-KTPromptProtocol>
+KTPromptProtocol,
+KTPromptContainerProtocol>
 
 @end
 

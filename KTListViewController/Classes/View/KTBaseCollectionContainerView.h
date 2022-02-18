@@ -11,12 +11,17 @@
 #import "KTBaseCollectionViewVM.h"
 #import "KTListViewContainerProtocol.h"
 #import "KTModelProtocol.h"
+#import "KTWaterfallFlowLayout.h"
+#import "KTPromptProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KTBaseCollectionContainerView : UIView<UICollectionViewDataSource,
 UICollectionViewDelegate,
-KTCollectionViewContainerProtocol>
+KTCollectionViewContainerProtocol,
+KTWaterfallFlowLayoutDelegate,
+KTPromptProtocol,
+KTPromptContainerProtocol>
 
 - (void)reloadData;
 - (nullable UICollectionViewCell *)cellOfReuseViewModel:(id <KTReuseViewModelProtocol>)vm;

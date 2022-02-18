@@ -11,14 +11,20 @@ import Foundation
 @objcMembers public class PromptManager : NSObject, KTPromptViewDataSource {
 	
 	public func kt_promptLoadingView() -> UIView & KTPromptViewProtocol {
-		return PromptView.init()
+		let view = PromptView.init()
+		view.label.text = "loading..."
+		return view
 	}
 	
 	public func kt_promptEmptyDataView() -> UIView & KTPromptViewProtocol {
-		return PromptView.init()
+		let view = PromptView.init()
+		view.label.text = "empty data"
+		return view
 	}
 	
 	public func kt_promptExceptionView() -> UIView & KTPromptViewProtocol {
-		return PromptView.init()
+		let view = PromptView.init()
+		view.label.text = "errer!!!"
+		return view
 	}
 }

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KTPromptViewDataSource.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^KTPromptRefreshBlock)(void);
 
-@protocol KTPromptViewDataSource;
 @protocol KTPromptViewProtocol;
 
 #define KTSynthesizePromptContainerProtocol \
@@ -43,8 +43,8 @@ typedef void(^KTPromptRefreshBlock)(void);
 - (void)kt_promptShowLoadingView;
 - (void)kt_promptShowEmptyDataView;
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(KTPromptRefreshBlock)refreshBlock;
-- (void)kt_promptShowExceptionView:(NSException *)exception
-					 refreshHandle:(KTPromptRefreshBlock)refreshBlock;
+//- (void)kt_promptShowExceptionView:(NSException *)exception
+//					 refreshHandle:(KTPromptRefreshBlock)refreshBlock;
 
 - (void)kt_promptDismiss;
 
