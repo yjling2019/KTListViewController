@@ -8,10 +8,10 @@
 
 #import "KTBaseCollectionViewController.h"
 #import "KTBaseViewModel.h"
-#import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
 #import <MJRefresh/MJRefresh.h>
+#import <KTFoundation/NSArray+KTHelp.h>
 
 static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
@@ -291,7 +291,7 @@ KTSynthesizePromptContainerProtocol
 		return;
 	}
 	
-	id <KTSectionModelProtocol> section = [self.collectionViewModel.datas vv_objectWithIndex:indexPath.section];
+	id <KTSectionModelProtocol> section = [self.collectionViewModel.datas kt_objectAtIndex:indexPath.section];
 	if (![section respondsToSelector:@selector(datas)]) {
 		return;
 	}
@@ -328,7 +328,7 @@ KTSynthesizePromptContainerProtocol
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
 		NSString *identifierString = [NSClassFromString(className) identifier];
-		if (vv_isEmptyStr(identifierString)) {
+		if (!identifierString) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 			identifierString = [KTBaseCollectionReuseView identifier];
 		}
@@ -342,7 +342,7 @@ KTSynthesizePromptContainerProtocol
 		NSAssert((kind == [NSClassFromString(className) kind]), @"kind不一致");
 		
 		NSString *identifierString = [NSClassFromString(className) identifier];
-		if (vv_isEmptyStr(identifierString)) {
+		if (!identifierString) {
 			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 			identifierString = [KTBaseCollectionReuseView identifier];
 		}
@@ -360,7 +360,7 @@ KTSynthesizePromptContainerProtocol
 	
 	NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
 	NSString *identifierString = [NSClassFromString(className) identifier];
-	if (vv_isEmptyStr(identifierString)) {
+	if (!identifierString) {
 		NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 		identifierString = [KTBaseCollectionCell identifier];
 	}

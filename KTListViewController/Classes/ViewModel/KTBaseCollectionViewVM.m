@@ -8,8 +8,8 @@
 
 #import "KTBaseCollectionViewVM.h"
 #import <UIKit/UIKit.h>
-#import "VVDataHelper.h"
 #import "KTModelProtocol.h"
+#import <KTFoundation/NSArray+KTHelp.h>
 
 @interface KTBaseCollectionVMConfig()
 
@@ -63,7 +63,7 @@ KTSynthesizeListVMProtocol
 
 - (NSInteger)itemCountWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return 0;
 	}
@@ -83,7 +83,7 @@ KTSynthesizeListVMProtocol
 
 - (id)modelWithIndexPath:(NSIndexPath *)indexPath
 {
-	id sectionObject = [self.datas vv_objectWithIndex:indexPath.section];
+	id sectionObject = [self.datas kt_objectAtIndex:indexPath.section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -96,12 +96,12 @@ KTSynthesizeListVMProtocol
 		return nil;
 	}
 	
-	return [[sectionObject datas] vv_objectWithIndex:indexPath.item];
+	return [[sectionObject datas] kt_objectAtIndex:indexPath.item];
 }
 
 - (CGFloat)itemMinLineSpacingWithSection:(NSInteger)section
 {
-	id <KTSectionModelProtocol> sectionObject = [self.datas vv_objectWithIndex:section];
+	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return self.config.lineSpace;
 	}
@@ -119,7 +119,7 @@ KTSynthesizeListVMProtocol
 
 - (CGFloat)itemMinInterSpacingWithSection:(NSInteger)section
 {
-	id <KTSectionModelProtocol> sectionObject = [self.datas vv_objectWithIndex:section];
+	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return self.config.interSpace;
 	}
@@ -137,7 +137,7 @@ KTSynthesizeListVMProtocol
 
 - (UIEdgeInsets)sectionInsetsWithSection:(NSInteger)section
 {
-	id <KTSectionModelProtocol> sectionObject = [self.datas vv_objectWithIndex:section];
+	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return self.config.sectionInsets;
 	}
@@ -155,7 +155,7 @@ KTSynthesizeListVMProtocol
 
 - (NSInteger)sectionColumnNumberWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return 1;
 	}
@@ -173,7 +173,7 @@ KTSynthesizeListVMProtocol
 
 - (id)modelOfReuseViewHeaderViewWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -193,7 +193,7 @@ KTSynthesizeListVMProtocol
 
 - (id)modelOfReuseViewFooterViewWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -213,7 +213,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewClassNameWithIndexPath:(NSIndexPath *)indexPath
 {
-	id sectionObject = [self.datas vv_objectWithIndex:indexPath.section];
+	id sectionObject = [self.datas kt_objectAtIndex:indexPath.section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -229,7 +229,7 @@ KTSynthesizeListVMProtocol
 	
 	NSArray *datas = [sectionObject datas];
 	
-	id object = [datas vv_objectWithIndex:indexPath.item];
+	id object = [datas kt_objectAtIndex:indexPath.item];
 	if (!object) {
 		return nil;
 	}
@@ -249,7 +249,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewHeaderViewClassNameWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -285,7 +285,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewFooterViewClassNameWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}

@@ -1,8 +1,14 @@
 PODS:
+  - KTFoundation/Category (0.1.0):
+    - KTFoundation/Macros
+  - KTFoundation/Macros (0.1.0)
   - KTListViewController (0.1.0):
+    - KTFoundation/Category
+    - KTUILibrary/Protocol
     - KVOController
     - Masonry
     - MJRefresh
+  - KTUILibrary/Protocol (1.0.2)
   - KVOController (1.2.0)
   - Masonry (1.1.0)
   - MJRefresh (3.7.5)
@@ -14,6 +20,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - KTFoundation
+    - KTUILibrary
     - KVOController
     - Masonry
     - MJRefresh
@@ -23,7 +31,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KTListViewController: 578311cb832a245b94e0062303171364a0bd4053
+  KTFoundation: 8428d913e636f89554c61e6996935672fb9886a0
+  KTListViewController: 2a56ed0ed771ffd32a932e9a98b025567ed85143
+  KTUILibrary: 1b4f6f650486842624ef9715bdcb2565d58290eb
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961

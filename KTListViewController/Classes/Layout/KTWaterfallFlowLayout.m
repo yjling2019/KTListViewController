@@ -7,7 +7,7 @@
 //
 
 #import "KTWaterfallFlowLayout.h"
-#import "NSArray+DataProtect.h"
+#import <KTFoundation/NSArray+KTHelp.h>
 
 @interface KTWaterfallFlowLayout ()
 
@@ -218,17 +218,17 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray<UICollectionViewLayoutAttributes *> *tempArray = (NSArray<UICollectionViewLayoutAttributes *> *)[self.itemLayoutAttributes vv_arrayWithIndex:indexPath.section];
-    return [tempArray vv_objectWithIndex:indexPath.item];
+    NSArray<UICollectionViewLayoutAttributes *> *tempArray = (NSArray<UICollectionViewLayoutAttributes *> *)[self.itemLayoutAttributes kt_arrayAtIndex:indexPath.section];
+    return [tempArray kt_objectAtIndex:indexPath.item];
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
-        return [_headerLayoutAttributes vv_objectWithIndex:indexPath.section];
+        return [_headerLayoutAttributes kt_objectAtIndex:indexPath.section];
     }
     if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
-        return [_footerLayoutAttributes vv_objectWithIndex:indexPath.section];
+        return [_footerLayoutAttributes kt_objectAtIndex:indexPath.section];
     }
     return nil;
 }
@@ -245,10 +245,10 @@
 - (UICollectionViewLayoutAttributes *)originLayoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
-        return [_originHeaderLayoutAttributes vv_objectWithIndex:indexPath.section];
+        return [_originHeaderLayoutAttributes kt_objectAtIndex:indexPath.section];
     }
     if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
-        return [_originFooterLayoutAttributes vv_objectWithIndex:indexPath.section];
+        return [_originFooterLayoutAttributes kt_objectAtIndex:indexPath.section];
     }
     return nil;
 }
@@ -259,8 +259,8 @@
         return nil;
     }
     
-    NSArray *array = [self.itemLayoutAttributes vv_objectWithIndex:indexPath.section];
-    UICollectionViewLayoutAttributes *atti = [array vv_objectWithIndex:indexPath.item];
+    NSArray *array = [self.itemLayoutAttributes kt_objectAtIndex:indexPath.section];
+    UICollectionViewLayoutAttributes *atti = [array kt_objectAtIndex:indexPath.item];
     return atti;
 }
 

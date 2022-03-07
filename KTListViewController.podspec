@@ -21,8 +21,12 @@ Pod::Spec.new do |s|
 
   s.source_files = 'KTListViewController/Classes/**/*'
 
+  s.user_target_xcconfig = {'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
+  
   s.dependency 'Masonry'
   s.dependency 'KVOController'
   s.dependency 'MJRefresh'
+  s.dependency 'KTUILibrary/Protocol'
+  s.dependency 'KTFoundation/Category'
 
 end

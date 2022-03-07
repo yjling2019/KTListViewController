@@ -7,7 +7,7 @@
 //
 
 #import "KTBaseCollectionCell.h"
-#import "KTViewControllerProtocol.h"
+#import <KTUILibrary/KTViewControllerProtocol.h>
 #import "KTListViewContainerProtocol.h"
 #import "KTBaseCollectionViewVM.h"
 #import "KTWaterfallFlowLayout.h"

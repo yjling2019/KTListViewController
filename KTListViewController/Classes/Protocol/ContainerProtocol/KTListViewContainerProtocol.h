@@ -10,7 +10,7 @@
 #define KTListViewContainerProtocol_h
 
 #import "KTListVMProtocol.h"
-#import "KTViewContainerProtocol.h"
+#import <KTUILibrary/KTViewContainerProtocol.h>
 #import "KTCollectionVMProtocol.h"
 #import "KTTableVMProtocol.h"
 

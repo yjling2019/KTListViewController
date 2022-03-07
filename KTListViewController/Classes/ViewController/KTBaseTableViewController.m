@@ -8,10 +8,10 @@
 
 #import "KTBaseTableViewController.h"
 #import "KTBaseViewModel.h"
-#import "VVDataHelper.h"
 #import <KVOController/KVOController.h>
 #import "UIScrollView+Preload.h"
 #import <MJRefresh/MJRefresh.h>
+#import <KTFoundation/NSArray+KTHelp.h>
 
 static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
@@ -277,7 +277,7 @@ KTSynthesizePromptContainerProtocol
 		return;
 	}
 	
-	id <KTSectionModelProtocol> section = [self.tableViewModel.datas vv_objectWithIndex:indexPath.section];
+	id <KTSectionModelProtocol> section = [self.tableViewModel.datas kt_objectAtIndex:indexPath.section];
 	if (![section respondsToSelector:@selector(datas)]) {
 		return;
 	}
@@ -310,7 +310,7 @@ KTSynthesizePromptContainerProtocol
 {
     NSString *className = [self.tableViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
-    if (vv_isEmptyStr(identifierString)) {
+    if (!identifierString) {
         NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
 		identifierString = [KTBaseTableViewCell identifier];
     }

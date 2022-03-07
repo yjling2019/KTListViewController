@@ -9,8 +9,7 @@
 #import "KTBaseTableViewVM.h"
 #import <UIKit/UIKit.h>
 #import "KTModelProtocol.h"
-
-#import "VVDataHelper.h"
+#import <KTFoundation/NSArray+KTHelp.h>
 
 @interface KTBaseTableVMConfig()
 
@@ -65,7 +64,7 @@ KTSynthesizeListVMProtocol
 
 - (NSInteger)rowCountWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return 0;
 	}
@@ -85,7 +84,7 @@ KTSynthesizeListVMProtocol
 
 - (id)modelWithIndexPath:(NSIndexPath *)indexPath
 {
-	id sectionObject = [self.datas vv_objectWithIndex:indexPath.section];
+	id sectionObject = [self.datas kt_objectAtIndex:indexPath.section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -100,12 +99,12 @@ KTSynthesizeListVMProtocol
 		return 0;
 	}
 	
-	return [[sectionObject datas] vv_objectWithIndex:indexPath.row];
+	return [[sectionObject datas] kt_objectAtIndex:indexPath.row];
 }
 
 - (id)modelOfReuseViewHeaderViewWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -125,7 +124,7 @@ KTSynthesizeListVMProtocol
 
 - (id)modelOfReuseViewFooterViewWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -145,7 +144,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewClassNameWithIndexPath:(NSIndexPath *)indexPath
 {
-	id sectionObject = [self.datas vv_objectWithIndex:indexPath.section];
+	id sectionObject = [self.datas kt_objectAtIndex:indexPath.section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -159,7 +158,7 @@ KTSynthesizeListVMProtocol
 	}
 		
 	NSArray *datas = [sectionObject datas];
-	id object = [datas vv_objectWithIndex:indexPath.row];
+	id object = [datas kt_objectAtIndex:indexPath.row];
 	
 	if (![object conformsToProtocol:@protocol(KTReuseViewModelProtocol)]) {
 		return nil;
@@ -174,7 +173,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewHeaderViewClassNameWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
@@ -202,7 +201,7 @@ KTSynthesizeListVMProtocol
 
 - (NSString *)reuseViewFooterViewClassNameWithSection:(NSInteger)section
 {
-	id sectionObject = [self.datas vv_objectWithIndex:section];
+	id sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
 		return nil;
 	}
