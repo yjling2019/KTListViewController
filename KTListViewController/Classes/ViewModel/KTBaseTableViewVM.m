@@ -1,6 +1,6 @@
 //
 //  KTBaseTableViewVM.m
-//  MVVMDemo
+//  KOTU
 //
 //  Created by KOTU on 2019/8/19.
 //  Copyright © 2019 KOTU. All rights reserved.
@@ -70,12 +70,12 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector datas");
 		return 0;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(datas)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector datas");
 		return 0;
 	}
 	
@@ -90,12 +90,12 @@ KTSynthesizeListVMProtocol
 	}
       
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector datas");
 		return 0;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(datas)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector datas");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector datas");
 		return 0;
 	}
 	
@@ -110,12 +110,12 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector headerModel");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector headerModel");
 		return nil;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(headerModel)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector headerModel");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector headerModel");
 		return nil;
 	}
 	
@@ -130,12 +130,12 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector footerModel");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector footerModel");
 		return nil;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(footerModel)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol and respond selector footerModel");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol and respond selector footerModel");
 		return nil;
 	}
 	

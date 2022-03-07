@@ -1,6 +1,6 @@
 //
 //  KTBaseCollectionCell.h
-//  MVVMDemo
+//  KOTU
 //
 //  Created by KOTU on 2019/8/16.
 //  Copyright © 2019 KOTU. All rights reserved.

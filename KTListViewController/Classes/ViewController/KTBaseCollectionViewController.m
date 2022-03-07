@@ -1,6 +1,6 @@
 //
 //  KTBaseCollectionViewController.m
-//  MVVMDemo
+//  KOTU
 //
 //  Created by KOTU on 2019/8/16.
 //  Copyright © 2019 KOTU. All rights reserved.
@@ -329,7 +329,7 @@ KTSynthesizePromptContainerProtocol
 		
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (!identifierString) {
-			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+			NSAssert(NO, @"KOTU error: empty reuse identifier");
 			identifierString = [KTBaseCollectionReuseView identifier];
 		}
 		
@@ -343,7 +343,7 @@ KTSynthesizePromptContainerProtocol
 		
 		NSString *identifierString = [NSClassFromString(className) identifier];
 		if (!identifierString) {
-			NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+			NSAssert(NO, @"KOTU error: empty reuse identifier");
 			identifierString = [KTBaseCollectionReuseView identifier];
 		}
 		
@@ -361,7 +361,7 @@ KTSynthesizePromptContainerProtocol
 	NSString *className = [self.collectionViewModel reuseViewClassNameWithIndexPath:indexPath];
 	NSString *identifierString = [NSClassFromString(className) identifier];
 	if (!identifierString) {
-		NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+		NSAssert(NO, @"KOTU error: empty reuse identifier");
 		identifierString = [KTBaseCollectionCell identifier];
 	}
 	KTBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierString forIndexPath:indexPath];

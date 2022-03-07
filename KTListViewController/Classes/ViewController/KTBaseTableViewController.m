@@ -1,6 +1,6 @@
 //
 //  KTBaseTableViewController.m
-//  VOVA
+//  KOTU
 //
 //  Created by KOTU on 2019/8/9.
 //  Copyright © 2019 iOS. All rights reserved.
@@ -182,7 +182,7 @@ KTSynthesizePromptContainerProtocol
 	return _promptExceptionView;
 }
 
-#pragma mark - VVListViewControllerProtocol
+#pragma mark - KTListViewControllerProtocol
 - (void)kt_registerCells
 {
 	NSMutableSet *set = [NSMutableSet set];
@@ -311,7 +311,7 @@ KTSynthesizePromptContainerProtocol
     NSString *className = [self.tableViewModel reuseViewClassNameWithIndexPath:indexPath];
     NSString *identifierString = [NSClassFromString(className) identifier];
     if (!identifierString) {
-        NSAssert(NO, @"vv_bodylib_ios error: empty reuse identifier");
+        NSAssert(NO, @"KOTU error: empty reuse identifier");
 		identifierString = [KTBaseTableViewCell identifier];
     }
     KTBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierString forIndexPath:indexPath];

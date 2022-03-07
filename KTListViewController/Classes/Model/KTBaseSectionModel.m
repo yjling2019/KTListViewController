@@ -1,6 +1,6 @@
 //
 //  KTBaseSectionModel.m
-//  vv_bodylib_ios
+//  KOTU
 //
 //  Created by KOTU on 2019/12/19.
 //

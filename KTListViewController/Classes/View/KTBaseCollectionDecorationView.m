@@ -1,6 +1,6 @@
 //
 //  KTBaseCollectionDecorationView.m
-//  vv_bodylib_ios
+//  KOTU
 //
 //  Created by KOTU on 2020/11/10.
 //

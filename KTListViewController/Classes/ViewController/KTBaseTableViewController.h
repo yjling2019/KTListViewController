@@ -1,6 +1,6 @@
 //
 //  KTBaseTableViewController.h
-//  VOVA
+//  KOTU
 //
 //  Created by KOTU on 2019/8/9.
 //  Copyright © 2019 iOS. All rights reserved.

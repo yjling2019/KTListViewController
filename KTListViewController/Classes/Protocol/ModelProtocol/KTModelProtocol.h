@@ -1,6 +1,6 @@
 //
 //  KTModelProtocol.h
-//  vv_bodylib_ios
+//  KOTU
 //
 //  Created by KOTU on 2019/12/18.
 //
@@ -27,12 +27,12 @@
 
 @end
 
-typedef NS_ENUM(NSInteger, VVDecorationOriginType)
+typedef NS_ENUM(NSInteger, KTDecorationOriginType)
 {
     /// sectionHeader的顶部
-    VVDecorationOriginTypeSectionHeaderMin = 0,
+    KTDecorationOriginTypeSectionHeaderMin = 0,
     /// sectionHeader的底部
-    VVDecorationOriginTypeSectionHeaderMax,
+    KTDecorationOriginTypeSectionHeaderMax,
 };
 
 @protocol KTDecorationViewModelProtocol <NSObject, KTReuseViewModelProtocol>

@@ -1,6 +1,6 @@
 //
 //  KTCustomCollectionViewLayout.h
-//  Vova
+//  KOTU
 //
 //  Created by KOTU on 2019/5/8.
 //  Copyright © 2019 iOS. All rights reserved.

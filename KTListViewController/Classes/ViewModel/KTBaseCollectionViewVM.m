@@ -1,6 +1,6 @@
 //
 //  KTBaseCollectionViewVM.m
-//  MVVMDemo
+//  KOTU
 //
 //  Created by KOTU on 2019/8/19.
 //  Copyright © 2019 KOTU. All rights reserved.
@@ -69,7 +69,7 @@ KTSynthesizeListVMProtocol
 	}
 
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return 0;
 	}
 	
@@ -179,7 +179,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return nil;
 	}
 	
@@ -199,7 +199,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return nil;
 	}
 	
@@ -218,7 +218,7 @@ KTSynthesizeListVMProtocol
 		return nil;
 	}
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return nil;
 	}
 	
@@ -235,7 +235,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![object conformsToProtocol:@protocol(KTReuseViewModelProtocol)]) {
-		NSAssert(NO, @"object must conform protocol VVReuseViewModelProtocol");
+		NSAssert(NO, @"object must conform protocol KTReuseViewModelProtocol");
 		return nil;
 	}
 	
@@ -255,7 +255,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return nil;
 	}
 	
@@ -291,7 +291,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		NSAssert(NO, @"sectionObject must conform protocol VVSectionModelProtocol");
+		NSAssert(NO, @"sectionObject must conform protocol KTSectionModelProtocol");
 		return nil;
 	}
 	
@@ -306,7 +306,7 @@ KTSynthesizeListVMProtocol
 	}
 	
 	if (![footerModel conformsToProtocol:@protocol(KTReuseViewModelProtocol)]) {
-		NSAssert(NO, @"footerModel must conform protocol VVReuseViewModelProtocol");
+		NSAssert(NO, @"footerModel must conform protocol KTReuseViewModelProtocol");
 		return nil;
 	}
 	

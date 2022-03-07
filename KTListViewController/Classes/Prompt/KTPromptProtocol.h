@@ -1,6 +1,6 @@
 //
 //  VVPromptDelegate.h
-//  VVBodyLib
+//  KOTU
 //
 //  Created by KOTU on 2019/6/17.
 //  Copyright © 2019 com.lebby.www. All rights reserved.

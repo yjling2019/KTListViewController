@@ -1,6 +1,6 @@
 //
 //  KTBaseTableViewVM.h
-//  MVVMDemo
+//  KOTU
 //
 //  Created by KOTU on 2019/8/19.
 //  Copyright © 2019 KOTU. All rights reserved.
