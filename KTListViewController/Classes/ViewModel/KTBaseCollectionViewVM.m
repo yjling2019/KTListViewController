@@ -270,7 +270,7 @@ KTSynthesizeListVMProtocol
 		return nil;
 	}
 	
-	if ([headerModel conformsToProtocol:@protocol(KTReuseViewModelProtocol)]) {
+	if (![headerModel conformsToProtocol:@protocol(KTReuseViewModelProtocol)]) {
 		NSAssert(NO, @"headerModel must respond selector reuseViewClassName");
 		return nil;
 	}
