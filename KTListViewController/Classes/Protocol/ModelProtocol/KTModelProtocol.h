@@ -8,7 +8,9 @@
 #ifndef KTModelProtocol_h
 #define KTModelProtocol_h
 
-#define KTSynthesizeReuseViewModelProtocol 	@synthesize reuseViewClassName = _reuseViewClassName;
+#define KTSynthesizeReuseViewModelProtocol 	@synthesize reuseViewClassName = _reuseViewClassName;\
+											@synthesize isFirstItem = _isFirstItem;\
+											@synthesize isLastItem = _isLastItem;\
 
 #define KTSynthesizeSectionModelProtocol 	@synthesize datas = _datas;\
 											@synthesize decorationModel = _decorationModel;\
@@ -24,6 +26,8 @@
 @optional
 
 @property (nonatomic, copy, nullable) NSString *reuseViewClassName;
+@property (nonatomic, assign) BOOL isFirstItem;
+@property (nonatomic, assign) BOOL isLastItem;
 
 @end
 
