@@ -32,6 +32,7 @@
 @property (nonatomic, assign) NSInteger customIndex;
 
 @property (nonatomic, assign) BOOL isSelected;
+
 @property (nonatomic, assign) BOOL isFirstItem;
 @property (nonatomic, assign) BOOL isLastItem;
 
@@ -81,6 +82,9 @@ typedef NS_ENUM(NSInteger, KTDecorationOriginType)
 
 /// 每个分区的sectionInsets
 @property (nonatomic, assign) UIEdgeInsets sectionInsets;
+
+/// 分区类型，用于区分section，自定义
+@property (nonatomic, assign) NSInteger sectionType;
 
 @end
 
