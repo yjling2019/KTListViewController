@@ -22,6 +22,7 @@
 											@synthesize minimumLineSpacing = _minimumLineSpacing;\
 											@synthesize minimumInteritemSpacing = _minimumInteritemSpacing;\
 											@synthesize sectionInsets = _sectionInsets;\
+											@synthesize sectionType = _sectionType;\
 
 @protocol KTReuseViewModelProtocol <NSObject>
 
