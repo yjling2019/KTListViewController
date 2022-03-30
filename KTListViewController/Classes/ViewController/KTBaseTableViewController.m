@@ -102,7 +102,7 @@ KTSynthesizePromptContainerProtocol
 - (void)kt_addObservers
 {
 	@weakify(self);
-	[self.KVOController observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+	[self.KVOControllerNonRetaining observe:self keyPath:@"tableViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
 		@strongify(self);
 		[self kt_registerCells];
 		[self kt_registerReuseViews];
