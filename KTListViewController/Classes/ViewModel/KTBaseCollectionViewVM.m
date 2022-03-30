@@ -55,6 +55,18 @@ KTSynthesizeListVMProtocol
 	return indexPath;
 }
 
+- (nullable id <KTSectionModelProtocol>)setionModelOfViewModel:(id <KTReuseViewModelProtocol>)vm
+{
+	NSIndexPath *indexPath = [self indexPathOfViewModel:vm];
+	if (!indexPath) {
+		NSAssert(NO, @"KTBaseCollectionViewVM: viewmodel not found, maybe self.datas changed");
+		return nil;
+	}
+	
+	id <KTSectionModelProtocol> sectionVM = [self.datas kt_objectAtIndex:indexPath.section];
+	return sectionVM;
+}
+
 #pragma mark - KTListVMProtocol
 - (NSInteger)sectionCount
 {

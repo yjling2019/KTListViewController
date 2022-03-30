@@ -12,6 +12,7 @@
 #import "UIScrollView+Preload.h"
 #import <MJRefresh/MJRefresh.h>
 #import <KTFoundation/NSArray+KTHelp.h>
+#import <KTFoundation/KTScope.h>
 
 static id <KTPromptViewDataSource> _globlePromptViewDataSource;
 
@@ -100,7 +101,9 @@ KTSynthesizePromptContainerProtocol
 
 - (void)kt_addObservers
 {
+	@weakify(self);
 	[self.KVOController observe:self keyPath:@"collectionViewModel.datas" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+		@strongify(self);
 		[self kt_registerCells];
 		[self kt_registerReuseViews];
 	}];

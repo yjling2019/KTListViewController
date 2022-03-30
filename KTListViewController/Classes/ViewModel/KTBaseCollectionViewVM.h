@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KTBaseCollectionViewVM : NSObject<KTCollectionVMProtocol>
 
 - (nullable NSIndexPath *)indexPathOfViewModel:(id <KTReuseViewModelProtocol>)vm;
+- (nullable id <KTSectionModelProtocol>)setionModelOfViewModel:(id <KTReuseViewModelProtocol>)vm;
 
 @end
 
