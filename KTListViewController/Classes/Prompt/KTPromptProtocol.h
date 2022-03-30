@@ -30,10 +30,10 @@ typedef void(^KTPromptRefreshBlock)(void);
 @optional
 + (void)kt_setupGlobalPromptViewDataSource:(id <KTPromptViewDataSource>)dataSource;
 
-@property (strong, nonatomic) id <KTPromptViewDataSource> promptViewDataSource;
-@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptLoadingView;
-@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptExceptionView;
-@property (strong, nonatomic) UIView <KTPromptViewProtocol> *promptEmptyDataView;
+@property (nonatomic, strong) id <KTPromptViewDataSource> promptViewDataSource;
+@property (nonatomic, strong) UIView <KTPromptViewProtocol> *promptLoadingView;
+@property (nonatomic, strong) UIView <KTPromptViewProtocol> *promptExceptionView;
+@property (nonatomic, strong) UIView <KTPromptViewProtocol> *promptEmptyDataView;
 
 @end
 
@@ -53,7 +53,7 @@ typedef void(^KTPromptRefreshBlock)(void);
 @protocol KTPromptViewProtocol <NSObject>
 
 @optional
-@property (strong, nonatomic, nullable) KTPromptRefreshBlock promptRefreshBlock;
+@property (nonatomic, strong, nullable) KTPromptRefreshBlock promptRefreshBlock;
 @property (weak, nonatomic) UIView *showInView;
 
 @required
