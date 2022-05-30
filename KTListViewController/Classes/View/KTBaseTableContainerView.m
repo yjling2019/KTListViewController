@@ -163,8 +163,8 @@ KTSynthesizePromptContainerProtocol
 {
 	[_promptExceptionView promptDismiss];
 
-	if ([self.promptExceptionView respondsToSelector:@selector(promptRefreshBlock)]) {
-		self.promptExceptionView.promptRefreshBlock = refreshBlock;
+	if ([self.promptExceptionView respondsToSelector:@selector(promptActionBlock)]) {
+		self.promptExceptionView.promptActionBlock = refreshBlock;
 	}
 	
 	[self.promptExceptionView showPromptViewInView:self.tableView];

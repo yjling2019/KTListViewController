@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @objcMembers public class PromptView : UIView, KTPromptViewProtocol {
-	public var promptRefreshBlock : KTPromptRefreshBlock?
+	public var promptActionBlock : KTPromptBlock?
 	public weak var showInView : UIView?
 	
 	public lazy var label : UILabel = {
@@ -52,11 +52,11 @@ import UIKit
 	}
 
 	@objc func buttonClick() {
-		guard (self.promptRefreshBlock != nil) else {
+		guard (self.promptActionBlock != nil) else {
 			print("not set refresh block")
 			return
 		}
-		self.promptRefreshBlock!()
+		self.promptActionBlock!()
 	}
 	
 	required init?(coder: NSCoder) {

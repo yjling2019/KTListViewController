@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^KTPromptRefreshBlock)(void);
+typedef void(^KTPromptBlock)(void);
 
 @protocol KTPromptViewProtocol;
 
@@ -22,7 +22,7 @@ typedef void(^KTPromptRefreshBlock)(void);
 @synthesize promptEmptyDataView = _promptEmptyDataView;\
 
 #define KTSynthesizePromptViewProtocol \
-@synthesize promptRefreshBlock = _promptRefreshBlock;\
+@synthesize promptActionBlock = _promptActionBlock;\
 @synthesize showInView = _showInView;\
 
 @protocol KTPromptContainerProtocol <NSObject>
@@ -42,7 +42,8 @@ typedef void(^KTPromptRefreshBlock)(void);
 @optional
 - (void)kt_promptShowLoadingView;
 - (void)kt_promptShowEmptyDataView;
-- (void)kt_promptShowExceptionViewWithRefreshHandle:(KTPromptRefreshBlock)refreshBlock;
+- (void)kt_promptShowExceptionViewWithActionHandle:(KTPromptBlock)actionBlock;
+- (void)kt_promptShowExceptionViewWithRefreshHandle:(KTPromptBlock)refreshBlock;
 //- (void)kt_promptShowExceptionView:(NSException *)exception
 //					 refreshHandle:(KTPromptRefreshBlock)refreshBlock;
 
@@ -53,8 +54,8 @@ typedef void(^KTPromptRefreshBlock)(void);
 @protocol KTPromptViewProtocol <NSObject>
 
 @optional
-@property (nonatomic, strong, nullable) KTPromptRefreshBlock promptRefreshBlock;
-@property (weak, nonatomic) UIView *showInView;
+@property (nonatomic, strong, nullable) KTPromptBlock promptActionBlock;
+@property (nonatomic, weak) UIView *showInView;
 
 @required
 - (void)showPromptViewInView:(UIView *)showInView;
