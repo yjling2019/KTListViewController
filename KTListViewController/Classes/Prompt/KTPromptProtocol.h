@@ -42,7 +42,7 @@ typedef void(^KTPromptBlock)(void);
 @optional
 - (void)kt_promptShowLoadingView;
 - (void)kt_promptShowEmptyDataView;
-- (void)kt_promptShowExceptionViewWithActionHandle:(KTPromptBlock)actionBlock;
+- (void)kt_promptShowEmptyDataViewWithActionHandle:(KTPromptBlock)actionBlock;
 - (void)kt_promptShowExceptionViewWithRefreshHandle:(KTPromptBlock)refreshBlock;
 //- (void)kt_promptShowExceptionView:(NSException *)exception
 //					 refreshHandle:(KTPromptRefreshBlock)refreshBlock;
