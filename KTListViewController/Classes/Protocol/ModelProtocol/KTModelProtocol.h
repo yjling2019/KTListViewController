@@ -11,6 +11,7 @@
 #define KTSynthesizeReuseViewModelProtocol 	@synthesize reuseViewClassName = _reuseViewClassName;\
 											@synthesize customIndex = _customIndex;\
 											@synthesize isSelected = _isSelected;\
+											@synthesize isEditing = _isEditing;\
 											@synthesize isFirstItem = _isFirstItem;\
 											@synthesize isLastItem = _isLastItem;\
 
@@ -33,6 +34,7 @@
 @property (nonatomic, assign) NSInteger customIndex;
 
 @property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, assign) BOOL isEditing;
 
 @property (nonatomic, assign) BOOL isFirstItem;
 @property (nonatomic, assign) BOOL isLastItem;
