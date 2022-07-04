@@ -15,9 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 源数据，通常指api返回的数据
 @property (nonatomic, strong, nullable) id rawData;
 
-/// viewModel对应的视图的size
-@property (nonatomic, assign) CGSize viewSize;
-
 @end
 
 NS_ASSUME_NONNULL_END
