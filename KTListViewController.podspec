@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
   s.summary          = 'Standard ListViewController'
   s.description      = 'Standard listViewController, make list view easy to use!'
 
-  s.homepage         = 'https://github.com/KOTU/KTListViewController'
+  s.homepage         = 'https://github.com/yjling2019/KTListViewController'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'KOTU' => 'yjling2019@gmail.com' }
-  s.source           = { :git => 'https://github.com/KOTU/KTListViewController.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/yjling2019/KTListViewController.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
