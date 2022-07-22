@@ -2,7 +2,7 @@
 //  KTDecorationViewModelProtocol.h
 //  KTListViewController
 //
-//  Created by 凌永剑 on 2022/7/22.
+//  Created by KOTU on 2022/7/22.
 //
 
 #import <Foundation/Foundation.h>

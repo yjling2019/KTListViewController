@@ -40,6 +40,8 @@ typedef void(^KTPromptBlock)(void);
 @protocol KTPromptProtocol <NSObject>
 
 @optional
+- (BOOL)kt_autoShowEmptyView;
+
 - (void)kt_promptShowLoadingView;
 - (void)kt_promptShowEmptyDataView;
 - (void)kt_promptShowEmptyDataViewWithActionHandle:(KTPromptBlock)actionBlock;
