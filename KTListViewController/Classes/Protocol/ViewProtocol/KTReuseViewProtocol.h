@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <KTUILibrary/KTViewContainerProtocol.h>
-#import "KTModelProtocol.h"
+#import "KTReuseViewModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

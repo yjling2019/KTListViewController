@@ -8,19 +8,7 @@
 
 #import "KTBaseCollectionViewVM.h"
 #import <UIKit/UIKit.h>
-#import "KTModelProtocol.h"
 #import <KTFoundation/NSArray+KTHelp.h>
-
-@interface KTBaseCollectionVMConfig()
-
-@end
-
-@implementation KTBaseCollectionVMConfig
-
-KTSynthesizeCollectionVMConfigProtocol
-KTSynthesizeCollectionLayoutConfigProtocol
-
-@end
 
 @implementation KTBaseCollectionViewVM
 
@@ -115,15 +103,15 @@ KTSynthesizeListVMProtocol
 {
 	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
-		return self.config.lineSpace;
+		return 0;
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		return self.config.lineSpace;
+		return 0;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(minimumLineSpacing)]) {
-		return self.config.lineSpace;
+		return 0;
 	}
 	
 	return [sectionObject minimumLineSpacing];
@@ -133,15 +121,15 @@ KTSynthesizeListVMProtocol
 {
 	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
-		return self.config.interSpace;
+		return 0;
 	}
 
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		return self.config.interSpace;
+		return 0;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(minimumInteritemSpacing)]) {
-		return self.config.interSpace;
+		return 0;
 	}
 	
 	return [sectionObject minimumInteritemSpacing];
@@ -151,15 +139,15 @@ KTSynthesizeListVMProtocol
 {
 	id <KTSectionModelProtocol> sectionObject = [self.datas kt_objectAtIndex:section];
 	if (!sectionObject) {
-		return self.config.sectionInsets;
+		return UIEdgeInsetsZero;
 	}
 	
 	if (![sectionObject conformsToProtocol:@protocol(KTSectionModelProtocol)]) {
-		return self.config.sectionInsets;
+		return UIEdgeInsetsZero;
 	}
 	
 	if (![sectionObject respondsToSelector:@selector(sectionInsets)]) {
-		return self.config.sectionInsets;
+		return UIEdgeInsetsZero;
 	}
 
 	return [sectionObject sectionInsets];
@@ -328,19 +316,6 @@ KTSynthesizeListVMProtocol
 	}
 			
 	return [footerModel reuseViewClassName];
-}
-
-#pragma mark - getter -
-- (id<KTCollectionVMConfigProtocol>)config
-{
-    if (!_config) {
-        _config = [KTBaseCollectionVMConfig new];
-        _config.lineSpace = 0;
-        _config.interSpace = 0;
-        _config.sectionInsets = UIEdgeInsetsZero;
-        _config.columnNumber = 1;
-    }
-    return _config;
 }
 
 @end

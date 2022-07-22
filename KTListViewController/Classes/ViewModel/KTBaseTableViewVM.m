@@ -8,20 +8,7 @@
 
 #import "KTBaseTableViewVM.h"
 #import <UIKit/UIKit.h>
-#import "KTModelProtocol.h"
 #import <KTFoundation/NSArray+KTHelp.h>
-
-@interface KTBaseTableVMConfig()
-
-@property (nonatomic, assign, readwrite) BOOL isMultiCell;
-
-@end
-
-@implementation KTBaseTableVMConfig
-
-KTSynthesizeTableVMConfigProtocol
-
-@end
 
 @implementation KTBaseTableViewVM
 
@@ -228,15 +215,6 @@ KTSynthesizeListVMProtocol
 	}
 		
 	return [footerModel reuseViewClassName];
-}
-
-#pragma mark - getter -
-- (id <KTTableVMConfigProtocol>)config
-{
-    if (!_config) {
-        _config = [KTBaseTableVMConfig new];
-    }
-    return _config;
 }
 
 @end

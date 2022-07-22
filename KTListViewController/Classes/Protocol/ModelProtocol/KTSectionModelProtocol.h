@@ -1,19 +1,13 @@
 //
-//  KTModelProtocol.h
-//  KOTU
+//  KTSectionModelProtocol.h
+//  KTListViewController
 //
-//  Created by KOTU on 2019/12/18.
+//  Created by KOTU on 2022/7/22.
 //
 
-#ifndef KTModelProtocol_h
-#define KTModelProtocol_h
-
-#define KTSynthesizeReuseViewModelProtocol 	@synthesize reuseViewClassName = _reuseViewClassName;\
-											@synthesize customIndex = _customIndex;\
-											@synthesize isSelected = _isSelected;\
-											@synthesize isEditing = _isEditing;\
-											@synthesize isFirstItem = _isFirstItem;\
-											@synthesize isLastItem = _isLastItem;\
+#import <Foundation/Foundation.h>
+#import "KTReuseViewModelProtocol.h"
+#import "KTDecorationViewModelProtocol.h"
 
 #define KTSynthesizeSectionModelProtocol 	@synthesize datas = _datas;\
 											@synthesize decorationModel = _decorationModel;\
@@ -25,39 +19,7 @@
 											@synthesize sectionInsets = _sectionInsets;\
 											@synthesize sectionType = _sectionType;\
 
-@protocol KTReuseViewModelProtocol <NSObject>
-
-@optional
-
-@property (nonatomic, copy, nullable) NSString *reuseViewClassName;
-
-@property (nonatomic, assign) NSInteger customIndex;
-
-@property (nonatomic, assign) BOOL isSelected;
-@property (nonatomic, assign) BOOL isEditing;
-
-@property (nonatomic, assign) BOOL isFirstItem;
-@property (nonatomic, assign) BOOL isLastItem;
-
-@end
-
-typedef NS_ENUM(NSInteger, KTDecorationOriginType)
-{
-    /// sectionHeader的顶部
-    KTDecorationOriginTypeSectionHeaderMin = 0,
-    /// sectionHeader的底部
-    KTDecorationOriginTypeSectionHeaderMax,
-};
-
-@protocol KTDecorationViewModelProtocol <NSObject, KTReuseViewModelProtocol>
-
-/// DecorationView 区域的insets
-@property (nonatomic, assign) UIEdgeInsets insets;
-
-/// DecorationView 区域的zIndex
-@property (nonatomic, assign) NSInteger zIndex;
-
-@end
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol KTSectionModelProtocol <NSObject>
 
@@ -91,4 +53,4 @@ typedef NS_ENUM(NSInteger, KTDecorationOriginType)
 
 @end
 
-#endif /* KTModelProtocol_h */
+NS_ASSUME_NONNULL_END

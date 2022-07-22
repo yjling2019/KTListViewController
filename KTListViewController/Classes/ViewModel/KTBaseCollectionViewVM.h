@@ -8,15 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "KTListVMProtocol.h"
-#import "KTCollectionVMConfigProtocol.h"
 #import "KTCollectionVMProtocol.h"
-#import "KTModelProtocol.h"
+#import "KTReuseViewModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface KTBaseCollectionVMConfig : NSObject<KTCollectionVMConfigProtocol, KTCollectionLayoutConfigProtocol>
- 
-@end
 
 @interface KTBaseCollectionViewVM : NSObject<KTCollectionVMProtocol>
 

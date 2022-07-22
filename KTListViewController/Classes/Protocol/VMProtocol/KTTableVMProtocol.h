@@ -6,11 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KTTableVMConfigProtocol.h"
-#import "KTModelProtocol.h"
+#import "KTSectionModelProtocol.h"
 
 #define KTSynthesizeTableVMProtocol     @synthesize datas = _datas;\
-                                        @synthesize config = _config;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 
 @property (nonatomic, strong, nullable) NSArray <id <KTSectionModelProtocol>> *datas;
-@property (nonatomic, strong) id <KTTableVMConfigProtocol> config;
 
 /// 用于tableView标识每个section中row的数量
 /// @param section ableView的section

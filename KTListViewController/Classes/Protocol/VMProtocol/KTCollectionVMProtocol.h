@@ -7,11 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "KTListVMProtocol.h"
-#import "KTCollectionVMConfigProtocol.h"
-#import "KTModelProtocol.h"
+#import "KTSectionModelProtocol.h"
 
 #define KTSynthesizeCollectionVMProtocol    @synthesize datas = _datas;\
-                                            @synthesize config = _config;\
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @required
 
 @property (nonatomic, strong, nullable) NSArray <id <KTSectionModelProtocol>> *datas;
-@property (nonatomic, strong) id <KTCollectionVMConfigProtocol, KTCollectionLayoutConfigProtocol> config;
 
 /// 用于collectionView标识每个section中item的数量
 /// @param section section

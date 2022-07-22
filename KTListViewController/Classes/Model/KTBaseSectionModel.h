@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KTModelProtocol.h"
+#import "KTSectionModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

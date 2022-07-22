@@ -10,7 +10,6 @@
 #import "KTBaseCollectionCell.h"
 #import "KTBaseCollectionViewVM.h"
 #import "KTListViewContainerProtocol.h"
-#import "KTModelProtocol.h"
 #import "KTWaterfallFlowLayout.h"
 #import "KTPromptProtocol.h"
 

@@ -270,27 +270,27 @@ KTSynthesizePromptContainerProtocol
 
 - (void)kt_setUpRefresher
 {
-	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
-		self.collectionViewModel.config.refreshHeaderClass &&
-		NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) &&
-		[NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
+	if ([self.collectionViewModel respondsToSelector:@selector(refreshHeaderClass)] &&
+		self.collectionViewModel.refreshHeaderClass &&
+		NSClassFromString(self.collectionViewModel.refreshHeaderClass) &&
+		[NSClassFromString(self.collectionViewModel.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
 		!self.collectionView.mj_header) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshHeader *header = [NSClassFromString(self.collectionViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+		MJRefreshHeader *header = [NSClassFromString(self.collectionViewModel.refreshHeaderClass) headerWithRefreshingBlock:^{
 			[weakSelf kt_pullRefresh];
 		}];
 		self.collectionView.mj_header = header;
 	}
 	
-	if ([self.collectionViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
-		self.collectionViewModel.config.refreshFooterClass &&
-		NSClassFromString(self.collectionViewModel.config.refreshFooterClass) &&
-		[NSClassFromString(self.collectionViewModel.config.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
+	if ([self.collectionViewModel respondsToSelector:@selector(refreshFooterClass)] &&
+		self.collectionViewModel.refreshFooterClass &&
+		NSClassFromString(self.collectionViewModel.refreshFooterClass) &&
+		[NSClassFromString(self.collectionViewModel.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
 		!self.collectionView.mj_footer) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.config.refreshFooterClass) footerWithRefreshingBlock:^{
+		MJRefreshFooter *footer = [NSClassFromString(self.collectionViewModel.refreshFooterClass) footerWithRefreshingBlock:^{
 			[weakSelf kt_loadMore];
 		}];
 		self.collectionView.mj_footer = footer;
@@ -307,7 +307,7 @@ KTSynthesizePromptContainerProtocol
 
 - (void)kt_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
 {
-	if (![self.collectionViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+	if (![self.collectionViewModel respondsToSelector:@selector(preloadMinCount)]) {
 		return;
 	}
 	
@@ -316,7 +316,7 @@ KTSynthesizePromptContainerProtocol
 		return;
 	}
 	
-	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.collectionViewModel.config.preloadMinCount];
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.collectionViewModel.preloadMinCount];
 }
 
 - (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item

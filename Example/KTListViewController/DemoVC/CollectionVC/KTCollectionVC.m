@@ -75,8 +75,8 @@
 {
 	if (!_collectionViewModel) {
 		_collectionViewModel = [[KTCollectionVM alloc] init];
-		_collectionViewModel.config.refreshHeaderClass = @"MJRefreshNormalHeader";
-		_collectionViewModel.config.refreshFooterClass = @"MJRefreshAutoNormalFooter";
+		_collectionViewModel.refreshHeaderClass = @"MJRefreshNormalHeader";
+		_collectionViewModel.refreshFooterClass = @"MJRefreshAutoNormalFooter";
 	}
 	return _collectionViewModel;
 }

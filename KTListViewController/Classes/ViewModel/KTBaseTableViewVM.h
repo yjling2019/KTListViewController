@@ -8,15 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "KTListVMProtocol.h"
-#import "KTTableVMConfigProtocol.h"
 #import "KTTableVMProtocol.h"
-#import "KTModelProtocol.h"
+#import "KTReuseViewModelProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface KTBaseTableVMConfig : NSObject<KTTableVMConfigProtocol>
-
-@end
 
 @interface KTBaseTableViewVM : NSObject<KTTableVMProtocol>
 

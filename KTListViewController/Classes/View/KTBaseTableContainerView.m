@@ -255,27 +255,27 @@ KTSynthesizePromptContainerProtocol
 
 - (void)kt_setUpRefresher
 {
-	if ([self.tableViewModel.config respondsToSelector:@selector(refreshHeaderClass)] &&
-		self.tableViewModel.config.refreshHeaderClass &&
-		NSClassFromString(self.tableViewModel.config.refreshHeaderClass) &&
-		[NSClassFromString(self.tableViewModel.config.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
+	if ([self.tableViewModel respondsToSelector:@selector(refreshHeaderClass)] &&
+		self.tableViewModel.refreshHeaderClass &&
+		NSClassFromString(self.tableViewModel.refreshHeaderClass) &&
+		[NSClassFromString(self.tableViewModel.refreshHeaderClass) respondsToSelector:@selector(headerWithRefreshingBlock:)] &&
 		!self.tableView.mj_header) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshHeader *header = [NSClassFromString(self.tableViewModel.config.refreshHeaderClass) headerWithRefreshingBlock:^{
+		MJRefreshHeader *header = [NSClassFromString(self.tableViewModel.refreshHeaderClass) headerWithRefreshingBlock:^{
 			[weakSelf kt_pullRefresh];
 		}];
 		self.tableView.mj_header = header;
 	}
 	
-	if ([self.tableViewModel.config respondsToSelector:@selector(refreshFooterClass)] &&
-		self.tableViewModel.config.refreshFooterClass &&
-		NSClassFromString(self.tableViewModel.config.refreshFooterClass) &&
-		[NSClassFromString(self.tableViewModel.config.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
+	if ([self.tableViewModel respondsToSelector:@selector(refreshFooterClass)] &&
+		self.tableViewModel.refreshFooterClass &&
+		NSClassFromString(self.tableViewModel.refreshFooterClass) &&
+		[NSClassFromString(self.tableViewModel.refreshFooterClass) respondsToSelector:@selector(footerWithRefreshingBlock:)] &&
 		!self.tableView.mj_footer) {
 		
 		__weak typeof(self) weakSelf = self;
-		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.config.refreshFooterClass) footerWithRefreshingBlock:^{
+		MJRefreshFooter *footer = [NSClassFromString(self.tableViewModel.refreshFooterClass) footerWithRefreshingBlock:^{
 			[weakSelf kt_loadMore];
 		}];
 		self.tableView.mj_footer = footer;
@@ -292,7 +292,7 @@ KTSynthesizePromptContainerProtocol
 
 - (void)kt_preloadListView:(UICollectionView *)listView atIndexPath:(NSIndexPath *)indexPath
 {
-	if (![self.tableViewModel.config respondsToSelector:@selector(preloadMinCount)]) {
+	if (![self.tableViewModel respondsToSelector:@selector(preloadMinCount)]) {
 		return;
 	}
 	
@@ -301,7 +301,7 @@ KTSynthesizePromptContainerProtocol
 		return;
 	}
 	
-	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.config.preloadMinCount];
+	[listView preloadWithCurrentItemIndex:indexPath.row totalDataCount:section.datas.count minCount:self.tableViewModel.preloadMinCount];
 }
 
 - (void)kt_listView:(__kindof UIView *)listView didSelectItem:(id<KTReuseViewModelProtocol>)item

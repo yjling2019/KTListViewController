@@ -10,7 +10,7 @@
 #import "KTBaseTableViewCell.h"
 #import "KTBaseTableViewVM.h"
 #import "KTListViewContainerProtocol.h"
-#import "KTModelProtocol.h"
+#import "KTReuseViewModelProtocol.h"
 #import "KTPromptProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
