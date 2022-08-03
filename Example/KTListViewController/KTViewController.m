@@ -12,6 +12,9 @@
 #import "KTCollectionVC2.h"
 #import "KTTableVC.h"
 #import "KTListViewController_Example-Swift.h"
+#import "KTTextListView.h"
+#import "KTTextListCellVM.h"
+
 
 // TODO: 瀑布流layout、站位图
 

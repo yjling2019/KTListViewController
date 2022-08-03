@@ -2,7 +2,14 @@ PODS:
   - KTFoundation/Category (0.1.0):
     - KTFoundation/Macros
   - KTFoundation/Macros (0.1.0)
-  - KTListViewController (0.1.0):
+  - KTListViewController (1.0.0):
+    - KTFoundation/Category
+    - KTListViewController/TextListView (= 1.0.0)
+    - KTUILibrary/Protocol
+    - KVOController
+    - Masonry
+    - MJRefresh
+  - KTListViewController/TextListView (1.0.0):
     - KTFoundation/Category
     - KTUILibrary/Protocol
     - KVOController
@@ -32,7 +39,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   KTFoundation: 8428d913e636f89554c61e6996935672fb9886a0
-  KTListViewController: 8b4690e3ade4de27a5275ecff2629e7f21d2f585
+  KTListViewController: 933badee5dc21f7f6c2d39d9753723ea600bc96e
   KTUILibrary: 1b4f6f650486842624ef9715bdcb2565d58290eb
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201

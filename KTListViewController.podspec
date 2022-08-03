@@ -28,5 +28,9 @@ Pod::Spec.new do |s|
   s.dependency 'MJRefresh'
   s.dependency 'KTUILibrary/Protocol'
   s.dependency 'KTFoundation/Category'
+  
+  s.subspec 'TextListView' do |sp|
+	sp.source_files = 'KTListViewController/TextListView/**/*.{h,m}'
+  end
 
 end
