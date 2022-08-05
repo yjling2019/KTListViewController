@@ -114,7 +114,8 @@
 	KTBaseSectionModel *sm = [KTBaseSectionModel new];
 	sm.datas = datas.copy;
 	sm.minimumLineSpacing = self.itemSpace;
-	sm.sectionInsets = self.sectionInsets;
+	sm.minimumInteritemSpacing = self.itemSpace;
+	sm.sectionInsets = UIEdgeInsetsMake(0, self.sectionInsets.left, 0, self.sectionInsets.right);
 	
 	self.collectionViewModel.datas = @[sm];
 	[self.collectionView reloadData];
