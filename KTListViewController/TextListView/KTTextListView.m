@@ -68,6 +68,7 @@
 
 - (void)updateTextList:(NSArray <NSString *> *)texts
 {
+	[self.collectionView setContentOffset:CGPointZero];
 	self.texts = texts;
 }
 
