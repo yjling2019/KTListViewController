@@ -523,6 +523,9 @@ didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+		_collectionView.showsVerticalScrollIndicator = NO;
+		_collectionView.showsHorizontalScrollIndicator = NO;
+		_collectionView.backgroundColor = [UIColor clearColor];
     }
     return _collectionView;
 }
